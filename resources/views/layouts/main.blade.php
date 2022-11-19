@@ -9,9 +9,13 @@
 </head>
 <body>
     <div class="main-container">
+        @include('partials.navbar')
 
+        <!-- Page Contents-->
         @yield('landing-page')
-
+        <!-- Page Contents-->
+        
+        @include('partials.footer')
     </div>
 </body>
 </html>
