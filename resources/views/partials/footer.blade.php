@@ -1,3 +1,3 @@
 <div class="footer">
-    Footer
+    <h1>Ini Footer</h1>
 </div>

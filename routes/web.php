@@ -1,10 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegistrationController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,25 +16,41 @@ use App\Http\Controllers\RegistrationController;
 */
 
 
-// User routes
+// Route::middleware(['verified'])->group(function(){
+//     Route::get('/', [UserController::class, 'index'])->name('landing');
+// });
 
 
-Route::controller(UserController::class)->group(function(){
-    Route::get('/', 'index')->name('index');
-    // testAuth bisa diapus nanti (cuma buat test authentication)
-    Route::get('/testauth', 'testAuth')->middleware('auth');
 
-    Route::post('/logout', 'logOut')->middleware('auth');
+Auth::routes(['verify' => true]);
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/test-auth-page', [UserController::class, 'testAuth'])->name('book.testAuth');
+    Route::get('/', [UserController::class, 'index'])->name('landing');    
+
+    Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [UserController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Login routes
-Route::controller(LoginController::class)->group(function(){
-    Route::get('/login', 'showLoginPage')->middleware('guest')->name('login');
-    Route::post('/login', 'loginProcess');
+Route::get('/email/verify', function(){
+    return view('auth.verify-email');
 });
 
-// Registration routes
-Route::controller(RegistrationController::class)->group(function(){
-    Route::get('/registration', 'showSignUpPage')->middleware('guest')->name('registration');
-    Route::post('/registration', 'createUserProcess');
+Route::middleware('guest')->group(function(){
+    Route::get('/', [UserController::class, 'index'])->name('landing');
 });
+
+Route::get('/', [UserController::class, 'index'])->name('landing');
+
+
+
+require __DIR__.'/auth.php';
+
+
+
+
+
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
