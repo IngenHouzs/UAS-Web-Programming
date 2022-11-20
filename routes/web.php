@@ -40,7 +40,3 @@ Route::controller(RegistrationController::class)->group(function(){
     Route::get('/registration', 'showSignUpPage')->middleware('guest')->name('registration');
     Route::post('/registration', 'createUserProcess');
 });
-
-hehehehe;
-
-hehehehe;
