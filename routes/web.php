@@ -42,3 +42,5 @@ Route::controller(RegistrationController::class)->group(function(){
 });
 
 hehehehe;
+
+hehehehe;
