@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index(){
         if (Auth::check()){
             if (!Auth::user()->email_verified_at){
-                return redirect('/email/verify');
+                return redirect('/verify-email');
             }
         }
  

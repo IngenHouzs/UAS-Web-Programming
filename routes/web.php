@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/email/verify', function(){
+Route::get('/verify-email', function(){
     return view('auth.verify-email');
 });
 

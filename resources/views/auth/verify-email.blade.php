@@ -54,6 +54,7 @@
                 </div>
             </form>
 
+
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
@@ -61,5 +62,8 @@
                     {{ __('Log Out') }}
                 </button>
             </form>
+
+            <a href="/"><button>BACK</button></a>
+
         </div>
 
