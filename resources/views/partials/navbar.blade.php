@@ -13,11 +13,12 @@
                 </form>
 
             @else
-                <a href="{{ route('login') }}" class="text-sm">Log in</a>
+                <a href="{{ route('login') }}" class="text-sm" >Log in</a>
             @if (Route::has('register'))
                 <a href="{{ route('register') }}" class="text-sm">Register</a>
             @endif
             @endauth
 
     @endif
+
 </div>

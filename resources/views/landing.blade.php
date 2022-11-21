@@ -9,7 +9,11 @@
             <h1>Selamat datang, {{auth()->user()->name}}</h1>
         @endif
     @else 
-        <h1>Guest</h1>
+        <h1 class="text-white bg-dark">Guest</h1>
+
     @endauth
+
+
+
 
 @endsection
