@@ -24,16 +24,15 @@
     </head>
     <body>
         <div class="main-container">
-            @include('partials.navbar')
+
     
             <!-- Page Contents-->
             <div class="content">
-                @yield('landing-page')        
-                @yield('forgot-password')
+                @yield('reset-password')     
             </div>            
             <!-- Page Contents-->
             
-            @include('partials.footer')
+        
         </div>
             <!-- Tombol Login Register -->
     </body>
