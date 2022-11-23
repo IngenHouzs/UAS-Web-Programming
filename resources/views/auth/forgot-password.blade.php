@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.with-header-footer')
 @section('forgot-password')
 
 <div class="container">
