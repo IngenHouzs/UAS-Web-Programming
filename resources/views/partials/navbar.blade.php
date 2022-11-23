@@ -1,7 +1,7 @@
 <div class="navbar flex-row justify-around px-4">
 
     <div class="school-logo">
-        <p>Tunas Mulia Montessori</p>
+        <p>Tunas Mulia Montessori School</p>
     </div>
 
 
@@ -32,7 +32,4 @@
                 @endauth
         @endif
     </div>
-
-
-
 </div>

@@ -24,14 +24,14 @@
             <!-- Email Address -->
             <div class="mx-auto flex-col">
                 
-                <label for="email"/>Email</label><br/>
+                <label for="email">Email</label><br/>
                 <input id="email" class="block mt-1 w-full inputs" type="email" name="email" required autofocus />
         
                 <x-input-error :messages="$errors->get('email')" class="info-text"/>
 
 
                 <br/>
-                <button type="submit" class= "form-submit bg-primary text-white w-full">Send Password Reset Link</button>                              
+                <button type="submit" class= "form-submit bg-info text-white w-full">Send Password Reset Link</button>                              
 
             </div>
       
