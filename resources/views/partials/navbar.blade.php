@@ -6,10 +6,10 @@
 
 
     <div class="nav-features">
-        <a href=""><button>Home</button></a>
-        <a href=""><button>About</button></a>
-        <a href=""><button>Services</button></a>                
-        <a href=""><button>Collection</button></a>        
+        <a href=""><button class="rounded border border-warning">Home</button></a>
+        <a href=""><button class="rounded border border-warning">About</button></a>
+        <a href=""><button class="rounded border border-warning">Services</button></a>                
+        <a href=""><button class="rounded border border-warning">Collection</button></a>        
     </div>
 
     <div class="nav-user-status">
@@ -25,9 +25,9 @@
                     </form>
 
                 @else
-                    <a href="{{ route('login') }}" class="text-sm" >Log in</a>
+                    <a href="{{ route('login') }}" class="rounded border border-dark" >Log in</a>
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="text-sm">Register</a>
+                    <a href="{{ route('register') }}" class="rounded border border-dark">Register</a>
                 @endif
                 @endauth
         @endif
