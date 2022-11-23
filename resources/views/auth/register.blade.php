@@ -1,4 +1,4 @@
-@extends('layouts.login-signup')
+@extends('layouts.footer-only')
 
 @section('register') 
 

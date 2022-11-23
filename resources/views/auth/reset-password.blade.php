@@ -1,6 +1,6 @@
 
 
-@extends('layouts.plain')
+@extends('layouts.no-header-footer')
 
 @section('reset-password') 
 
