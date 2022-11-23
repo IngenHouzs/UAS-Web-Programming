@@ -29,6 +29,8 @@
             <!-- Page Contents-->
             <div class="content">
                 @yield('reset-password')     
+                @yield('verify')    
+                @yield('verify-email')                                    
             </div>            
             <!-- Page Contents-->
             
