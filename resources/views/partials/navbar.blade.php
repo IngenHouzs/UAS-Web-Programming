@@ -1,8 +1,10 @@
 <div class="navbar flex-row justify-around px-4">
 
     <div class="school-logo">
-        <p>Tunas Mulia Montessori School</p>
+        <h4 class="rounded-top border border-info bg-light">Tunas Mulia Montessori School</h4>
     </div>
+    
+    
 
 
     <div class="nav-features">
@@ -25,9 +27,9 @@
                     </form>
 
                 @else
-                    <a href="{{ route('login') }}" class="rounded border border-dark" >Log in</a>
+                    <a href="{{ route('login') }}" class="rounded border border-dark bg-light" >Log in</a>
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="rounded border border-dark">Register</a>
+                    <a href="{{ route('register') }}" class="rounded border border-dark bg-light">Register</a>
                 @endif
                 @endauth
         @endif
