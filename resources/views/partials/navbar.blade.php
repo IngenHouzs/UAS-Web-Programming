@@ -1,17 +1,21 @@
-<div class="navbar flex-row justify-around px-4">
-
-    <div class="school-logo">
-        <h4 class="rounded-top border border-info bg-light">Tunas Mulia Montessori School</h4>
-    </div>
-    
-    
-
-
-    <div class="nav-features">
-        <a href="{{route('home')}}" class="rounded border border-warning"><button>Home</button></a>
-        <a href="{{route('about')}}" class="rounded border border-warning"><button>About</button></a>
-        <a href="{{route('services')}}" class="rounded border border-warning"><button>Services</button></a>                
-        <a href="{{route('collection')}}" class="rounded border border-warning"><button>Collection</button></a>        
+<nav class="navbar navbar-expand-lg px-3">
+    <a class="navbar-brand school-logo" href="#">
+        LOGO
+    </a>
+    <a href="\">
+        Tunas Mulia Montessori School <br>
+        Online Library
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExample04">
+        <div class="navbar-nav">
+            <a href="{{route('home')}}" class="nav-item nav-link"><button>Home</button></a>
+            <a href="{{route('about')}}" class="nav-item nav-link"><button>About</button></a>
+            <a href="{{route('services')}}" class="nav-item nav-link"><button>Services</button></a>                
+            <a href="{{route('collection')}}" class="nav-item nav-link"><button>Collection</button></a>     
+        </div>
     </div>
 
     <div class="nav-user-status">
@@ -34,4 +38,4 @@
                 @endauth
         @endif
     </div>
-</div>
+</nav>
