@@ -1,15 +1,17 @@
 <div class="navbar flex-row justify-around px-4">
 
     <div class="school-logo">
-        <p>Tunas Mulia Montessori School</p>
+        <h4 class="rounded-top border border-info bg-light">Tunas Mulia Montessori School</h4>
     </div>
+    
+    
 
 
     <div class="nav-features">
-        <a href="{{route('home')}}"><button>Home</button></a>
-        <a href="{{route('about')}}""><button>About</button></a>
-        <a href="{{route('services')}}"><button>Services</button></a>                
-        <a href="{{route('collection')}}"><button>Collection</button></a>        
+        <a href="{{route('home')}}" class="rounded border border-warning"><button>Home</button></a>
+        <a href="{{route('about')}}" class="rounded border border-warning"><button>About</button></a>
+        <a href="{{route('services')}}" class="rounded border border-warning"><button>Services</button></a>                
+        <a href="{{route('collection')}}" class="rounded border border-warning"><button>Collection</button></a>        
     </div>
 
     <div class="nav-user-status">
@@ -25,9 +27,9 @@
                     </form>
 
                 @else
-                    <a href="{{ route('login') }}" class="text-sm" >Log in</a>
+                    <a href="{{ route('login') }}" class="rounded border border-dark bg-light" >Log in</a>
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="text-sm">Register</a>
+                    <a href="{{ route('register') }}" class="rounded border border-dark bg-light">Register</a>
                 @endif
                 @endauth
         @endif
