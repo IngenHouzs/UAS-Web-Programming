@@ -29,6 +29,7 @@
             <!-- Page Contents-->
             <div class="content">
                 @yield('landing-page')        
+                @yield('catalogue')                  
                 @yield('forgot-password')
             </div>            
             <!-- Page Contents-->

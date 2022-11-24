@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,6 +40,10 @@ Route::get('/verify-email', function(){
 
 Route::middleware('guest')->group(function(){
     Route::get('/', [UserController::class, 'index'])->name('landing');
+    Route::get('/home', [UserController::class, 'home'])->name('home');
+    Route::get('/about', [UserController::class, 'about'])->name('about');
+    Route::get('/services', [UserController::class, 'services'])->name('services');
+    Route::get('/collection', [BookController::class, 'collection'])->name('collection');            
 });
 
 Route::get('/', [UserController::class, 'index'])->name('landing');

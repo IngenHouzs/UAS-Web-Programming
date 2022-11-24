@@ -7,17 +7,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+
 class UserController extends Controller
 {
     public function index(){
-        if (Auth::check()){
-            if (!Auth::user()->email_verified_at){
-                return redirect('/verify-email');
-            }
-        }
- 
+        AuthenticatedSessionController::checkEmailVerification();
         return view('landing');
     }
+
+    public function home(){
+        AuthenticatedSessionController::checkEmailVerification();        
+        return view('landing'); // TEMP        
+    }
+
+    public function about(){
+        AuthenticatedSessionController::checkEmailVerification();        
+        return view('landing'); // TEMP             
+    }
+    
+    public function services(){
+        AuthenticatedSessionController::checkEmailVerification();        
+        return view('landing'); // TEMP             
+    }    
+
+
 
     /**
      * Display the user's profile form.

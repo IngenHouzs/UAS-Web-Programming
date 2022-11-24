@@ -6,10 +6,10 @@
 
 
     <div class="nav-features">
-        <a href=""><button>Home</button></a>
-        <a href=""><button>About</button></a>
-        <a href=""><button>Services</button></a>                
-        <a href=""><button>Collection</button></a>        
+        <a href="{{route('home')}}"><button>Home</button></a>
+        <a href="{{route('about')}}""><button>About</button></a>
+        <a href="{{route('services')}}"><button>Services</button></a>                
+        <a href="{{route('collection')}}"><button>Collection</button></a>        
     </div>
 
     <div class="nav-user-status">

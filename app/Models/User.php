@@ -61,4 +61,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->attributes['password'] = bcrypt($password);
     }
 
+    // ElOQUENT RELATIONSHIPS
+    public function loan(){
+        return $this->hasMany(BookLoan::class);
+    }
+
 }
