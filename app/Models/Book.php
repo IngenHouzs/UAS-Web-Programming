@@ -31,20 +31,20 @@ class Book extends Model
 
     // ELOQUENT RELATIONSHIPS 
 
-    public function user(){
-        return $this->belongsToMany(User::class);
-    }
+    // public function user(){
+    //     return $this->belongsToMany(User::class);
+    // }
 
-    public function loan(){
-        return $this->belongsToMany(BookLoan::class);
-    }
+    // public function loan(){
+    //     return $this->belongsToMany(BookLoan::class);
+    // }
 
     public function author(){
-        return $this->belongsToMany(Author::class);
+        return $this->hasManyThrough(Author::class, BookAuthor::class, 'id_buku','id_penulis','id_penulis','id_penulis');
     }
 
     public function publisher(){
-        return $this->hasMany(Publisher::class);
+        return $this->belongsTo(Publisher::class, 'id_penerbit');
     }
 
 

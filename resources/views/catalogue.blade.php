@@ -4,9 +4,10 @@
 
     <h1>Daftar Buku</h1>
     @foreach($books as $book)    
-        <p>{{$book->judul}}</p>
-        <p>{{$book->publisher->nama_penerbit}}</p>        
-
+        <p>Judul -> {{$book->judul}}</p>
+        <p>Penerbit -> {{$book->publisher->nama_penerbit}}</p>        
+        <p>Author -> {{$book->author}}</p>
+        <br/>
     @endforeach
 
 @endsection

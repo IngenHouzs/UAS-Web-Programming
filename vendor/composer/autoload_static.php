@@ -582,6 +582,7 @@ class ComposerStaticInit0fbbc20ea793366ab1473dfd6d5b8402
         'App\\Http\\Requests\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileUpdateRequest.php',
         'App\\Models\\Author' => __DIR__ . '/../..' . '/app/Models/Author.php',
         'App\\Models\\Book' => __DIR__ . '/../..' . '/app/Models/Book.php',
+        'App\\Models\\BookAuthor' => __DIR__ . '/../..' . '/app/Models/BookAuthor.php',
         'App\\Models\\BookLoan' => __DIR__ . '/../..' . '/app/Models/BookLoan.php',
         'App\\Models\\Publisher' => __DIR__ . '/../..' . '/app/Models/Publisher.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

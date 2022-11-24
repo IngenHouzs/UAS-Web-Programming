@@ -43,6 +43,7 @@ return array(
     'App\\Http\\Requests\\ProfileUpdateRequest' => $baseDir . '/app/Http/Requests/ProfileUpdateRequest.php',
     'App\\Models\\Author' => $baseDir . '/app/Models/Author.php',
     'App\\Models\\Book' => $baseDir . '/app/Models/Book.php',
+    'App\\Models\\BookAuthor' => $baseDir . '/app/Models/BookAuthor.php',
     'App\\Models\\BookLoan' => $baseDir . '/app/Models/BookLoan.php',
     'App\\Models\\Publisher' => $baseDir . '/app/Models/Publisher.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
