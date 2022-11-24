@@ -11,8 +11,10 @@ class Author extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_penulis';
     public $incrementing = false;
     public $timestamps = false;
+    protected $keyType = 'string';
 
     protected $table = 'authors';
 }

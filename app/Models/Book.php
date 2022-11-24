@@ -40,7 +40,8 @@ class Book extends Model
     // }
 
     public function author(){
-        return $this->hasManyThrough(Author::class, BookAuthor::class, 'id_buku','id_penulis','id_penulis','id_penulis');
+        return $this->hasManyThrough(Author::class, BookAuthor::class, 
+            'id_buku','id_penulis','id','id_penulis');
     }
 
     public function publisher(){

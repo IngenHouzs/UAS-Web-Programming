@@ -6,7 +6,11 @@
     @foreach($books as $book)    
         <p>Judul -> {{$book->judul}}</p>
         <p>Penerbit -> {{$book->publisher->nama_penerbit}}</p>        
-        <p>Author -> {{$book->author}}</p>
+
+        <p><b>Author</b></p>
+        @foreach($book->author as $author)
+            <p>{{$author->nama_penulis}}</p>
+        @endforeach
         <br/>
     @endforeach
 
