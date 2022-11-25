@@ -11,7 +11,7 @@
         @endif
     @else 
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas autem ipsam iste quia odit, perferendis voluptates, et ipsa pariatur nesciunt harum possimus accusantium aut exercitationem distinctio qui. Illum, asperiores! Quisquam officia fuga quos dicta eos, doloribus modi maiores fugit pariatur voluptas, sapiente dolorum. At blanditiis, eligendi temporibus atque asperiores consequatur?</p>
-    @endauth'
+    @endauth
 
 
 

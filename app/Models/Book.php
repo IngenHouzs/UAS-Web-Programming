@@ -35,9 +35,10 @@ class Book extends Model
     //     return $this->belongsToMany(User::class);
     // }
 
-    // public function loan(){
-    //     return $this->belongsToMany(BookLoan::class);
-    // }
+    public function user(){
+        return $this->belongsToMany(User::class, 'book_loans', 'id_buku', 'id_user')
+            ->withPivot('tanggal_peminjaman', 'tenggat_pengembalian', 'tanggal_pengembalian');        
+    }
 
     public function author(){
         return $this->hasManyThrough(Author::class, BookAuthor::class, 
@@ -45,7 +46,7 @@ class Book extends Model
     }
 
     public function publisher(){
-        return $this->belongsTo(Publisher::class, 'id_penerbit');
+        return $this->belongsTo(Publisher::class, 'id_penerbit');        
     }
 
 

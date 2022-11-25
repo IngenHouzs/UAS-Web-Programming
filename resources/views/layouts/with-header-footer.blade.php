@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">    
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">    
         <link rel="stylesheet" href="/css/style.css">
 
         <!-- Styles -->
@@ -29,7 +29,8 @@
             <!-- Page Contents-->
             <div class="content">
                 @yield('landing-page')        
-                @yield('catalogue')                  
+                @yield('catalogue')           
+                @yield('view-book')       
                 @yield('forgot-password')
             </div>            
             <!-- Page Contents-->
@@ -38,7 +39,7 @@
         </div>
             <!-- Tombol Login Register -->
 
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
         <script src="/js/script.js"></script>
     </body>
 </html>

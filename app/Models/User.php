@@ -9,6 +9,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
 
 
+use App\Models\Book;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -62,8 +64,8 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     // ElOQUENT RELATIONSHIPS
-    public function loan(){
-        return $this->hasMany(BookLoan::class);
+    public function book(){
+        return $this->belongsToMany(Book::class, 'book_loans', 'id_user', 'id_buku')
+            ->withPivot('tanggal_peminjaman', 'tenggat_pengembalian', 'tanggal_pengembalian');
     }
-
 }

@@ -11,6 +11,9 @@
         @foreach($book->author as $author)
             <p>{{$author->nama_penulis}}</p>
         @endforeach
+
+        <a href="/collection/{{$book->id}}"><button>View Detail</button></a>
+
         <br/>
     @endforeach
 

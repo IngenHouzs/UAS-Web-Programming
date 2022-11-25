@@ -17,4 +17,9 @@ class Author extends Model
     protected $keyType = 'string';
 
     protected $table = 'authors';
+
+    public function setIdAttribute($id){
+        $this->attributes['id_penulis'] = uniqid('a', true);
+    }
+
 }

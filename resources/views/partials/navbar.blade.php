@@ -23,6 +23,13 @@
             <li class="nav-item">
                 <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
             </li>
+            @auth
+                @if(auth()->user()->role === 1)            
+                    <li class="nav-item">
+                        <a href="{{route('showAllLoans')}}" class="navbar-link nav-link">Loan List</a>     
+                    </li>                
+                @endif
+            @endauth            
 
         </div>
         <div class="navbar-nav" id="navbar-user-status">

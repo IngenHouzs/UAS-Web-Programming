@@ -19,8 +19,15 @@ class Publisher extends Model
     protected $table = 'publishers';
     
 
+    public function setIdAttribute($id){
+        $this->attributes['id_penerbit'] = uniqid('b', true);
+    }
+
     public function book(){
         return $this->hasMany(Book::class);
     }
+
+
+
 
 }

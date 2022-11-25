@@ -20,9 +20,18 @@ class BookLoan extends Model
     protected $primaryKey = 'id_peminjaman';
     public $incrementing = false;
     protected $keyType = 'string';
+    public $timestamps = false;    
 
 
     public function loan_relation(){
         return $this->belongsToMany(User::class) && $this->belongsToMany(Book::class);
     }
+
+    public function setIdPeminjamanAttribute($idPeminjaman){
+        $this->attributes['id_peminjaman'] = uniqid('l', true);
+    }
+
+
+
+
 }
