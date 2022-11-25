@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md px-3">
+<nav id="navbar" class="navbar navbar-expand-md px-3 fixed-top">
     <a class="navbar-brand" href="\">
         LOGO
     </a>
@@ -12,16 +12,16 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarsExample04">
         <div class="navbar-nav">
             <li class="nav-item">
-                <a href="{{route('home')}}" class="nav-link">Home</a>
+                <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
             </li>
             <li class="nav-item">
-                <a href="{{route('about')}}" class="nav-link">About</a>
+                <a href="{{route('about')}}" class="navbar-link nav-link">About</a>
             </li>
             <li class="nav-item">
-                <a href="{{route('services')}}" class="nav-link">Services</a>
+                <a href="{{route('services')}}" class="navbar-link nav-link">Services</a>
             </li>
             <li class="nav-item">
-                <a href="{{route('collection')}}" class="nav-link">Collection</a>     
+                <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
             </li>
 
         </div>
