@@ -19,7 +19,7 @@ class Publisher extends Model
     protected $table = 'publishers';
     
 
-    public function setIdAttribute($id){
+    public function setIdPenerbitAttribute($id){
         $this->attributes['id_penerbit'] = uniqid('b', true);
     }
 

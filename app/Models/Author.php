@@ -18,7 +18,7 @@ class Author extends Model
 
     protected $table = 'authors';
 
-    public function setIdAttribute($id){
+    public function setIdPenulisAttribute($id){
         $this->attributes['id_penulis'] = uniqid('a', true);
     }
 
