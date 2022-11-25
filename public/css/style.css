@@ -16,7 +16,7 @@ html {
 }
 
 a {
-    color: #1f1f1f;
+    color: #1f1f1f !important;
     text-decoration: none !important;
     outline: none !important;
     -webkit-transition: all 0.3s ease-in-out;
@@ -46,16 +46,12 @@ p {
 }
 
 .navbar {
-    background-color: yellow;
+    background-color: #f4f66b70;
     position: fixed;
     top: 0;
     width: 100%;
     /* height: 3rem; */
 }
-
-/* .navbar a button {
-    background-color: none;
-} */
 
 .footer {
     background-color: var(--nav-footer-bg);
@@ -103,13 +99,8 @@ p {
     padding-bottom: 2rem;
 }
 
-<<<<<<< HEAD
-.resend-verification-button{
-    width:100%;
-=======
 .resend-verification-button {
     width: 100%;
->>>>>>> a24fe4e19d2ff2d52f1721578f476564bc2138a6
 }
 
 .verify-email-card {
@@ -133,5 +124,41 @@ p {
         max-width: none;
         min-width: none;
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #navbar-school-name {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-toggler-icon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .navbar-toggler-icon {
+        margin: 0 0 0 38%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 826px) {
+    #navbarsExample04 {
+        margin-left: 0.8%;
+    }
+}
+
+@media screen and (min-width: 826px) and (max-width: 992px) {
+    #navbarsExample04 {
+        margin-left: 8%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #navbarsExample04 {
+        margin-left: 18%;
     }
 }

@@ -38,7 +38,6 @@
         </div>
             <!-- Tombol Login Register -->
 
-    
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>
