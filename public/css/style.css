@@ -1,6 +1,8 @@
 :root {
     --background: #ebeae8;
-    --nav-footer-bg: #918c1f;
+    --nav-footer-bg: #f4f66b70;
+    --secondary-bg: #222e9e;
+    --tertiary-bg: #5b89ff;
     --light-shadow: #cccccc;
 }
 
@@ -40,17 +42,25 @@ p {
     justify-content: space-between;
 }
 
-.content {
-    margin-top: 3rem;
-    height: auto;
-}
-
 .navbar {
-    background-color: #f4f66b70;
+    background-color: var(--nav-footer-bg);
     position: fixed;
     top: 0;
     width: 100%;
     /* height: 3rem; */
+}
+
+.nav-link:hover,
+.navbar-active {
+    background-color: var(--secondary-bg);
+    text-decoration: underline !important;
+    text-decoration-color: white !important;
+    color: white !important;
+}
+
+.content {
+    margin-top: 5rem;
+    height: auto;
 }
 
 .footer {
@@ -133,9 +143,31 @@ p {
     }
 }
 
+@media screen and (max-width: 768px) {
+    .nav-link {
+        padding: 0.4rem !important;
+    }
+
+    #navbar-user-status .nav-link {
+        color: red !important;
+        font-weight: bold !important;
+    }
+
+    #navbar-user-status .nav-link:hover {
+        color: white !important;
+        background-color: var(--tertiary-bg);
+    }
+}
+
 @media screen and (min-width: 768px) {
     .navbar-toggler-icon {
         display: none;
+    }
+
+    #navbar-user-status .nav-link {
+        background-color: var(--tertiary-bg);
+        color: white !important;
+        margin: 0 3px;
     }
 }
 
@@ -146,14 +178,11 @@ p {
 }
 
 @media screen and (min-width: 768px) and (max-width: 826px) {
-    #navbarsExample04 {
-        margin-left: 0.8%;
-    }
 }
 
 @media screen and (min-width: 826px) and (max-width: 992px) {
     #navbarsExample04 {
-        margin-left: 8%;
+        margin-left: 7.5%;
     }
 }
 
