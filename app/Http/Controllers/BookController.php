@@ -32,8 +32,10 @@ class BookController extends Controller
         $bookRequest->id_peminjaman = '';
         $bookRequest->id_buku = $book_id;
         $bookRequest->id_user = $user_id;
-        $bookRequest->tanggal_peminjaman = Carbon::now()->toDateTimeString();
-        $bookRequest->tenggat_pengembalian = Carbon::now()->addDays(7)->toDateTimeString();
+        $bookRequest->tanggal_peminjaman = NULL;
+        $bookRequest->tenggat_pengembalian = NULL;
+        // $bookRequest->tanggal_peminjaman = Carbon::now()->toDateTimeString();
+        // $bookRequest->tenggat_pengembalian = Carbon::now()->addDays(7)->toDateTimeString();        
         $bookRequest->save();
     
         return redirect('/collection/'.$book_id)
@@ -43,6 +45,6 @@ class BookController extends Controller
     // Nunjukin daftar semua peminjaman (Pivot Table)
     public function showAllLoans(){
         $users = User::with('book')->get();
-        return $users;
+        return view('loanlist', ['users' => $users]);
     }
 }

@@ -32,6 +32,7 @@
                 @yield('catalogue')           
                 @yield('view-book')       
                 @yield('forgot-password')
+                @yield('loanlist')
             </div>            
             <!-- Page Contents-->
             
