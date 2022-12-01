@@ -12,22 +12,22 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 class UserController extends Controller
 {
     public function index(){
-        AuthenticatedSessionController::checkEmailVerification();
+        // AuthenticatedSessionController::checkEmailVerification();
         return view('landing');
     }
 
     public function home(){
-        AuthenticatedSessionController::checkEmailVerification();        
+        // AuthenticatedSessionController::checkEmailVerification();        
         return view('landing'); // TEMP        
     }
 
     public function about(){
-        AuthenticatedSessionController::checkEmailVerification();        
+        // AuthenticatedSessionController::checkEmailVerification();        
         return view('landing'); // TEMP             
     }
     
     public function services(){
-        AuthenticatedSessionController::checkEmailVerification();        
+        // AuthenticatedSessionController::checkEmailVerification();        
         return view('landing'); // TEMP             
     }    
 

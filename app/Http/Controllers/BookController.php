@@ -14,19 +14,19 @@ use App\Models\User;
 class BookController extends Controller
 {
     public function collection(){
-        AuthenticatedSessionController::checkEmailVerification();  
+        // AuthenticatedSessionController::checkEmailVerification();  
         $books = Book::all();
         return view('catalogue', ['books' => $books]);
     }
 
     public function viewDocument($id){
-        AuthenticatedSessionController::checkEmailVerification();  
+        // AuthenticatedSessionController::checkEmailVerification();  
         $document = Book::find($id);
         return view('view-book', ['book' => $document]);
     }
 
     public function requestLoan($book_id, $user_id){
-        AuthenticatedSessionController::checkEmailVerification(); 
+        // AuthenticatedSessionController::checkEmailVerification(); 
 
         $bookRequest = new BookLoan();
         $bookRequest->id_peminjaman = '';
@@ -44,7 +44,32 @@ class BookController extends Controller
 
     // Nunjukin daftar semua peminjaman (Pivot Table)
     public function showAllLoans(){
-        $users = User::with('book')->get();
+        $users = User::with('book')->get()->where('tanggal_peminjaman', !NULL);
+        // return $users;
         return view('loanlist', ['users' => $users]);
     }
+
+    public function showPendingRequests(){
+
+        $pendingRequests = User::with('book')->get()->where('tanggal_peminjaman', NULL);
+        // return $pendingRequests;
+        return view('pending', ['pendingRequests' => $pendingRequests]);
+    }
+
+
+    public function acceptLoan($user_id, $book_id){
+        $book = Book::find($book_id);
+        $user = User::find($user_id);
+
+        $loan = BookLoan::where('id_buku',$book->id)
+            ->where('id_user', $user->id)->update(
+                [
+                    'tanggal_peminjaman' => Carbon::now()->toDateTimeString(),
+                    'tenggat_pengembalian' => Carbon::now()->addDays(7)->toDateTimeString()
+                ]
+            );
+        return redirect('/pending')
+            ->with('REQUEST_ACCEPTED', "Peminjaman buku ".$book->judul." oleh ".$user->name." berhasil diterima.");
+    }
+
 }

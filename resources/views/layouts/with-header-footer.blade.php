@@ -33,6 +33,7 @@
                 @yield('view-book')       
                 @yield('forgot-password')
                 @yield('loanlist')
+                @yield('pending')
             </div>            
             <!-- Page Contents-->
             

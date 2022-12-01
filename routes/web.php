@@ -23,9 +23,9 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/test-auth-page', [UserController::class, 'testAuth'])->name('book.testAuth');
     Route::get('/', [UserController::class, 'index'])->name('landing');    
 
@@ -37,14 +37,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // ADMIN ROUTES (TEMP)
     Route::get('/loans', [BookController::class, 'showAllLoans'])->name('showAllLoans');
-
+    Route::get('/pending', [BookController::class, 'showPendingRequests'])->name('showPendingRequests');    
+    Route::post('/acceptLoan/{user_id}/{book_id}', [BookController::class, 'acceptLoan'])->name('acceptLoan');
 
 
 });
 
-Route::get('/verify-email', function(){
-    return view('auth.verify-email');
-});
+// Route::get('/verify-email', function(){
+//     return view('auth.verify-email');
+// });
 
 
 Route::get('/', [UserController::class, 'index'])->name('landing');

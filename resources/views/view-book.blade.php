@@ -9,10 +9,24 @@
     @foreach($book->author as $author)
         <p>{{$author->nama_penulis}}</p>
     @endforeach
-    <form action="{{route('requestLoan', [$book->id, auth()->user()->id])}}" method="POST">
-        @csrf
-        <button type="submit">Ajukan Peminjaman</button>
-    </form>
+
+    @auth
+        @if(auth()->user()->role === 2)
+            <form action="{{route('requestLoan', [$book->id, auth()->user()->id])}}" method="POST">
+                @csrf
+                <button type="submit">Ajukan Peminjaman</button>
+            </form>   
+        @else 
+            <button type="submit">Hapus Buku</button>        
+        @endif 
+    @endauth
+
+    @guest
+        <form action="{{route('requestLoan', [$book->id, $book->id])}}" method="POST">
+            @csrf
+            <button type="submit">Ajukan Peminjaman</button>
+        </form>       
+    @endguest 
 
     @if(session('LOAN_SUCCESS'))
         <p>{{session('LOAN_SUCCESS')}}</p>
