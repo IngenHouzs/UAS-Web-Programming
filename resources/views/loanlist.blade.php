@@ -4,7 +4,11 @@
 @section('loanlist')
 
 <div class="flex flex-row">
-    <h1>Daftar Pinjaman</h1>   
+    <h1>Daftar Pinjaman</h1> 
+    <form action="/loans" method="GET">
+        <input type="text" placeholder="Masukkan Nama Siswa" name="nama"></input>
+        <button type="submit">Search</button>
+    </form>  
 </div>
     
     @foreach($loans as $loan)
