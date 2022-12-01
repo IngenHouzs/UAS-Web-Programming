@@ -70,7 +70,7 @@ class BookController extends Controller
         "); 
      
         return view("loanlist", ["loans" => $loans]);
-        
+
     }
 
     public function showPendingRequests(){
@@ -99,6 +99,10 @@ class BookController extends Controller
             );
         return redirect('/pending')
             ->with('REQUEST_ACCEPTED', "Peminjaman buku ".$book->judul." oleh ".$user->name." berhasil diterima.");
+    }
+
+    public function createLoanView(){
+        return view('create-loan');
     }
 
 }

@@ -34,6 +34,7 @@
                 @yield('forgot-password')
                 @yield('loanlist')
                 @yield('pending')
+                @yield('create-loan')
             </div>            
             <!-- Page Contents-->
             

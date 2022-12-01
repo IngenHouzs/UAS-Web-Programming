@@ -5,6 +5,8 @@ use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Middleware\CheckAdmin;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,23 +27,33 @@ use Illuminate\Support\Facades\Auth;
 
 // Auth::routes(['verify' => true]);
 
+
+// Student Routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/test-auth-page', [UserController::class, 'testAuth'])->name('book.testAuth');
     Route::get('/', [UserController::class, 'index'])->name('landing');    
 
     Route::post('/collection/{book_id}/{user_id}/request-loan', [BookController::class, 'requestLoan'])->name('requestLoan');
 
-    Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [UserController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [UserController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');
+});
 
+
+
+// Admin Routes
+Route::middleware(['auth', CheckAdmin::class])->group(function(){
     // ADMIN ROUTES (TEMP)
     Route::get('/loans', [BookController::class, 'showAllLoans'])->name('showAllLoans');
+    Route::get('/loans/create', [BookController::class, 'createLoanView'])->name('createLoanView');
     Route::get('/pending', [BookController::class, 'showPendingRequests'])->name('showPendingRequests');    
     Route::post('/acceptLoan/{id_peminjaman}/{user_id}/{book_id}', [BookController::class, 'acceptLoan'])->name('acceptLoan');
 
-
+    // Passive Routes 
+    Route::get('/findstudent', [UserController::class, 'findStudentLS']);
 });
+
 
 // Route::get('/verify-email', function(){
 //     return view('auth.verify-email');

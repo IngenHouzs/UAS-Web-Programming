@@ -9,6 +9,12 @@
         <input type="text" placeholder="Masukkan Nama Siswa" name="nama"></input>
         <button type="submit">Search</button>
     </form>  
+
+    <form action="{{route('createLoanView')}}" method="GET">
+        <button type="submit">Tambah Pinjaman Baru</button>
+    </form>
+
+
 </div>
     
     @foreach($loans as $loan)
