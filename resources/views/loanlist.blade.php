@@ -3,15 +3,15 @@
 
 @section('loanlist')
 
-    <h1>Data Pinjaman</h1>
+<div class="flex flex-row">
+    <h1>Daftar Pinjaman</h1>   
+</div>
     
-    @foreach($users as $user)
-        @foreach($user->book as $book)
-            <p>Nama Peminjam : {{$user->name}}</p>
-            <p>NIS Peminjam : {{$user->id}}</p>
-            <p>Judul Buku : {{$book->judul}}</p>            
-            <br/>
-        @endforeach
+    @foreach($loans as $loan)
+        <p>Nama Peminjam : {{$loan->nama}}</p>
+        <p>NIS Peminjam : {{$loan->nis}}</p>
+        <p>Judul Buku : {{$loan->judul}}</p>            
+        <br/>          
     @endforeach
 
 

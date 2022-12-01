@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -44,24 +45,36 @@ class BookController extends Controller
 
     // Nunjukin daftar semua peminjaman (Pivot Table)
     public function showAllLoans(){
-        $users = User::with('book')->get()->where('tanggal_peminjaman', !NULL);
-        // return $users;
-        return view('loanlist', ['users' => $users]);
+        $users = User::with("book")->get();
+
+        $loans = DB::select("
+            SELECT users.id nis, users.name nama, books.judul judul FROM book_loans
+                JOIN books ON book_loans.id_buku = books.id
+                JOIN users ON book_loans.id_user = users.id        
+                WHERE book_loans.tanggal_peminjaman IS NOT NULL
+                  AND book_loans.tenggat_pengembalian IS NOT NULL
+        "); 
+
+        return view("loanlist", ["loans" => $loans]);
     }
 
     public function showPendingRequests(){
-
-        $pendingRequests = User::with('book')->get()->where('tanggal_peminjaman', NULL);
-        // return $pendingRequests;
-        return view('pending', ['pendingRequests' => $pendingRequests]);
+        $requests = DB::select("
+            SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id FROM book_loans
+                JOIN books ON book_loans.id_buku = books.id
+                JOIN users ON book_loans.id_user = users.id        
+                WHERE book_loans.tanggal_peminjaman IS NULL
+                  AND book_loans.tenggat_pengembalian IS NULL
+        "); 
+        return view('pending', ['requests' => $requests]);
     }
 
-
-    public function acceptLoan($user_id, $book_id){
+    public function acceptLoan($id_peminjaman, $user_id, $book_id){
         $book = Book::find($book_id);
         $user = User::find($user_id);
 
-        $loan = BookLoan::where('id_buku',$book->id)
+        BookLoan::where('id_peminjaman', $id_peminjaman)
+            ->where('id_buku',$book->id)
             ->where('id_user', $user->id)->update(
                 [
                     'tanggal_peminjaman' => Carbon::now()->toDateTimeString(),

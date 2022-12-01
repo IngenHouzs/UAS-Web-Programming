@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
     // ADMIN ROUTES (TEMP)
     Route::get('/loans', [BookController::class, 'showAllLoans'])->name('showAllLoans');
     Route::get('/pending', [BookController::class, 'showPendingRequests'])->name('showPendingRequests');    
-    Route::post('/acceptLoan/{user_id}/{book_id}', [BookController::class, 'acceptLoan'])->name('acceptLoan');
+    Route::post('/acceptLoan/{id_peminjaman}/{user_id}/{book_id}', [BookController::class, 'acceptLoan'])->name('acceptLoan');
 
 
 });
