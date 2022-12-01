@@ -3,6 +3,10 @@
 
 @section('login') 
 
+<div class="header">
+    <h1> Tunas Mullia School </h1>
+</div>
+
     <div class="container">
 
             <div class="auth-card login-card mx-auto sm:w-full">

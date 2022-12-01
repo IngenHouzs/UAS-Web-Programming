@@ -1,7 +1,5 @@
 <nav id="navbar" class="navbar navbar-expand-md px-3 fixed-top">
-    <a class="navbar-brand" href="\">
-        LOGO
-    </a>
+    <img class="img" src="https://o.remove.bg/downloads/4d14cd88-ebd7-4c5a-81a2-f69f913f6218/download-removebg-preview.png"/>
     <a href="\" id="navbar-school-name">
         Tunas Mulia Montessori School <br>
         Online Library
@@ -23,6 +21,22 @@
             <li class="nav-item">
                 <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
             </li>
+
+            <!--<div class="dropdown">
+                <button class="dropbtn">Dropdown
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+                </div>-->
+
+            <div class="search-box">
+    <button class="btn-search"><i class="fas fa-search"></i></button>
+    <input type="text" class="input-search" placeholder="Type to Search...">
+  </div>
+        </form>
             @auth
                 @if(auth()->user()->role === 1)            
                     <li class="nav-item">

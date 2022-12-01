@@ -2,6 +2,9 @@
 
 @section('register') 
 
+<div class="header">
+    <h1> Tunas Mullia School </h1>
+</div>
 
 <div class="container">
 
@@ -12,7 +15,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="row mb-3">
+                        <div class="row mb-2">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -26,7 +29,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-2">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
@@ -40,7 +43,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-2">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -54,7 +57,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-2">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
