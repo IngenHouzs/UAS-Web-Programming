@@ -139,6 +139,14 @@ p {
     right: 2rem;
 }
 
+/* LOGIN */
+#login-container {
+    background-color: var(--secondary-bg) !important;
+    width: 60%;
+    margin: auto;
+    margin-top: 3rem;
+}
+
 @media screen and (max-width: 480px) {
     .auth-card {
         max-width: none;

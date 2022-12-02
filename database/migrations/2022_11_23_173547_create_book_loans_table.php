@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('id_peminjaman')->primary();            
             $table->string('id_buku');
             $table->string('id_user');
-            $table->timestamp('tanggal_peminjaman')->useCurrent();
+            $table->timestamp('tanggal_peminjaman')->nullable();
             $table->timestamp('tenggat_pengembalian')->nullable();
             $table->timestamp('tanggal_pengembalian')->nullable();
         });

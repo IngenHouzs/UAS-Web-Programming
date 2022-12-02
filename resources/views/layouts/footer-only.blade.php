@@ -26,7 +26,7 @@
         <div class="main-container">
    
             @yield('login')
-            @yield('register')
+            <!-- @yield('register') -->
 
             @include('partials.footer')
         </div>

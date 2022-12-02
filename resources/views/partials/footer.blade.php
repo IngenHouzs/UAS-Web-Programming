@@ -11,6 +11,9 @@
                             alt="Tunas Mulia Montessari School"
                         />
                     </a>
+
+                    <span class="mb-3 mb-md-0">Tunas Mulia Montessori School</span>
+
                 </div>
                 <!-- <div class="col text-center">
                   

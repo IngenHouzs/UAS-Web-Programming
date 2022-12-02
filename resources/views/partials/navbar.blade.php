@@ -9,6 +9,7 @@
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarsExample04">
         <div class="navbar-nav">
+
             <li class="nav-item">
                 <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
             </li>
@@ -45,6 +46,50 @@
                 @endif
             @endauth            
 
+
+            @auth            
+            @if(auth()->user()->role === 1)            
+                <li class="nav-item">
+                    <a href="{{route('showAllLoans')}}" class="navbar-link nav-link">Data Pinjaman</a>     
+                </li>    
+                <li class="nav-item">
+                    <a href="{{route('showPendingRequests')}}" class="navbar-link nav-link">Pending</a>     
+                </li>                    
+                <li class="nav-item">
+                    <a href="{{route('collection')}}" class="navbar-link nav-link">Monitor Katalog</a>     
+                </li>                                 
+            @elseif(auth()->user()->role === 2)
+                <li class="nav-item">
+                    <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('about')}}" class="navbar-link nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('services')}}" class="navbar-link nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
+                </li>           
+            @endif
+            @endauth
+
+            @guest 
+                <li class="nav-item">
+                    <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('about')}}" class="navbar-link nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('services')}}" class="navbar-link nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
+                </li>               
+            @endguest 
+
+
         </div>
         <div class="navbar-nav" id="navbar-user-status">
         @if (Route::has('login'))
@@ -60,9 +105,9 @@
 
                 @else
                     <a href="{{ route('login') }}" class="nav-item nav-link" >Log in</a>
-                @if (Route::has('register'))
+                <!-- @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="nav-item nav-link">Register</a>
-                @endif
+                @endif -->
                 @endauth
         @endif
         </div>

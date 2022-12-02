@@ -20,13 +20,13 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-    public static function checkEmailVerification(){
-        if (Auth::check()){
-            if (!Auth::user()->email_verified_at){
-                return redirect('/verify-email');
-            }
-        }        
-    }
+    // public static function checkEmailVerification(){
+    //     if (Auth::check()){
+    //         if (!Auth::user()->email_verified_at){
+    //             return redirect('/verify-email');
+    //         }
+    //     }        
+    // }
 
     /**
      * Handle an incoming authentication request.

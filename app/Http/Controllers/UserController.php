@@ -6,28 +6,29 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 class UserController extends Controller
 {
     public function index(){
-        AuthenticatedSessionController::checkEmailVerification();
+        // AuthenticatedSessionController::checkEmailVerification();
         return view('landing');
     }
 
     public function home(){
-        AuthenticatedSessionController::checkEmailVerification();        
+        // AuthenticatedSessionController::checkEmailVerification();        
         return view('landing'); // TEMP        
     }
 
     public function about(){
-        AuthenticatedSessionController::checkEmailVerification();        
+        // AuthenticatedSessionController::checkEmailVerification();        
         return view('landing'); // TEMP             
     }
     
     public function services(){
-        AuthenticatedSessionController::checkEmailVerification();        
+        // AuthenticatedSessionController::checkEmailVerification();        
         return view('landing'); // TEMP             
     }    
 
@@ -89,6 +90,14 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function findStudentLS(Request $request){
+    
+        $req = $request->input();
+        header('Content-Type: application/json');
+        return json_encode($req);
+
     }
 
     public function testAuth(){
