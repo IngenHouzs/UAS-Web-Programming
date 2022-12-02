@@ -54,8 +54,8 @@ class BookController extends Controller
                 JOIN users ON book_loans.id_user = users.id        
                 WHERE book_loans.tanggal_peminjaman IS NOT NULL
                   AND book_loans.tenggat_pengembalian IS NOT NULL 
-                  AND users.name = '$name'
-            ");             
+                  AND users.name = ?
+            ", [$name]);             
             
             return view('loanlist', ["loans" => $loan]);
         }
@@ -86,6 +86,7 @@ class BookController extends Controller
     }
 
     public function acceptLoan($id_peminjaman, $user_id, $book_id){
+        
         $book = Book::find($book_id);
         $user = User::find($user_id);
 
@@ -103,6 +104,12 @@ class BookController extends Controller
 
     public function createLoanView(){
         return view('create-loan');
+    }
+
+    public function findBookLS(Request $request){
+        $req = $request->query('book');
+        $findBook = DB::select('SELECT id, judul FROM books WHERE judul LIKE ?', ['%'.$req.'%']);        
+        return $findBook;
     }
 
 }

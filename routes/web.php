@@ -52,6 +52,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function(){
 
     // Passive Routes 
     Route::get('/findstudent', [UserController::class, 'findStudentLS']);
+    Route::get('/findbook', [BookController::class, 'findBookLS']);
 });
 
 

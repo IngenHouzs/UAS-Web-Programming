@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -93,15 +94,13 @@ class UserController extends Controller
     }
 
     public function findStudentLS(Request $request){
-    
-        header('Content-Type: application/json');        
-        $req = $request->all();
-        return json_encode($req);
-
+        $req = $request->query('name');
+        $findUser = DB::select('SELECT id, name FROM users WHERE name LIKE ?', ['%'.$req.'%']);
+        return $findUser;
     }
 
     public function testAuth(){
         return view('test-auth-page');
     }
-    
+
 }
