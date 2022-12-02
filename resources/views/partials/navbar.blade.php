@@ -38,14 +38,6 @@
     <input type="text" class="input-search" placeholder="Type to Search...">
   </div>
         </form>
-            @auth
-                @if(auth()->user()->role === 1)            
-                    <li class="nav-item">
-                        <a href="{{route('showAllLoans')}}" class="navbar-link nav-link">Loan List</a>     
-                    </li>                
-                @endif
-            @endauth            
-
 
             @auth            
             @if(auth()->user()->role === 1)            

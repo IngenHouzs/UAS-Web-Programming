@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2022 at 10:10 PM
+-- Generation Time: Dec 02, 2022 at 08:17 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -38,17 +38,17 @@ DELIMITER ;
 --
 
 CREATE TABLE `authors` (
-  `nama_penulis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_penulis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id_penulis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_penulis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `authors`
 --
 
-INSERT INTO `authors` (`nama_penulis`, `id_penulis`) VALUES
-('Richie', '123'),
-('Farrel', '456');
+INSERT INTO `authors` (`id_penulis`, `nama_penulis`) VALUES
+('a638818afdfdd02.45508401', 'Bryan Richie'),
+('a6388195c8e2b89.20307783', 'Arvin Winardi');
 
 -- --------------------------------------------------------
 
@@ -70,8 +70,8 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `id_penerbit`, `judul`, `tahun_terbit`, `no_rak`, `stok`) VALUES
-('b637ec3fbdcd971.82598102', 'P0001', 'Coc', 2012, 1, 3),
-('b637edd41e74a04.90096744', 'P0001', 'Coc', 2012, 1, 3);
+('b63881a102f3b06.52035763', 'b6388180f8b7597.12007636', 'Sang Pemimpi', 2021, 12, 4),
+('b63881b11561a50.84589112', 'b6388180f8b7597.12007636', 'Boruto Ch 73', 2022, 12, 10);
 
 -- --------------------------------------------------------
 
@@ -89,8 +89,9 @@ CREATE TABLE `book_authors` (
 --
 
 INSERT INTO `book_authors` (`id_penulis`, `id_buku`) VALUES
-('123', 'b637edd41e74a04.90096744'),
-('456', 'b637edd41e74a04.90096744');
+('a638818afdfdd02.45508401', 'b63881a102f3b06.52035763'),
+('a6388195c8e2b89.20307783', 'b63881b11561a50.84589112'),
+('a6388195c8e2b89.20307783', 'b63881b11561a50.84589112');
 
 -- --------------------------------------------------------
 
@@ -102,7 +103,7 @@ CREATE TABLE `book_loans` (
   `id_peminjaman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_buku` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_user` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tanggal_peminjaman` timestamp NOT NULL DEFAULT current_timestamp(),
+  `tanggal_peminjaman` timestamp NULL DEFAULT NULL,
   `tenggat_pengembalian` timestamp NULL DEFAULT NULL,
   `tanggal_pengembalian` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -112,8 +113,8 @@ CREATE TABLE `book_loans` (
 --
 
 INSERT INTO `book_loans` (`id_peminjaman`, `id_buku`, `id_user`, `tanggal_peminjaman`, `tenggat_pengembalian`, `tanggal_pengembalian`) VALUES
-('l63811562f3c5f5.94072680', 'b637edd41e74a04.90096744', 'u638105a95039d2.28732615', '2022-11-25 12:20:02', '2022-12-02 12:20:02', NULL),
-('l638129d69c8a84.08373032', 'b637edd41e74a04.90096744', 'u638105a95039d2.28732615', '2022-11-25 13:47:18', '2022-12-02 13:47:18', NULL);
+('l638898adc6d009.80846070', 'b63881a102f3b06.52035763', 'u63881dae47eae6.66700274', '2022-12-01 05:21:45', '2022-12-08 05:21:45', NULL),
+('l638898b3cdc9e0.46248419', 'b63881a102f3b06.52035763', 'u63881dae47eae6.66700274', '2022-12-01 05:22:15', '2022-12-08 05:22:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -148,18 +149,18 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(44, '2014_10_12_000000_create_users_table', 1),
-(45, '2014_10_12_100000_create_password_resets_table', 1),
-(46, '2019_08_19_000000_create_failed_jobs_table', 1),
-(47, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(48, '2022_11_23_170519_create_books_table', 1),
-(49, '2022_11_23_173547_create_book_loans_table', 1),
-(50, '2022_11_23_180844_create_authors_table', 1),
-(51, '2022_11_23_181017_create_publishers_table', 1),
-(54, '2022_11_24_041646_create_book_authors_table', 2),
 (55, '2022_11_24_041747_delete_id_buku_from_authors', 2),
 (56, '2022_11_24_041927_add_id_authors_to_authors', 2),
-(58, '2022_11_24_042155_add_id_authors_to_authors', 3);
+(58, '2022_11_24_042155_add_id_authors_to_authors', 3),
+(59, '2014_10_12_000000_create_users_table', 4),
+(60, '2014_10_12_100000_create_password_resets_table', 4),
+(61, '2019_08_19_000000_create_failed_jobs_table', 4),
+(62, '2019_12_14_000001_create_personal_access_tokens_table', 4),
+(63, '2022_11_23_170519_create_books_table', 4),
+(64, '2022_11_23_173547_create_book_loans_table', 4),
+(65, '2022_11_23_180844_create_authors_table', 4),
+(66, '2022_11_23_181017_create_publishers_table', 4),
+(67, '2022_11_24_041646_create_book_authors_table', 4);
 
 -- --------------------------------------------------------
 
@@ -208,7 +209,8 @@ CREATE TABLE `publishers` (
 --
 
 INSERT INTO `publishers` (`id_penerbit`, `nama_penerbit`) VALUES
-('P0001', 'Farrel');
+('b6388180f8b7597.12007636', 'Erlangga'),
+('b6388182f350940.11461080', 'Gramedia');
 
 -- --------------------------------------------------------
 
@@ -233,8 +235,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-('u638105a95039d2.28732615', 'farreldinarta', 'farrel.dinarta@student.umn.ac.id', 2, '2022-11-25 11:13:24', '$2y$10$85E60bDIKXqqoqcf/KBm3ubU859Hx2JRCYM6eYeB5lfOVA.YZtzwa', NULL, '2022-11-25 11:12:57', '2022-11-25 11:13:24'),
-('u63812b1bb88752.95050388', 'admin', 'farreldinarta11@gmail.com', 1, '2022-11-25 13:53:38', '$2y$10$Wz5wpNS29yGk1d2YrpGW8u1cCkB.1M5ziK0FcC9ZDtrpVcE1SitYu', NULL, '2022-11-25 13:52:43', '2022-11-25 13:53:38');
+('u638815882cbb84.08695184', 'Farrel Dinarta', 'farreldinarta11@gmail.com', 1, NULL, '$2y$10$sQBEW8L//qqTZGsA9gKQHu01ais8VOuQy1x.NVwV7Np5xazINp5M.', NULL, '2022-11-30 19:47:35', '2022-11-30 19:47:35'),
+('u63881dae47eae6.66700274', 'user1', 'farrel.dinarta@student.umn.ac.id', 2, NULL, '$2y$10$pBPxOjmo8.oId.9xmD26tuCkNsdnkH8QdE87ZgYk4T7E7QlXj6Ana', NULL, '2022-11-30 20:22:32', '2022-11-30 20:22:32');
 
 --
 -- Indexes for dumped tables
@@ -312,7 +314,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
