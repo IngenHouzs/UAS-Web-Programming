@@ -3,12 +3,12 @@
 
 @section('login') 
 
-
 <div class="header">
     <h1> Tunas Mullia School </h1>
 </div>
 
     <div class="container">
+
 
     <div id="login-container">
         <div class="container p-5">
@@ -76,6 +76,7 @@
                 </form>
             </div>   
 
+
             <div class="auth-card login-card mx-auto sm:w-full">
                 <h1 class="mx-auto text-center">Log In</h1>
 
@@ -96,7 +97,7 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
+                    <div class="row mb-2">
                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                         <div class="col-md-6">
@@ -110,7 +111,7 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
+                    <div class="row mb-2">
                         <div class="col-md-6 offset-md-4">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
