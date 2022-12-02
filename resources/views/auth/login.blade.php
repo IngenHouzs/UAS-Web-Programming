@@ -12,19 +12,6 @@
 
     <div id="login-container">
         <div class="container p-5">
-            <div class="row">
-                <div class="col-2">LOGO</div>
-                <div class="col">
-                    <h1>Log In</h1>
-                </div>
-            </div>
-
-            <form method="POST" action="{{route('login')}}">
-                @csrf
-                <div class="row">
-                    <label for="user-or-email">{{ __('Email Address') }}</label>
-                </div>
-            </form>
         </div>
 
             <div class="auth-card login-card mx-auto sm:w-full">
