@@ -5,6 +5,11 @@
 
 
 
+        <form action="{{route('addLoan')}}" method="POST">
+
+            
+        </form>
+
         Cari NIS atau Nama Siswa
         
         <input type="text" id="ls-findstudent" value="">
