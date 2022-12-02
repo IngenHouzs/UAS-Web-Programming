@@ -21,7 +21,10 @@
         <p>Nama Peminjam : {{$loan->nama}}</p>
         <p>NIS Peminjam : {{$loan->nis}}</p>
         <p>Judul Buku : {{$loan->judul}}</p>            
+        <button>Tambah Durasi Pinjaman</button>
+        <button>Buku telah dikembalikan</button>
         <br/>          
+        <br/>
     @endforeach
 
 

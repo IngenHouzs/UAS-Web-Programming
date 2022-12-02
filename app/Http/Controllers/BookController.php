@@ -111,5 +111,4 @@ class BookController extends Controller
         $findBook = DB::select('SELECT id, judul FROM books WHERE judul LIKE ?', ['%'.$req.'%']);        
         return $findBook;
     }
-
 }

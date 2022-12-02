@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookLoanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,7 +51,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function(){
     Route::get('/pending', [BookController::class, 'showPendingRequests'])->name('showPendingRequests');    
 
     Route::post('/acceptLoan/{id_peminjaman}/{user_id}/{book_id}', [BookController::class, 'acceptLoan'])->name('acceptLoan');
-    Route::post('/addLoan/{id_user}/{id_buku}', [BookLoanController::class, 'addLoan'])->name('addLoan');
+    Route::post('/addLoan', [BookLoanController::class, 'addLoan'])->name('addLoan');
 
     // Passive Routes 
     Route::get('/findstudent', [UserController::class, 'findStudentLS']);
