@@ -3,6 +3,13 @@
 
 @section('login') 
 
+
+<div class="header">
+    <h1> Tunas Mullia School </h1>
+</div>
+
+    <div class="container">
+
     <div id="login-container">
         <div class="container p-5">
             <div class="row">

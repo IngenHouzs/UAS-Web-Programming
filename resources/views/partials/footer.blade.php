@@ -7,11 +7,13 @@
                 <div class="col d-flex align-items-center">
                     <a href="/" class="mb-3 me-2 mb-md-0 text-decoration-none lh-1">
                         <img
-                            src="images/LogoMedicWhite.png"
+                            class="img" src="../asset/download-removebg-preview.png"
                             alt="Tunas Mulia Montessari School"
                         />
                     </a>
+
                     <span class="mb-3 mb-md-0">Tunas Mulia Montessori School</span>
+
                 </div>
                 <!-- <div class="col text-center">
                   
