@@ -94,8 +94,8 @@ class UserController extends Controller
 
     public function findStudentLS(Request $request){
     
-        $req = $request->input();
-        header('Content-Type: application/json');
+        header('Content-Type: application/json');        
+        $req = $request->all();
         return json_encode($req);
 
     }
@@ -103,4 +103,5 @@ class UserController extends Controller
     public function testAuth(){
         return view('test-auth-page');
     }
+    
 }

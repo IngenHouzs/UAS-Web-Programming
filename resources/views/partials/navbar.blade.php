@@ -9,7 +9,7 @@
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarsExample04">
         <div class="navbar-nav">
-
+{{-- 
             <li class="nav-item">
                 <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
             </li>
@@ -21,7 +21,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
-            </li>
+            </li> --}}
 
             <!--<div class="dropdown">
                 <button class="dropbtn">Dropdown
