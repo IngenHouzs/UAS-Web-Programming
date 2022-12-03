@@ -335,7 +335,8 @@ p {
         padding: 0.4rem !important;
     }
 
-    #navbar-user-status .nav-link {
+    #navbar-user-status .nav-link,
+    #navbar-user-status .nav-link a {
         color: red !important;
         font-weight: bold !important;
     }
@@ -343,6 +344,10 @@ p {
     #navbar-user-status .nav-link:hover {
         color: white !important;
         background-color: var(--tertiary-bg);
+    }
+
+    #navbar-user-status .nav-link a:hover {
+        color: white !important;
     }
 
     #footer-kontak {
@@ -355,7 +360,8 @@ p {
         display: none;
     }
 
-    #navbar-user-status .nav-link {
+    #navbar-user-status .nav-link,
+    #navbar-user-status .nav-link a {
         background-color: var(--tertiary-bg);
         color: white !important;
         margin: 0 3px;
