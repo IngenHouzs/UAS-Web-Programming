@@ -9,7 +9,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">    
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">   
         <link rel="stylesheet" href="/css/style.css">
 
         <!-- Styles -->
@@ -41,7 +42,6 @@
             
             @include('partials.footer')
         </div>
-            <!-- Tombol Login Register -->
 
         <script src="/bootstrap/js/bootstrap.min.js"></script>
         <script src="/js/script.js"></script>
