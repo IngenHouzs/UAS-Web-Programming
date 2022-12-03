@@ -7,7 +7,7 @@
                 <div class="col d-flex align-items-center">
                     <a href="/" class="mb-3 me-2 mb-md-0 text-decoration-none lh-1">
                         <img
-                            class="img" src="../asset/download-removebg-preview.png"
+                            class="img" src="/asset/tunas-mulia-logo.png"
                             alt="Tunas Mulia Montessari School"
                         />
                     </a>
@@ -45,7 +45,7 @@
                 <div class="col d-flex align-items-center">
                   @include('components.instagram')
                   <a
-                    href="https://www.instagram.com/alivemedic.umn/"
+                    href="https://www.instagram.com/tunasmuliaschool/"
                     target="_blank"
                     class="mx-2"
                     >Instagram</a
@@ -54,12 +54,11 @@
               </div>
               <div class="row mb-2">
                 <div class="col d-flex align-items-center">
-                  @include('components.line')
+                  @include('components.phone')
                   <a
-                    href="https://line.me/R/ti/p/@470nogaq"
-                    target="_blank"
+                    href="javascript:void(0)"
                     class=" mx-2"
-                    >Line</a
+                    >021-5470452 (Telp)</a
                   >
                 </div>
               </div>
@@ -67,7 +66,7 @@
                 <div class="col d-flex align-items-center">
                   @include('components.email')
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=aliveumnmedic8.0@gmail.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=info.tunasmuliaschool@gmail.com"
                     target="_blank"
                     class=" mx-2"
                   >
