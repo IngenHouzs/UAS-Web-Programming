@@ -60,7 +60,7 @@
         <div class="navbar-nav" id="navbar-user-status">
         @if (Route::has('login'))
                 @auth
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form class="nav-item nav-link" method="POST" action="{{ route('logout') }}">
                         @csrf
                         <x-responsive-nav-link :href="route('logout')"
                                 onclick="event.preventDefault();
