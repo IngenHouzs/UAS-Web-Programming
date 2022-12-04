@@ -75,6 +75,7 @@ p {
 
 .content {
     margin-top: 4rem;
+    min-height: calc(100vh - 5rem);
 }
 
 .mySlides {
@@ -91,10 +92,6 @@ p {
     height: 13px;
     width: 13px;
     padding: 0;
-}
-
-.w3-content {
-    max-width: 100% !important;
 }
 
 #book-list-link:hover {
@@ -190,11 +187,61 @@ p {
     margin-top: 3rem;
 }
 
-.img {
+#search-bar-container {
+    background: rgba(244, 247, 107, 0.9);
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #ffd700;
+}
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 100%;
+    border: 3px solid #00b4cc;
+    border-right: none;
+    padding: 5px;
+    height: 36px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9dbfaf;
+}
+
+.searchTerm:focus {
+    color: #00b4cc;
+}
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #00b4cc;
+    background: #00b4cc;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#catalogue-list-container {
+    background: #9eca7c;
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 0 0 10px 0 darkgreen;
+}
+
+.card {
+    border-radius: 10px;
+}
+.img-navbar-footer {
     width: 50px;
 }
 
-.form-search {
+/* .form-search {
     padding: 10px;
     border-radius: 50px;
     margin: 10px;
@@ -308,7 +355,7 @@ p {
 
 .nav-item {
     float: right;
-}
+} */
 
 @media screen and (max-width: 480px) {
     .auth-card {
