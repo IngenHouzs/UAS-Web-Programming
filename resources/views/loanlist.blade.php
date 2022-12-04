@@ -20,9 +20,16 @@
     @foreach($loans as $loan)
         <p>Nama Peminjam : {{$loan->nama}}</p>
         <p>NIS Peminjam : {{$loan->nis}}</p>
-        <p>Judul Buku : {{$loan->judul}}</p>            
-        <button>Tambah Durasi Pinjaman</button>
-        <button>Buku telah dikembalikan</button>
+        <p>Judul Buku : {{$loan->judul}}</p>   
+        <form action="/extendLoan/{{$loan->id_peminjaman}}" method="POST">
+            @csrf
+            <button type="submit">Tambah Durasi Pinjaman</button>
+        </form>         
+
+        <form action="/deleteLoan/{{$loan->id_peminjaman}}" method="POST">
+            @csrf
+            <button type="submit">Buku telah dikembalikan</button>
+        </form>
         <br/>          
         <br/>
     @endforeach

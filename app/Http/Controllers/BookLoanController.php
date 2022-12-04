@@ -48,4 +48,40 @@ class BookLoanController extends Controller
         
     }
 
+
+    public function deleteLoan($id_peminjaman){
+        $clearLoan = BookLoan::where('id_peminjaman', $id_peminjaman)
+            ->update(
+                    ['tanggal_pengembalian' =>  Carbon::now()->toDateTimeString()]
+                );
+        if (!$clearLoan){
+            return redirect('/loans')
+                ->with('CLEARLOAN_FAIL', 'Pencatatan pada sistem gagal. Silahkan coba lagi');
+        }
+
+        return redirect('/loans');
+    }
+
+
+    public function extendLoan($id_peminjaman){
+        $findLoan = BookLoan::where('id_peminjaman', $id_peminjaman)->get();
+        if (!$findLoan){
+            return ;
+        }
+
+        $currentDeadline = Carbon::parse($findLoan[0]->tenggat_pengembalian);
+
+        $loan = BookLoan::where('id_peminjaman', $id_peminjaman)
+            ->update(
+                    ['tenggat_pengembalian' =>  $currentDeadline->addDays(3)]
+                );
+        if (!$loan){
+            return redirect('/loans')
+                ->with('EXTEND_LOAN_FAIL', 'Penambahan durasi pada sistem gagal. Silahkan coba lagi');
+        }
+
+        return redirect('/loans');        
+        
+    }
+
 }

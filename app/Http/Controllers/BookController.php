@@ -49,23 +49,24 @@ class BookController extends Controller
         if ($request->nama){
             $name = $request->query('nama');
             $loan = DB::select("
-            SELECT users.id nis, users.name nama, books.judul judul FROM book_loans
+            SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul FROM book_loans
                 JOIN books ON book_loans.id_buku = books.id
                 JOIN users ON book_loans.id_user = users.id        
                 WHERE book_loans.tanggal_peminjaman IS NOT NULL
+                  AND book_loans.tanggal_pengembalian IS NULL
                   AND book_loans.tenggat_pengembalian IS NOT NULL 
                   AND users.name = ?
             ", [$name]);             
-            
             return view('loanlist', ["loans" => $loan]);
         }
 
 
         $loans = DB::select("
-            SELECT users.id nis, users.name nama, books.judul judul FROM book_loans
+            SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul FROM book_loans
                 JOIN books ON book_loans.id_buku = books.id
                 JOIN users ON book_loans.id_user = users.id        
-                WHERE book_loans.tanggal_peminjaman IS NOT NULL
+                WHERE book_loans.tanggal_peminjaman IS NOT NULL 
+                  AND book_loans.tanggal_pengembalian IS NULL
                   AND book_loans.tenggat_pengembalian IS NOT NULL
         "); 
      

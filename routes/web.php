@@ -52,6 +52,8 @@ Route::middleware(['auth', CheckAdmin::class])->group(function(){
 
     Route::post('/acceptLoan/{id_peminjaman}/{user_id}/{book_id}', [BookController::class, 'acceptLoan'])->name('acceptLoan');
     Route::post('/addLoan', [BookLoanController::class, 'addLoan'])->name('addLoan');
+    Route::post('/deleteLoan/{id_peminjaman}', [BookLoanController::class, 'deleteLoan'])->name('deleteLoan');
+    Route::post('/extendLoan/{id_peminjaman}', [BookLoanController::class, 'extendLoan'])->name('extendLoan');
 
     // Passive Routes 
     Route::get('/findstudent', [UserController::class, 'findStudentLS']);

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 
 use App\Models\User;
 use App\Models\Book;
@@ -30,8 +32,6 @@ class BookLoan extends Model
     public function setIdPeminjamanAttribute($idPeminjaman){
         $this->attributes['id_peminjaman'] = uniqid('l', true);
     }
-
-
 
 
 }
