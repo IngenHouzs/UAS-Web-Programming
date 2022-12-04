@@ -33,6 +33,7 @@ use App\Http\Middleware\CheckAdmin;
 Route::middleware(['auth'])->group(function () {
     Route::get('/test-auth-page', [UserController::class, 'testAuth'])->name('book.testAuth');
     Route::get('/', [UserController::class, 'index'])->name('landing');    
+    Route::get('/pinjamanku', [BookLoanController::class, 'viewMyLoans'])->name('pinjamanku');
 
     Route::post('/collection/{book_id}/{user_id}/request-loan', [BookController::class, 'requestLoan'])->name('requestLoan');
 
@@ -51,6 +52,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function(){
     Route::get('/pending', [BookController::class, 'showPendingRequests'])->name('showPendingRequests');    
 
     Route::post('/acceptLoan/{id_peminjaman}/{user_id}/{book_id}', [BookController::class, 'acceptLoan'])->name('acceptLoan');
+    Route::post('/rejectLoan/{id_peminjaman}', [BookController::class, 'rejectLoan'])->name('rejectLoan');
     Route::post('/addLoan', [BookLoanController::class, 'addLoan'])->name('addLoan');
     Route::post('/deleteLoan/{id_peminjaman}', [BookLoanController::class, 'deleteLoan'])->name('deleteLoan');
     Route::post('/extendLoan/{id_peminjaman}', [BookLoanController::class, 'extendLoan'])->name('extendLoan');

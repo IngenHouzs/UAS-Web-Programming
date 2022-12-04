@@ -40,7 +40,10 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
-                </li>           
+                </li>          
+                <li class="nav-item">
+                    <a href="{{route('pinjamanku')}}" class="navbar-link nav-link">Pinjamanku</a>     
+                </li>                    
             @endif
             @endauth
 

@@ -38,6 +38,7 @@
                 @yield('loanlist')
                 @yield('pending')
                 @yield('create-loan')
+                @yield('my-loan')
             </div>            
             <!-- Page Contents-->
             

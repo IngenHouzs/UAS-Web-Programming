@@ -22,12 +22,72 @@ class BookController extends Controller
 
     public function viewDocument($id){
         // AuthenticatedSessionController::checkEmailVerification();  
+
+        // Detail Buku
         $document = Book::find($id);
-        return view('view-book', ['book' => $document]);
+
+        $findCount = DB::select("
+            SELECT COUNT(*) 'terpinjam' FROM book_loans
+            WHERE id_buku = ?
+            AND tanggal_pengembalian IS NULL
+        ", [$id]);
+
+        // Detail Buku yang dipinjam
+
+        $findLoans = DB::select("
+            SELECT * FROM book_loans
+            WHERE id_buku = ? 
+            AND tanggal_pengembalian IS NULL
+        ", [$id]);
+
+        $defaultStock = $document->stok;
+        $document->stok -= $findCount[0]->terpinjam;
+
+        return view('view-book', ['book' => $document, 'loans' => $findLoans, 'defaultStock' => $defaultStock]);
     }
 
     public function requestLoan($book_id, $user_id){
         // AuthenticatedSessionController::checkEmailVerification(); 
+
+
+        // To prevent unneccessary spam, check if user has already requested for the specified book
+        // (Cant do double request on the same book)
+        // NOTE * : user still cant loan for same books, but can only request one at a time.
+
+
+        $checkUserLoan = DB::select(
+            "SELECT id_peminjaman, id_buku FROM book_loans WHERE 
+            id_user = ? AND 
+            id_buku = ?
+            AND tanggal_pengembalian IS NULL 
+            AND tanggal_peminjaman IS NULL 
+            AND tenggat_pengembalian IS NULL
+            "
+        ,[$user_id, $book_id]); 
+
+        if ($checkUserLoan){
+            return redirect('/collection/'.$book_id)
+                ->with('DOUBLE_REQUEST', 'Maaf, siswa tidak diperbolehkan untuk mengajukan pinjaman lebih dari satu kali
+                    pada satu buku yang sama. 
+                    Siswa dapat meminjam lebih dari satu buku yang sama, namun tidak boleh melebihi 1 kali pengajuan 
+                    (dapat mengajukan lagi apabila request pertama sudah diterima)
+                ');
+        }
+
+        // Check if user have already loaned more than restriction number (5)
+
+    
+        $loan = DB::select(
+            "SELECT COUNT(*) 'jumlah' FROM book_loans
+                WHERE id_user = ?
+                AND tanggal_pengembalian IS NULL
+            "
+        ,[$user_id]);
+
+        if ($loan[0]->jumlah >= 5){
+            return redirect('/collection/'.$book_id)
+                ->with('SELF_QUOTA_FULL', 'Batas peminjamanmu sudah habis. Hapus beberapa request, atau segera kembalikan buku untuk dapat meminjam lagi');
+        }
 
         $bookRequest = new BookLoan();
         $bookRequest->id_peminjaman = '';
@@ -91,6 +151,21 @@ class BookController extends Controller
         $book = Book::find($book_id);
         $user = User::find($user_id);
 
+        // Check if book ran out of stock
+
+        $loaned = DB::select("
+            SELECT COUNT(*) 'jumlah' FROM book_loans
+            WHERE id_buku = ?
+            AND tenggat_pengembalian IS NOT NULL
+            AND tanggal_pengembalian IS NULL
+        ", [$book_id]);
+
+
+        if ($book->stok - $loaned[0]->jumlah <= 0){
+            return redirect('/pending')
+                ->with('UNAVAILABLE', 'Seluruh buku sedang tidak tersedia.');
+        }
+
         BookLoan::where('id_peminjaman', $id_peminjaman)
             ->where('id_buku',$book->id)
             ->where('id_user', $user->id)->update(
@@ -101,6 +176,13 @@ class BookController extends Controller
             );
         return redirect('/pending')
             ->with('REQUEST_ACCEPTED', "Peminjaman buku ".$book->judul." oleh ".$user->name." berhasil diterima.");
+    }
+
+    public function rejectLoan($id_peminjaman){
+        BookLoan::where('id_peminjaman', $id_peminjaman)->delete();
+
+        return redirect('/pending');
+
     }
 
     public function createLoanView(){

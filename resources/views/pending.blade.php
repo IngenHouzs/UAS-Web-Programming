@@ -20,6 +20,10 @@
             @csrf      
             <button type="submit">Terima</button>
         </form>
+        <form action="{{route('rejectLoan', [$request->id_peminjaman])}}" method="POST">
+            @csrf 
+            <button type="submit">Tolak</button>
+        </form>
         <br/>            
 
     @endforeach

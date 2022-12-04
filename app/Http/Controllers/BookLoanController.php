@@ -66,7 +66,8 @@ class BookLoanController extends Controller
     public function extendLoan($id_peminjaman){
         $findLoan = BookLoan::where('id_peminjaman', $id_peminjaman)->get();
         if (!$findLoan){
-            return ;
+            return redirect('/loans')
+                ->with('EXTEND_LOAN_FAIL', 'Penambahan durasi pada sistem gagal. Silahkan coba lagi');        
         }
 
         $currentDeadline = Carbon::parse($findLoan[0]->tenggat_pengembalian);
@@ -81,7 +82,14 @@ class BookLoanController extends Controller
         }
 
         return redirect('/loans');        
+    }
+
+
+    public function viewMyLoans(){
+
         
+
+        return view('my-loan');
     }
 
 }
