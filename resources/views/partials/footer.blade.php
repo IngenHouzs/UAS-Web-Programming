@@ -7,7 +7,7 @@
                 <div class="col d-flex align-items-center">
                     <a href="/" class="mb-3 me-2 mb-md-0 text-decoration-none lh-1">
                         <img
-                            class="img" src="/asset/tunas-mulia-logo.png"
+                            class="img-navbar-footer" src="/asset/tunas-mulia-logo.png"
                             alt="Tunas Mulia Montessari School"
                         />
                     </a>
