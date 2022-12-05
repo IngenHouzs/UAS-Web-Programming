@@ -52,15 +52,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {        
+        return "haha";        
         $rules = [
             'name' => ['required','unique:users,name'], 
-            'email' => ['required','unique:users,email'], 
+            'nisn' => ['required','unique:users,nisn'], 
             'password' => ['required','min:8', 'confirmed', Rules\Password::defaults()]
         ];
 
         $messages = [
             'name.required' => 'Kolom nama tidak boleh kosong.',
-            'email.required' => 'Kolom email tidak boleh kosong.',
+            'nisn.required' => 'Kolom NISN tidak boleh kosong.',
             'password.min' => 'Password harus lebih panjang dari 8 karakter.'
         ];
         $validate = Validator::make($data, $rules, $messages);
@@ -78,7 +79,7 @@ class RegisterController extends Controller
         $user = new User();   
         $user->id = "";
         $user->name = $data["name"];
-        $user->email = $data["email"];
+        $user->nisn = $data["nisn"];
         $user->password = $data["password"];
         $user->save();
         return $user;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -193,5 +194,18 @@ class BookController extends Controller
         $req = $request->query('book');
         $findBook = DB::select('SELECT id, judul FROM books WHERE judul LIKE ?', ['%'.$req.'%']);        
         return $findBook;
+    }
+
+    public function deleteBook($id_buku){
+        if (Auth::check()){
+            if (Auth::user()->role === 1){
+                Book::where('id', $id_buku)->delete();
+                return redirect('/collection')
+                    ->with('DELETE_SUCCESS', 'Berhasil menghapus buku');
+            }
+        }
+
+        return redirect()->back()
+            ->with('DELETE_FAIL', 'Gagal menghapus buku.');
     }
 }

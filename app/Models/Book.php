@@ -23,9 +23,9 @@ class Book extends Model
 
     // MUTATORS
 
-    public function setIdAttribute($id){
-        $this->attributes['id'] = uniqid('b', true);
-    }
+    // public function setIdAttribute($id){
+    //     $this->attributes['id'] = uniqid('b', true);
+    // }
 
 
 

@@ -20,6 +20,7 @@
             </div>
         </div>
     </div>
+    
 
     <div id="catalogue-list-container" class="container py-3 my-5">
         <div class="row">

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->timestamp('tanggal_peminjaman')->nullable();
             $table->timestamp('tenggat_pengembalian')->nullable();
             $table->timestamp('tanggal_pengembalian')->nullable();
+
+            $table->foreign('id_buku')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

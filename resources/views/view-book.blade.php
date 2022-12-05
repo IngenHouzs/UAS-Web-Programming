@@ -62,6 +62,8 @@
                 @endif
             </form>   
         @else 
+            <form action="/deleteBook/{{$book->id}}">
+            </form>
             <button type="submit">Hapus Buku</button>        
         @endif 
     @endauth
