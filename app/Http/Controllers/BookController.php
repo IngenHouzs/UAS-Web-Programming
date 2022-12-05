@@ -15,8 +15,36 @@ use App\Models\User;
 
 class BookController extends Controller
 {
-    public function collection(){
+    public function collection(Request $request){
         // AuthenticatedSessionController::checkEmailVerification();  
+
+        if ($request->get('string') && $request->get('query')){
+            $query = $request->get('query');
+            $string = $request->get('string');
+            $books = [];
+            if ($query === 'judul'){
+                $books = Book::where('judul', 'LIKE', '%'.$string.'%')->get();
+            } else if ($query === 'penulis'){
+                $books = Book::where('authors.nama_penulis', 'LIKE', '%'.$string.'%')
+                    ->join('book_authors', 'book_authors.id_buku', '=', 'books.id')
+                    ->join('authors', 'authors.id_penulis', '=', 'book_authors.id_penulis')
+                    ->get();
+            } else if ($query === 'penerbit'){              
+                $books = Book::where('publishers.nama_penerbit', 'LIKE', '%'.$string.'%')
+                    ->join('publishers', 'publishers.id_penerbit', '=', 'books.id_penerbit')
+                    ->get();                
+            }
+            return view('catalogue', ['books' => $books]);            
+        }
+
+        if ($request->get('string')){
+            // Automatically search based on title
+            $books = Book::where('judul', 'LIKE', '%'.$string.'%')->get();
+            return view('catalogue', ['books' => $books]);            
+        }
+
+
+
         $books = Book::all();
         return view('catalogue', ['books' => $books]);
     }
@@ -208,4 +236,6 @@ class BookController extends Controller
         return redirect()->back()
             ->with('DELETE_FAIL', 'Gagal menghapus buku.');
     }
+
+
 }

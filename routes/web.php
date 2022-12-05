@@ -79,6 +79,7 @@ Route::get('/collection/{id}', [BookController::class, 'viewDocument'])->name('v
 
 
 
+
 require __DIR__.'/auth.php';
 
 
