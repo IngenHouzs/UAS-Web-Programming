@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 
@@ -86,10 +87,37 @@ class BookLoanController extends Controller
 
 
     public function viewMyLoans(){
-
         
+        if (!Auth::check()){
+            return view('login');
+        }
+    
+        $loans = DB::select(
+            "SELECT book_loans.id_buku id_buku, 
+                books.judul judul,
+                book_loans.id_peminjaman id_peminjaman,
+                book_loans.tanggal_peminjaman tanggal_peminjaman,
+                book_loans.tenggat_pengembalian tenggat_pengembalian
+                FROM book_loans
+                JOIN books ON book_loans.id_buku = books.id
+                WHERE book_loans.id_user = ?
+                AND book_loans.tanggal_pengembalian IS NULL
+            "
+        ,[Auth::user()->id]);
 
-        return view('my-loan');
+        return view('my-loan', ['loans' => $loans]);
+    }
+
+    public function deleteLoanRequest($id_peminjaman){
+        $loan = BookLoan::where('id_peminjaman', $id_peminjaman)->get();
+        if ($loan){
+            if (!$loan[0]->tanggal_peminjaman && !$loan[0]->tenggat_pengembalian){
+                BookLoan::where('id_peminjaman', $id_peminjaman)->delete();
+            }
+        }
+
+        return redirect('/pinjamanku');
+
     }
 
 }

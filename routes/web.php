@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pinjamanku', [BookLoanController::class, 'viewMyLoans'])->name('pinjamanku');
 
     Route::post('/collection/{book_id}/{user_id}/request-loan', [BookController::class, 'requestLoan'])->name('requestLoan');
+    Route::post('/deleteLoanRequest/{id_peminjaman}', [BookLoanController::class, 'deleteLoanRequest'])->name('deleteLoanRequest');
 
     // Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [UserController::class, 'update'])->name('profile.update');
