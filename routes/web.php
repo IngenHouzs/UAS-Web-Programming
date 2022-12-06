@@ -51,6 +51,12 @@ Route::middleware(['auth', CheckAdmin::class])->group(function(){
     Route::get('/loans', [BookController::class, 'showAllLoans'])->name('showAllLoans');
     Route::get('/loans/create', [BookController::class, 'createLoanView'])->name('createLoanView');
     Route::get('/pending', [BookController::class, 'showPendingRequests'])->name('showPendingRequests');    
+    Route::get('/collection/addBook', [BookController::class, 'addBookView'])->name('addBookView');
+    Route::post('/collection/addBook', [BookController::class, 'addBook'])->name('addBook');
+    Route::get('/datasiswa', [UserController::class, 'viewAllStudent'])->name('viewAllStudent');
+    Route::get('/datasiswa/{nisn}', [UserController::class, 'viewStudent'])->name('viewStudent');
+    Route::get('/tambahsiswa', [UserController::class, 'addStudentView'])->name('addStudentView');
+    Route::post('/tambahsiswa', [UserController::class, 'addStudent'])->name('addStudent');
 
     Route::post('/acceptLoan/{id_peminjaman}/{user_id}/{book_id}', [BookController::class, 'acceptLoan'])->name('acceptLoan');
     Route::post('/rejectLoan/{id_peminjaman}', [BookController::class, 'rejectLoan'])->name('rejectLoan');
@@ -58,6 +64,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function(){
     Route::post('/deleteLoan/{id_peminjaman}', [BookLoanController::class, 'deleteLoan'])->name('deleteLoan');
     Route::post('/extendLoan/{id_peminjaman}', [BookLoanController::class, 'extendLoan'])->name('extendLoan');
     Route::post('/deleteBook/{id_buku}', [BookController::class, 'deleteBook'])->name('deleteBook');
+
 
     // Passive Routes 
     Route::get('/findstudent', [UserController::class, 'findStudentLS']);

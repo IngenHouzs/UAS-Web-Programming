@@ -39,6 +39,10 @@
                 @yield('pending')
                 @yield('create-loan')
                 @yield('my-loan')
+                @yield('add-book')
+                @yield('students')
+                @yield('view-student')
+                @yield('add-student')
             </div>            
             <!-- Page Contents-->
             

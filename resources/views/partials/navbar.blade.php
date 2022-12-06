@@ -30,7 +30,10 @@
                 </li>                    
                 <li class="nav-item">
                     <a href="{{route('collection')}}" class="navbar-link nav-link">Monitor Katalog</a>     
-                </li>                                 
+                </li>  
+                <li class="nav-item">
+                    <a href="{{route('viewAllStudent')}}" class="navbar-link nav-link">Data Pelajar</a>     
+                </li>                                                       
             @elseif(auth()->user()->role === 2)
                 <li class="nav-item">
                     <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>

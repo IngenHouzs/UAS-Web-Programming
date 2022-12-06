@@ -1,3 +1,12 @@
+const addAuthor = () => {
+    document.querySelector('.author-box').innerHTML +=
+            `
+            <input type="text" name="penulis[]" required>Penulis</input>
+            `;
+
+    console.log("awok");
+}
+
 function clickNavbar() {
     let navContainer = document.getElementById("navbar");
     let navLink = navContainer.getElementsByClassName("navbar-link");
@@ -48,3 +57,5 @@ function showDivs(n) {
     x[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " w3-white";
 }
+
+

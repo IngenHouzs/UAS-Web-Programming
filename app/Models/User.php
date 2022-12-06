@@ -55,7 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     // ID User dalam bentuk randomized characters.
     public function setIdAttribute($id){
-        $this->attributes['id'] = uniqid('u', true);
+        $this->attributes['id'] = $this->attributes['nisn'];
     }
 
     // Mutator password hashing.

@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Book;
+use App\Models\Publisher;
+use App\Models\BookLoan;
+use App\Models\User;
+use App\Models\Author;
+
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 class UserController extends Controller
@@ -33,7 +39,46 @@ class UserController extends Controller
         return view('landing'); // TEMP             
     }    
 
+    public function viewAllStudent(Request $request){
 
+        if ($request->name){
+            $students = User::where('role', 2)
+                            ->where('name', 'LIKE', '%'.$request->name.'%')
+                            ->orderBy('name', 'ASC')
+                            ->get();
+            return view('students', ['students' => $students]);                            
+        }
+        $students = User::where('role', 2)->orderBy('name', 'ASC')->get();
+        return view('students', ['students' => $students]);
+    }
+
+    public function viewStudent($nisn){
+        $student = User::where('nisn', $nisn)->get();
+
+        $loans = BookLoan::where('book_loans.id_user', '=', $nisn)
+                    ->join('books', 'book_loans.id_buku', '=', 'books.id')
+                    ->get();
+
+
+        return view('view-student', ['student'=>$student[0], 'loans' => $loans]);
+    }
+
+    public function addStudentView(){
+        return view('add-student');
+    }
+
+    public function addStudent(Request $request){
+        $student = new User;
+        $student->nisn = $request->nisn;
+        $student->id = "";
+        $student->name = $request->name;
+        $student->role = 2;
+        $student->password = "12345678";
+        $student->save();
+
+        return redirect()->back()->with('STUDENT_CREATED', 'Siswa baru berhasil ditambahkan!');
+    }
+    
 
     /**
      * Display the user's profile form.

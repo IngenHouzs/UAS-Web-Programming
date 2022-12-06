@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -12,6 +13,7 @@ use App\Models\Book;
 use App\Models\Publisher;
 use App\Models\BookLoan;
 use App\Models\User;
+use App\Models\Author;
 
 class BookController extends Controller
 {
@@ -175,7 +177,7 @@ class BookController extends Controller
         return view('pending', ['requests' => $requests]);
     }
 
-    public function acceptLoan($id_peminjaman, $user_id, $book_id){
+    public function acceptLoan($id_peminjaman, $user_id, $book_id, Request $request){
         
         $book = Book::find($book_id);
         $user = User::find($user_id);
@@ -203,6 +205,11 @@ class BookController extends Controller
                     'tenggat_pengembalian' => Carbon::now()->addDays(7)->toDateTimeString()
                 ]
             );
+        if ($request->redirect == 1){
+            return redirect('/datasiswa/'.$user_id)
+            ->with('REQUEST_ACCEPTED', "Peminjaman buku ".$book->judul." oleh ".$user->name." berhasil diterima.");            
+        }
+
         return redirect('/pending')
             ->with('REQUEST_ACCEPTED', "Peminjaman buku ".$book->judul." oleh ".$user->name." berhasil diterima.");
     }
@@ -237,5 +244,95 @@ class BookController extends Controller
             ->with('DELETE_FAIL', 'Gagal menghapus buku.');
     }
 
+
+    public function addBookView(){
+        return view('add-book');
+    }
+
+    public function addBook(Request $request){
+
+
+
+        $penerbitInput = $request->penerbit;
+        $penulisInput = $request->penulis;
+   
+
+        $penerbit; // assign ke object nanti
+        $penulis; // assign ke object nanti
+
+        $findPublisher = Publisher::where('nama_penerbit', $penerbitInput)->get();
+
+        // Verifikasi Penerbit
+        if ($findPublisher && count($findPublisher) > 0){
+            $penerbit = $findPublisher[0]->id_penerbit;
+        } else {
+            $newPenerbit = new Publisher;
+            $newPenerbit->id_penerbit = "";
+            $newPenerbit->nama_penerbit = $penerbitInput;
+            $newPenerbit->save();
+            $find = Publisher::where('nama_penerbit', $penerbitInput)->get();
+            $penerbit = $find[0]->id_penerbit;
+        }
+
+        // Verifikasi Multiple Authors
+        $collectAuthor = collect($penulisInput)
+                            ->map(function($author){
+                            
+                    $findAuthor = Author::where('nama_penulis', $author)->get();
+                    if ($findAuthor && count($findAuthor) > 0){
+                        return $findAuthor[0]->id_penulis;
+                    }
+
+                    $newAuthor = new Author;
+                    $newAuthor->id_penulis = "";
+                    $newAuthor->nama_penulis = $author;
+                    $newAuthor->save();
+                    
+                    $find = Author::where('nama_penulis', $author)->get();
+                    return $find[0]->id_penulis;
+                            });
+
+
+        // Masukkan buku ke tabel buku
+        $book = new Book;
+        $book->id = Str::random(5);
+        
+        $temp_id = strval($book->id);
+
+        $book->id_penerbit = $penerbit;
+        $book->judul = $request->judul;
+        $book->tahun_terbit = $request->tahun_terbit;
+        $book->tempat_terbit = $request->tempat_terbit;
+        $book->halaman = $request->halaman;
+        $book->ddc = $request->ddc;
+        $book->isbn = $request->isbn;
+        $book->no_rak = $request->no_rak;
+        
+        $book->save();
+
+        // Masukkan seluruh author ke dalam relasi book_author
+
+        $query = "INSERT INTO book_authors VALUES ";
+
+        $ctr = 0;
+        $authorList = [];
+        foreach($collectAuthor as $author){
+            $ctr++;
+            if ($ctr === count($collectAuthor)){
+                $query .= "(?, '$temp_id');";
+            } else {
+                $query .= "(?, '$temp_id'),";
+            }
+
+            array_push($authorList, $author);
+        }    
+   
+
+        $insert = DB::insert($query, $authorList);
+        if ($insert){
+            return "BERHASIL";
+        }
+        
+    }
 
 }
