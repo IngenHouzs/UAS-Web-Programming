@@ -15,11 +15,19 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->string('id_penerbit');
+            $table->string('id_penerbit')->nullable();
             $table->string('judul');
             $table->integer('tahun_terbit');
-            $table->integer('no_rak')->nullable();
+            $table->string('tempat_terbit');
+            $table->integer('halaman');
+            $table->string('ddc')->nullable(); 
+            $table->string('isbn')->nullable(); 
+            $table->string('no_rak')->nullable();
             $table->integer('stok')->default(0);
+            $table->string('keterangan')->nullable();
+
+            $table->foreign('id_penerbit')->references('id_penerbit')->on('publishers')->nullable()->constrained()->onDelete('set null');
+            
         });
     }
 

@@ -35,14 +35,15 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+
         $rules = [
             'name' => ['required','unique:users,name'], 
-            'email' => ['required','unique:users,email'], 
+            'nisn' => ['required','unique:users,nisn'], 
             'password' => ['required','min:8', 'confirmed', Rules\Password::defaults()]
         ];
         $messages = [
             'name.required' => 'Kolom nama tidak boleh kosong.',
-            'email.required' => 'Kolom email tidak boleh kosong.',
+            'nisn.required' => 'Kolom NISN tidak boleh kosong.',
             'password.min' => 'Password harus lebih panjang dari 8 karakter.'
         ];
     
@@ -60,7 +61,7 @@ class RegisteredUserController extends Controller
         $user = new User();   
         $user->id = "";
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->nisn = $request->nisn;
         $user->password = $request->password;
         $user->save();
 
@@ -68,9 +69,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
         
-        if (Auth::check()){
-            return redirect('/email/verify');
-        }
+        // if (Auth::check()){
+        //     return redirect('/email/verify');
+        // }
         return redirect(RouteServiceProvider::HOME);
     }
 }
