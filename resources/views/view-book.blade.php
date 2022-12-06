@@ -107,6 +107,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
 
   
 
@@ -125,6 +126,8 @@
     @endguest 
 
 
+=======
+>>>>>>> 3c42b331d83b74cc870e91098262979b135661a7
     @if(session('LOAN_SUCCESS'))
         <p>{{session('LOAN_SUCCESS')}}</p>
     @endif
