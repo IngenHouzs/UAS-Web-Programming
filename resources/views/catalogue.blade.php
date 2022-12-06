@@ -44,6 +44,20 @@
             </div>
         </div>
         <div class="row">
+
+            @foreach($books as $book)
+            <div id="book-list-card" class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 id="book-title" class="card-title">{{$book->judul}}</h5>
+                        <h6  id="book-details" class="card-subtitle my-2 text-muted">
+                            @foreach($book->author as $author)
+                                <span id="book-author">{{$author->nama_penulis}}</span>
+                            @endforeach
+                            <span>|</span>
+                            <span id="book-publisher">{{$book->publisher->nama_penerbit}}</span>
+                        </h6>
+
             @if ($books)
             @if (count($books) > 0)
                 @foreach($books as $book)
@@ -58,6 +72,7 @@
                                 <span>|</span>
                                 <span id="book-publisher">{{$book->publisher->nama_penerbit}}</span>
                             </h6>
+
 
                             <div id="action-button">
                                 <a href="/collection/{{$book->id}}">

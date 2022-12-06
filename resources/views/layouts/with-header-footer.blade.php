@@ -30,7 +30,7 @@
             @include('partials.navbar')
     
             <!-- Page Contents-->
-            <div class="content">
+            <div class="content px-2">
                 @yield('landing-page')        
                 @yield('catalogue')           
                 @yield('view-book')       

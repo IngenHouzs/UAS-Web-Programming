@@ -1,24 +1,15 @@
 <footer>
-      <div class="footer">
-        <div class="container pt-3">
+  <div class="footer">
+    <div class="container pt-3">
+      <div class="row">
+        <div class="col-xl-4 col-md-4 d-flex align-items-center justify-content-center">
           <div class="row">
-            <div class="col-xl-4 col-md-4 d-flex align-items-center justify-content-center">
-              <div class="row">
-                <div class="col d-flex align-items-center">
-                    <a href="/" class="mb-3 me-2 mb-md-0 text-decoration-none lh-1">
-                        <img
-                            class="img-navbar-footer" src="/asset/tunas-mulia-logo.png"
-                            alt="Tunas Mulia Montessari School"
-                        />
-                    </a>
-
-                    <span class="mb-3 mb-md-0">Tunas Mulia Montessori School</span>
-
-                </div>
-                <!-- <div class="col text-center">
-                  
-                  <p></p>
-                </div> -->
+            <div class="col d-flex align-items-center">
+              <a href="/" class="mb-3 me-2 mb-md-0 text-decoration-none lh-1">
+                <img class="img-navbar-footer" src="/asset/tunas-mulia-logo.png" alt="Tunas Mulia Montessari School"/>
+              </a>
+              <span class="mb-3 mb-md-0">Tunas Mulia Montessori School</span>
+            </div>
               </div>
             </div>
             <div class="col-xl-5 col-md-5">
@@ -94,4 +85,4 @@
           </div>
         </div>
       </div>
-    </footer>
+</footer>
