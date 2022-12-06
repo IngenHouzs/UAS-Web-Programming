@@ -18,17 +18,14 @@ html {
     background-color: var(--background);
 }
 
-/* width */
 ::-webkit-scrollbar {
     width: 5px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
@@ -53,6 +50,7 @@ p {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--quatery-bg);
+    min-height: 100vh;
 }
 
 .navbar {
@@ -60,7 +58,6 @@ p {
     position: fixed;
     top: 0;
     width: 100%;
-    /* height: 3rem; */
 }
 
 .nav-item {
@@ -75,7 +72,7 @@ p {
 
 .content {
     margin-top: 4rem;
-    min-height: calc(100vh - 5rem);
+    height: auto;
 }
 
 .mySlides {
@@ -237,6 +234,15 @@ p {
 .card {
     border-radius: 10px;
 }
+
+.hr-book {
+    height: 2px !important;
+}
+
+.jumbotron #book-details-table td {
+    padding: 0 1rem;
+}
+
 .img-navbar-footer {
     width: 50px;
 }
@@ -399,6 +405,14 @@ p {
 
     #footer-kontak {
         margin-top: 0.8rem;
+    }
+
+    #book-list-card {
+        margin: 10px 0;
+    }
+
+    .home-content-col {
+        margin-top: 2rem;
     }
 }
 

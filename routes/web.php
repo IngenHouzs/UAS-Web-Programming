@@ -72,7 +72,7 @@ Route::middleware(['auth', CheckAdmin::class])->group(function(){
 Route::get('/', [UserController::class, 'index'])->name('landing');
 Route::get('/home', [UserController::class, 'home'])->name('home');
 Route::get('/about', [UserController::class, 'about'])->name('about');
-Route::get('/services', [UserController::class, 'services'])->name('services');
+// Route::get('/services', [UserController::class, 'services'])->name('services');
 Route::get('/collection', [BookController::class, 'collection'])->name('collection');    
 Route::get('/collection/{id}', [BookController::class, 'viewDocument'])->name('viewDocument');
 

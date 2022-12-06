@@ -29,7 +29,7 @@
         </div>
         <div class="row">
             @foreach($books as $book)
-            <div class="col-6">
+            <div id="book-list-card" class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 id="book-title" class="card-title">{{$book->judul}}</h5>
