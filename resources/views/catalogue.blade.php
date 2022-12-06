@@ -44,20 +44,6 @@
             </div>
         </div>
         <div class="row">
-
-            @foreach($books as $book)
-            <div id="book-list-card" class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 id="book-title" class="card-title">{{$book->judul}}</h5>
-                        <h6  id="book-details" class="card-subtitle my-2 text-muted">
-                            @foreach($book->author as $author)
-                                <span id="book-author">{{$author->nama_penulis}}</span>
-                            @endforeach
-                            <span>|</span>
-                            <span id="book-publisher">{{$book->publisher->nama_penerbit}}</span>
-                        </h6>
-
             @if ($books)
             @if (count($books) > 0)
                 @foreach($books as $book)
@@ -86,19 +72,12 @@
             @endif 
             @endif
         </div>
-        
-        
-        {{-- <!-- <p>Judul -> {{$book->judul}}</p>
-        <p>Penerbit -> {{$book->publisher->nama_penerbit}}</p>        
-
-        <p><b>Author</b></p>
-        @foreach($book->author as $author)
-            <p>{{$author->nama_penulis}}</p>
-        @endforeach
-
-        <a href="/collection/{{$book->id}}"><button>View Detail</button></a>
-
-        <br/> --> --}}
-        
     </div>
+
+
+    <div class="container py-3 my-5">
+        <a href="/addBook">Tambah Buku</a>
+    </div>
+
+
 @endsection
