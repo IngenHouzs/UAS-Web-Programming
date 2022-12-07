@@ -1,4 +1,3 @@
-
 @extends('layouts.footer-only')
 
 @section('login') 
@@ -9,11 +8,6 @@
 
     <div class="container">
 
-
-    <div id="login-container">
-        <div class="container p-5">
-        </div>
-
             <div class="auth-card login-card mx-auto sm:w-full">
                 <h1 class="mx-auto text-center">Log In</h1>
 
@@ -21,12 +15,12 @@
                     @csrf
 
                     <div class="row mb-3 mt-3">
-                        <label for="nisn" class="col-md-4 col-form-label text-md-end">{{ __('NISN') }}</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                         <div class="col-md-6">
-                            <input id="nisn" type="text" class="form-control @error('nisn') is-invalid @enderror" name="nisn" value="{{ old('nisn') }}" required autocomplete="nisn" autofocus>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                            @error('nisn')
+                            @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

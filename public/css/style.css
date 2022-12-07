@@ -333,9 +333,20 @@ p {
     margin-bottom:.5rem;
 }
 
+.pending-wrapper div:first-child, .pending-wrapper div:nth-child(2){
+    background-color: red;
+}
+
 .pending-search-siswa form input{
     border-radius:5rem;
     height:2rem;
+    border:2px solid black;
+}
+
+.pending-search-siswa form button{
+    border-radius: 50%;
+    height:2rem;
+    width:2rem;
 }
 
 /* .form-search {

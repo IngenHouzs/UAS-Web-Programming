@@ -39,7 +39,7 @@
                     <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('about')}}" class="navbar-link nav-link">About</a>
+                    <a href="{{route('about')}}" class="navbar-link nav-link">Panduan</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
@@ -55,7 +55,7 @@
                     <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('about')}}" class="navbar-link nav-link">About</a>
+                    <a href="{{route('about')}}" class="navbar-link nav-link">Panduan</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
