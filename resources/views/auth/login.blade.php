@@ -1,6 +1,7 @@
 @extends('layouts.footer-only')
 
 @section('login') 
+
     <div class="container mt-5">
         <section class="vh-100" style="background-color: #508bfc;">
         <div class="container py-5 h-100">
@@ -13,6 +14,31 @@
                         <div class="form-outline mb-4">
                             <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
                             <label class="form-label" for="typeEmailX-2">Email</label>
+
+<div class="header">
+    <h1> Tunas Mulia School </h1>
+</div>
+
+    <div class="container">
+
+            <div class="auth-card login-card mx-auto sm:w-full">
+                <h1 class="mx-auto text-center">Log In</h1>
+
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    <div class="row mb-3 mt-3">
+                        <label for="nisn" class="col-md-4 col-form-label text-md-end">{{ __('NISN') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="nisn" type="text" class="form-control @error('nisn') is-invalid @enderror" name="nisn" value="{{ old('nisn') }}" required autocomplete="nisn" autofocus>
+
+                            @error('nisn')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
                         </div>
 
                         <div class="form-outline mb-4">
