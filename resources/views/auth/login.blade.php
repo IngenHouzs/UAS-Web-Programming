@@ -1,7 +1,7 @@
 @extends('layouts.footer-only')
 
 @section('login') 
-    <section class="vh-100">
+    <section>
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -26,7 +26,7 @@
                                         <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
                                         <label for="floatingPassword">Password</label>
                                     </div>
-                                    <button class="mt-3 btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                                    <button class="mt-3 btn btn-warning btn-lg btn-block" type="submit">Login</button>
                             </form>
                         </div>
                     </div>

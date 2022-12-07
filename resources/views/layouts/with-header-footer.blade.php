@@ -31,7 +31,8 @@
     
             <!-- Page Contents-->
             <div class="content px-2">
-                @yield('landing-page')        
+                @yield('landing-page')
+                @yield('panduan')
                 @yield('catalogue')           
                 @yield('view-book')       
                 @yield('forgot-password')
@@ -52,6 +53,6 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>                
         <script src="/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/js/script.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
     </body>
 </html>
