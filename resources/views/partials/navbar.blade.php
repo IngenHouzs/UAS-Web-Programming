@@ -67,26 +67,30 @@
             @auth 
                 @if(auth()->user()->role === 2)
                     <li class="nav-item">
+<<<<<<< HEAD
                         <a href="{{route('forgetPasswordView')}}" class="navbar-link nav-link">Ganti Kata Sandi</a>     
+=======
+                        <a id="change-password" href="{{route('forgetPasswordView')}}" class="navbar-link nav-link">Change Password</a>     
+>>>>>>> 83377d9d96fb05f6314b4d2e9f6221982534ad1f
                     </li>                      
                 @endif 
             @endauth 
 
-        @if (Route::has('login'))
-                @auth
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();" class="nav-item nav-link">
-                            {{ __('Log Out') }}
-                        </x-responsive-nav-link>
-                    </form>
+            @if (Route::has('login'))
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-responsive-nav-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="log-in-out nav-item nav-link">
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
+                        </form>
 
-                @else
-                    <a href="{{ route('login') }}" class="nav-item nav-link" >Log in</a>
-                @endauth
-        @endif
+                    @else
+                        <a href="{{ route('login') }}" class="log-in-out nav-item nav-link" >Log in</a>
+                    @endauth
+            @endif
         </div>
     </div>
 </nav>
