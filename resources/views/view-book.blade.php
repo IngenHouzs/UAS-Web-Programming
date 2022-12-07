@@ -1,7 +1,7 @@
 @extends('layouts.with-header-footer')
 
 @section('view-book')
-    <div class="container my-3">
+    <div class="container mt-5">
         <div class="row">
             <div class="col">
             @if(session('SELF_QUOTA_FULL'))
@@ -23,13 +23,13 @@
         </div>
     </div>
 
-    <div class="container my-5">
+    <div class="container my-3">
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-primary"><a href="/collection" style="color: white !important;">Kembali</a></button>   
+                <button type="submit" class="btn btn-warning"><a href="/collection">Kembali</a></button>   
             </div>
         </div>
-        <div id="book-details-container" class="row my-3">
+        <div id="book-details-container" class="row my-2">
             <div class="col">
                 <div class="jumbotron">
                     <h1 class="display-4">{{$book->judul}}</h1>
@@ -121,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col">
             @auth
                 @if(auth()->user()->role === 2)
@@ -153,20 +153,4 @@
             </div>
         </div>
     </div>
-
-    @guest
-        <form action="{{route('requestLoan', [$book->id, $book->id])}}" method="POST">
-            @csrf
-            @if(count($loans) >= $defaultStock)       
-                <button type="submit" disabled style="bg-red-500">Ajukan Peminjaman</button>            
-            @else
-                <button type="submit">Ajukan Peminjaman</button>
-            @endif
-        </form>       
-    @endguest 
-
-    @if(session('LOAN_SUCCESS'))
-        <p>{{session('LOAN_SUCCESS')}}</p>
-    @endif
-
 @endsection

@@ -31,7 +31,7 @@ class UserController extends Controller
 
     public function about(){
         // AuthenticatedSessionController::checkEmailVerification();        
-        return view('landing'); // TEMP             
+        return view('panduan'); // TEMP             
     }
     
     public function services(){

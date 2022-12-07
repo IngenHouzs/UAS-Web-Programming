@@ -19,10 +19,12 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="row">
-                        <h4>Tunas Mulia Montessari School Online Library</h4>
+                        <h3>Tunas Mulia Montessari School Online Library</h3>
                     </div>
                     <div class="row">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et accusantium blanditiis quasi provident rem minus!</p>
+                        <p>
+                            Tunas Mulia School adalah sekolah yang berada di gading serpong dengan sistem pendidikan nasional plus and a place to encourage student's future.
+                        </p>
                     </div>
                 </div>
                 <div class="home-content-col col-sm d-flex align-items-center justify-content-center">

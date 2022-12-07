@@ -8,7 +8,7 @@
         @include('components.hamburg-toggler')
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarsExample04">
-        <div class="navbar-nav">
+        <div id="navbar-menu" class="navbar-nav">
             {{--<li class="nav-item">
                 <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
             </li>

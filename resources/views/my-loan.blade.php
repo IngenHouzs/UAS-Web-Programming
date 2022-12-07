@@ -1,13 +1,13 @@
 @extends('layouts.with-header-footer')
 
 @section('my-loan')
-    <div id="catalogue-list-container" class="container py-3 my-5">
+    <div id="catalogue-list-container" class="container py-3 my-4">
         <div class="row">
             <div class="col">
                 @if (count($loans) > 0)
-                    <h4><b>Daftar Pinjamanku</b></h4>                
+                    <h4>Daftar Pinjamanku</h4>                
                 @else 
-                    <h4><b>Belum ada pinjaman.</b></h4>                          
+                    <h4>Belum ada pinjaman</h4>                          
                 @endif 
             </div>
         </div>
