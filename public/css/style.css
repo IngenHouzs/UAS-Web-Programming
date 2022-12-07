@@ -274,12 +274,15 @@ p {
     height:5.25rem;
 }
 
+
+
 .daftar-pinjaman-header form:first-child{
     width:75%;
     max-width:30rem;
     display: flex;
     flex-direction: row;
 }
+
 
 .daftar-pinjaman-search{
     width:100%;
@@ -304,9 +307,36 @@ p {
 }
 
 .daftar-pinjaman-body{
+    padding: 0 2rem;
     padding-top:2rem;
 }
 
+.daftar-pinjaman-body form button:first-child{
+    border-radius: .5rem;
+    height:auto;
+    color:white;
+    box-shadow: 0 0 1px 0 black;
+    padding:0 .5rem;
+}
+
+.loan-date div h1{
+    font-size: 1.2rem;
+}
+
+.loan-date div p {
+    font-size:.8rem;
+}
+
+.action-button-loanlist form button{
+    border-radius: .5rem;
+    padding:0 .3rem;
+    margin-bottom:.5rem;
+}
+
+.pending-search-siswa form input{
+    border-radius:5rem;
+    height:2rem;
+}
 
 /* .form-search {
     padding: 10px;
@@ -514,6 +544,25 @@ p {
     }
 }
 
+@media screen and (max-width:1000px){
+    .loan-inner-card{
+        flex-direction: column !important;
+    }
+
+    .loan-inner-card div{
+        width:100% !important;
+    }
+
+    
+    
+}
+
+
+@media screen and (max-width:400px){
+    .loan-date{
+        flex-direction: column !important;
+    }
+}
 
 @media screen and (max-width:300px){
 

@@ -118,7 +118,6 @@
         </div>
     </div>
 
-<<<<<<< HEAD
     @guest
         <form action="{{route('requestLoan', [$book->id, $book->id])}}" method="POST">
             @csrf
@@ -134,13 +133,4 @@
         <p>{{session('LOAN_SUCCESS')}}</p>
     @endif
 
-=======
-    <div class="container">
-        <div class="row">
-            <div class="col">
-            
-            </div>
-        </div>
-    </div>
->>>>>>> 866b80fb5a195346ced5526967e447bff18f99e5
 @endsection

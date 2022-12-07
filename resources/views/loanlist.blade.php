@@ -17,35 +17,64 @@
     
         </div>
 
-
-        
     </div>
 
     <div class="daftar-pinjaman-body w-full h-auto bg-light bg-gradient">
      
+        <form class="text-center mb-3" action="{{route('createLoanView')}}" method="GET">
+            <button class="bg-dark"type="submit">Tambah Pinjaman Baru</button>
+        </form>        
 
-            <form action="{{route('createLoanView')}}" method="GET">
-                <button type="submit">Tambah Pinjaman Baru</button>
-            </form>        
+        
+        @if(count($loans) > 0)
+
+            @foreach($loans as $loan)
+                <div class="w-80 h-10 px-4 bg-white shadow flex flex-column loan-card">
+                    <div class="w-100 flex flex-row loan-inner-card">
+                        <div class="w-50">
+                            <h1 class="h3">{{$loan->nama}}</h1>
+                            <p class="text-muted">{{$loan->nis}}</p>
+                            <a href="/collection/{{$loan->id_buku}}" class="text-primary h5">{{$loan->judul}}</a>
+                        </div>
+                        <div class="w-50 flex flex-row justify-content-between pt-1 loan-date">
+                            <div class="flex flex-column">
+                                <h1 class="h5"><strong>Tanggal Peminjaman</strong></h1>
+                                <p class="h6">{{$loan->tanggal_peminjaman}}</p>
+                            </div>
+                            <div class="flex flex-column">
+                                <h1 class="h5"><strong>Tenggat Pengembalian</strong></h1>
+                                <p class="h6">{{$loan->tenggat_pengembalian}}</p>
+                            </div>
+                        </div>                            
+                    </div>
+                    
+                    <div class="flex flex-row justify-content-start action-button-loanlist">
+                        <form action="/extendLoan/{{$loan->id_peminjaman}}" method="POST">
+                            @csrf
+                            <button class="mr-2 bg-secondary text-white" type="submit">Tambah Durasi Pinjaman</button>
+                        </form>         
+                        <form action="/deleteLoan/{{$loan->id_peminjaman}}" method="POST">
+                            @csrf
+                            <button class="mr-2 bg-success text-white" type="submit">Buku telah dikembalikan</button>
+                        </form>  
+                    </div>
+
+                    
+                </div>            
+    
+                <br/>          
+                <br/>
+            @endforeach   
+
+        @else
+                @if($search) 
+                    <p class="text-center font-weight-bold">Data tidak ditemukan.</p>                  
+                @else 
+                    <p class="text-center font-weight-bold">Belum ada pinjaman saat ini.</p>                
+                @endif 
 
 
-
-        @foreach($loans as $loan)
-
-            <p>Nama Peminjam : {{$loan->nama}}</p>
-            <p>NIS Peminjam : {{$loan->nis}}</p>
-            <p>Judul Buku : {{$loan->judul}}</p>   
-            <form action="/extendLoan/{{$loan->id_peminjaman}}" method="POST">
-                @csrf
-                <button type="submit">Tambah Durasi Pinjaman</button>
-            </form>         
-            <form action="/deleteLoan/{{$loan->id_peminjaman}}" method="POST">
-                @csrf
-                <button type="submit">Buku telah dikembalikan</button>
-            </form>
-            <br/>          
-            <br/>
-        @endforeach   
+        @endif
 
     </div>
 

@@ -7,6 +7,22 @@
         <h1>{{session('REQUEST_ACCEPTED')}}</h1>
     @endif
 
+    <div class="container my-4 px-3 pt-2 pb-3 flex flex-column">
+        <div class="daftar-pinjaman-header w-full bg-info bg-gradient">
+
+        </div>        
+        <div class="bg-info bg-gradient flex flex-row justify-content-center pending-search-siswa">
+            <form action="/pending" method="GET">
+                <input type="text" placeholder="Masukkan Nama Siswa" name="nama"></input>
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>  
+        </div>
+        <div class="pinjaman-pending-body bg-white">
+            mwmw
+        </div>
+    </div>
+
+
     <div class="flex-row">
         <h1>Daftar Permintaan Pinjaman</h1>    
     </div>
