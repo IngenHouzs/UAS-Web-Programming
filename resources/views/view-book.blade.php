@@ -1,16 +1,27 @@
 @extends('layouts.with-header-footer')
 
 @section('view-book')
+    <div class="container my-3">
+        <div class="row">
+            <div class="col">
+            @if(session('SELF_QUOTA_FULL'))
+                <p>{{session('SELF_QUOTA_FULL')}}</p>
+            @endif
+            
+            @if(session('DOUBLE_REQUEST'))
+                <div class="alert alert-danger" role="alert">
+                    {{session('DOUBLE_REQUEST')}}
+                </div>
+            @endif
 
-
-    @if(session('SELF_QUOTA_FULL'))
-        <p>{{session('SELF_QUOTA_FULL')}}</p>
-    @endif
-
-    @if(session('DOUBLE_REQUEST'))
-    <p>{{session('DOUBLE_REQUEST')}}</p>
-@endif
-
+            @if(session('LOAN_SUCCESS'))
+                <div class="alert alert-success" role="alert">
+                    {{session('LOAN_SUCCESS')}}
+                </div>
+            @endif
+            </div>
+        </div>
+    </div>
 
     <div class="container my-5">
         <div class="row">
@@ -107,6 +118,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     @guest
         <form action="{{route('requestLoan', [$book->id, $book->id])}}" method="POST">
             @csrf
@@ -122,4 +134,13 @@
         <p>{{session('LOAN_SUCCESS')}}</p>
     @endif
 
+=======
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            
+            </div>
+        </div>
+    </div>
+>>>>>>> 866b80fb5a195346ced5526967e447bff18f99e5
 @endsection
