@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.css">    
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">    
         <link rel="stylesheet" href="css/style.css">
 
         <!-- Styles -->
@@ -24,12 +24,8 @@
     </head>
     <body>
         <div class="main-container">
-   
             @yield('login')
-            <!-- @yield('register') -->
-
             @include('partials.footer')
         </div>
-            <!-- Tombol Login Register -->
     </body>
 </html>
