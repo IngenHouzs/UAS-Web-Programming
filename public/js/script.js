@@ -1,11 +1,10 @@
 const addAuthor = () => {
-    document.querySelector('.author-box').innerHTML +=
-            `
+    document.querySelector(".author-box").innerHTML += `
             <input type="text" name="penulis[]" required>Penulis</input>
             `;
 
     console.log("awok");
-}
+};
 
 function clickNavbar() {
     let navContainer = document.getElementById("navbar");
@@ -25,7 +24,6 @@ function clickNavbar() {
         navLink[0].className += " navbar-active";
     }
 }
-clickNavbar();
 
 let slideIndex = 1;
 showDivs(slideIndex);
@@ -39,9 +37,9 @@ function currentDiv(n) {
 }
 
 function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
+    let i;
+    let x = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("demo");
     if (n > x.length) {
         slideIndex = 1;
     }
@@ -54,8 +52,15 @@ function showDivs(n) {
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" w3-white", "");
     }
+
     x[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " w3-white";
 }
 
+function removeActive() {
+    const changePasswordActive = document.getElementById("change-password");
+    changePasswordActive.className.replace(" navbar-active", "");
+}
 
+removeActive();
+clickNavbar();
