@@ -42,14 +42,14 @@
     <div id="catalogue-list-container" class="container py-3 my-5">
         <div class="row">
             <div class="col">
-                <h4 class="text-white"><b>Daftar Buku</b></h4>
+                <h4><b>Daftar Buku</b></h4>
             </div>
         </div>
         <div class="row">
             @if ($books)
             @if (count($books) > 0)
                 @foreach($books as $book)
-                <div class="col-6 my-2">
+                <div class="col-sm-6 my-2">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column">
                             <h5 id="book-title" class="card-title">{{$book->judul}}</h5>
@@ -62,7 +62,7 @@
                             </h6>
       
                             <form action="/collection/{{$book->id}}" class="mt-auto">
-                                <button class="w-100 btn btn-success ">View Details</button>
+                                <button class="w-100 btn btn-warning ">View Details</button>
                             </form>
                         </div>
                     </div>

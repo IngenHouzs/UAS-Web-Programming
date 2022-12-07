@@ -185,35 +185,32 @@ p {
 }
 
 #search-bar-container {
-    background: rgba(244, 247, 107, 0.9);
-    border: 1px solid white;
+    background: var(--nav-footer-bg);
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 #ffd700;
-    position:relative;
+    position: relative;
 }
 
-.search-dropdown-box{
-    position:absolute;
-    top:8rem;
-    left:0;
-    width:100%;
-    height:auto;
-    max-height:8rem;
+.search-dropdown-box {
+    position: absolute;
+    top: 8rem;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 8rem;
     background-color: grey;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap:.5rem;
-    overflow-y:scroll;
-    z-index:5;
+    gap: 0.5rem;
+    overflow-y: scroll;
+    z-index: 5;
 }
 
-.search-dropdown-content{
-    height:1.5rem;
-    width:100%;
+.search-dropdown-content {
+    height: 1.5rem;
+    width: 100%;
     background-color: orange;
 }
-
 
 .search {
     width: 100%;
@@ -223,24 +220,22 @@ p {
 
 .searchTerm {
     width: 100%;
-    border: 3px solid #00b4cc;
+    border: 3px solid var(--secondary-bg);
     border-right: none;
     padding: 5px;
     height: 36px;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: #9dbfaf;
 }
 
 .searchTerm:focus {
-    color: #00b4cc;
+    color: var(--secondary-bg);
 }
 
 .searchButton {
     width: 40px;
     height: 36px;
-    border: 1px solid #00b4cc;
-    background: #00b4cc;
+    background: var(--secondary-bg);
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -249,10 +244,8 @@ p {
 }
 
 #catalogue-list-container {
-    background: #9eca7c;
+    background: var(--nav-footer-bg);
     border-radius: 10px;
-    border: 1px solid white;
-    box-shadow: 0 0 10px 0 darkgreen;
 }
 
 .card {
@@ -420,7 +413,7 @@ p {
 
     #navbar-user-status .nav-link:hover {
         color: white !important;
-        background-color: var(--tertiary-bg);
+        background-color: var(--secondary-bg);
     }
 
     #navbar-user-status .nav-link a:hover {
@@ -447,7 +440,7 @@ p {
 
     #navbar-user-status .nav-link,
     #navbar-user-status .nav-link a {
-        background-color: var(--tertiary-bg);
+        background-color: var(--secondary-bg);
         color: white !important;
         margin: 0 3px;
     }
@@ -461,13 +454,13 @@ p {
 
 @media screen and (min-width: 768px) and (max-width: 826px) {
     #navbarsExample04 {
-        margin-left: 15%;
+        margin-left: 10%;
     }
 }
 
 @media screen and (min-width: 826px) and (max-width: 992px) {
     #navbarsExample04 {
-        margin-left: 20%;
+        margin-left: 15%;
     }
 }
 
