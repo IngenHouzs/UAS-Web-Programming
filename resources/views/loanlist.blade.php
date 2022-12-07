@@ -19,15 +19,29 @@
 
     <div class="daftar-pinjaman-body w-full h-auto bg-light bg-gradient">
      
-        <form class="text-center mb-3" action="{{route('createLoanView')}}" method="GET">
-            <button class="bg-dark"type="submit">Tambah Pinjaman Baru</button>
-        </form>        
+        <div class="flex flex-row justify-content-between">
+            <div onclick="filterDropdown()" class="filter-dropdown bg-primary text-white w-20">
+                Filter
+                <div class="dropdown-filter" style="display:none;">
+                    <a href="/loans?filter=asc"><button>Terlama</button></a>
+                    <a href="/loans?filter=desc"><button>Terbaru</button></a>
+                    <a href="/loans?filter=late"><button>Terlambat</button></a>                                        
+                    <a href="/loans?filter=ongoing"><button>Sedang Berjalan</button></a>                        
+                </div>
+            </div>    
+            
+            <form class="mb-3" action="{{route('createLoanView')}}" method="GET">
+                <button class="bg-dark"type="submit">Tambah Pinjaman Baru</button>
+            </form>       
+        </div>
+   
+
 
         
         @if(count($loans) > 0)
 
             @foreach($loans as $loan)
-                <div class="w-80 h-10 px-4 bg-white shadow flex flex-column loan-card">
+                <div class="w-80 h-10 px-4 @if(!$loan->late) bg-white @endif shadow flex flex-column loan-card" style="@if($loan->late) background-color:#ffd2cf @endif">
                     <div class="w-100 flex flex-row loan-inner-card">
                         <div class="w-50">
                             <h1 class="h3">{{$loan->nama}}</h1>

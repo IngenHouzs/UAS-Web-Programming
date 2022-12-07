@@ -310,6 +310,7 @@ p {
 .daftar-pinjaman-body {
     padding: 0 2rem;
     padding-top: 2rem;
+    position:relative;
 }
 
 .daftar-pinjaman-body form button:first-child {
@@ -526,6 +527,27 @@ p {
 .change-pw-button{
     width:10rem !important;
 }
+
+.filter-dropdown{
+    width:8rem;
+    height:1.5rem;
+    border-radius: 2px;
+    text-align: center;
+    position:relative;
+}
+
+.dropdown-filter{
+    position:absolute;
+    background-color: white;
+    box-shadow: 0 0 3px 0 black;
+    width:100%;
+}
+
+.dropdown-filter a button{
+    width:100%;
+}
+
+
 
 /* .form-search {
     padding: 10px;

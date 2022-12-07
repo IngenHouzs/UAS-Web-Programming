@@ -22,23 +22,23 @@
             
             @if(count($loans) > 0) 
                 @foreach($loans as $loan)
-                    <div class="w-80 h-10 px-4 py-3 bg-white shadow flex flex-column loan-card">
+                    <div class="w-80 h-10 px-4 py-3 @if(!$loan->late) bg-white @endif shadow flex flex-column loan-card" style="@if($loan->late) background-color:#ffd2cf @endif">
                         @if($loan->tanggal_peminjaman && $loan->tenggat_pengembalian)
                             <div class="flex flex-column loan-desc">
-                                <h1>Judul Buku</h1>
+                                <h1 style="font-weight:bold">Judul Buku</h1>
                                 <a href="/collection/{{$loan->id_buku}}" class="text-primary">{{$loan->judul}}</a>
                             </div>
                             <div class="flex flex-column loan-desc">
-                                <h1>Tanggal Peminjaman</h1>
+                                <h1 style="font-weight:bold">Tanggal Peminjaman</h1>
                                 <a>{{$loan->tanggal_peminjaman}}</a>
                             </div>
                             <div class="flex flex-column loan-desc">
-                                <h1>Tenggat Pengembalian</h1>
+                                <h1 style="font-weight:bold">Tenggat Pengembalian</h1>
                                 <a>{{$loan->tenggat_pengembalian}}</a>
                             </div>                                                     
                         @else 
                             <div class="flex flex-column loan-desc">
-                                <h1>Judul Buku</h1>
+                                <h1 style="font-weight:bold">Judul Buku</h1>
                                 <a href="/collection/{{$loan->id_buku}}" class="text-primary">{{$loan->judul}}</a>
                             </div>
                             <form action="/acceptLoan/{{$loan->id_peminjaman}}/{{$student->nisn}}/{{$loan->id_buku}}" method="POST">

@@ -68,7 +68,7 @@ class BookController extends Controller
         $findLoans = DB::select("
             SELECT * FROM book_loans
             WHERE id_buku = ? 
-            AND tanggal_pengembalian IS NULL
+            AND tanggal_pengembalian IS NULL 
         ", [$id]);
 
         $defaultStock = $document->stok;
@@ -135,20 +135,89 @@ class BookController extends Controller
     }
 
     // Nunjukin daftar semua peminjaman (Pivot Table)
-    public function showAllLoans(Request $request){
+    public function showAllLoans(Request $request){ 
+
+        $filter = $request->get('filter');
+        if ($filter){
+            if ($filter === 'asc'){
+                $loans = DB::select("
+                SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id id_buku,
+                book_loans.tanggal_peminjaman tanggal_peminjaman, book_loans.tenggat_pengembalian tenggat_pengembalian,
+                IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'                                
+                FROM book_loans
+                    JOIN books ON book_loans.id_buku = books.id
+                    JOIN users ON book_loans.id_user = users.id        
+                    WHERE book_loans.tanggal_peminjaman IS NOT NULL 
+                      AND book_loans.tanggal_pengembalian IS NULL
+                      AND book_loans.tenggat_pengembalian IS NOT NULL 
+                      ORDER BY book_loans.tanggal_peminjaman ASC;
+            "); 
+         
+                return view("loanlist", ["loans" => $loans, 'search' => TRUE]);
+            } else if ($filter === 'desc'){
+                $loans = DB::select("
+                SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id id_buku,
+                book_loans.tanggal_peminjaman tanggal_peminjaman, book_loans.tenggat_pengembalian tenggat_pengembalian,
+                IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'                                
+                FROM book_loans
+                    JOIN books ON book_loans.id_buku = books.id
+                    JOIN users ON book_loans.id_user = users.id        
+                    WHERE book_loans.tanggal_peminjaman IS NOT NULL 
+                      AND book_loans.tanggal_pengembalian IS NULL
+                      AND book_loans.tenggat_pengembalian IS NOT NULL 
+                      ORDER BY book_loans.tanggal_peminjaman DESC;
+            "); 
+         
+                return view("loanlist", ["loans" => $loans, 'search' => TRUE]);                
+
+            } else if ($filter === 'late'){
+                $currentTime =  Carbon::now()->toDateTimeString();
+                $loans = DB::select("
+                SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id id_buku,
+                book_loans.tanggal_peminjaman tanggal_peminjaman, book_loans.tenggat_pengembalian tenggat_pengembalian,
+                IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'                                
+                FROM book_loans
+                    JOIN books ON book_loans.id_buku = books.id
+                    JOIN users ON book_loans.id_user = users.id        
+                    WHERE book_loans.tanggal_peminjaman IS NOT NULL 
+                      AND book_loans.tanggal_pengembalian IS NULL
+                      AND book_loans.tenggat_pengembalian IS NOT NULL
+                      AND NOW() > book_loans.tenggat_pengembalian
+                ");                 
+                 
+                return view("loanlist", ["loans" => $loans, 'search' => TRUE]);                      
+            } else if ($filter === 'ongoing'){
+                $currentTime =  Carbon::now()->toDateTimeString();
+                $loans = DB::select("
+                SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id id_buku,
+                book_loans.tanggal_peminjaman tanggal_peminjaman, book_loans.tenggat_pengembalian tenggat_pengembalian,
+                IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'                                
+                FROM book_loans
+                    JOIN books ON book_loans.id_buku = books.id
+                    JOIN users ON book_loans.id_user = users.id        
+                    WHERE book_loans.tanggal_peminjaman IS NOT NULL 
+                      AND book_loans.tanggal_pengembalian IS NULL
+                      AND book_loans.tenggat_pengembalian IS NOT NULL
+                      AND NOW() < book_loans.tenggat_pengembalian
+                ");                 
+                 
+                return view("loanlist", ["loans" => $loans, 'search' => TRUE]);                      
+            }
+        }
+
 
         if ($request->nama){
             $name = $request->query('nama');
             $loan = DB::select("
             SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id id_buku,
-            book_loans.tanggal_peminjaman tanggal_peminjaman, book_loans.tenggat_pengembalian tenggat_pengembalian
+            book_loans.tanggal_peminjaman tanggal_peminjaman, book_loans.tenggat_pengembalian tenggat_pengembalian,
+            IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'
             FROM book_loans
                 JOIN books ON book_loans.id_buku = books.id
                 JOIN users ON book_loans.id_user = users.id        
-                WHERE book_loans.tanggal_peminjaman IS NOT NULL
+                WHERE book_loans.tanggal_peminjaman IS NOT NULL 
                   AND book_loans.tanggal_pengembalian IS NULL
-                  AND book_loans.tenggat_pengembalian IS NOT NULL 
-                  AND users.name LIKE ?
+                  AND book_loans.tenggat_pengembalian IS NOT NULL        
             ", ['%'.$name.'%']);             
             
             return view('loanlist', ["loans" => $loan, 'search' => TRUE]);
@@ -157,7 +226,8 @@ class BookController extends Controller
 
         $loans = DB::select("
             SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id id_buku,
-            book_loans.tanggal_peminjaman tanggal_peminjaman, book_loans.tenggat_pengembalian tenggat_pengembalian            
+            book_loans.tanggal_peminjaman tanggal_peminjaman, book_loans.tenggat_pengembalian tenggat_pengembalian,
+            IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'           
             FROM book_loans
                 JOIN books ON book_loans.id_buku = books.id
                 JOIN users ON book_loans.id_user = users.id        

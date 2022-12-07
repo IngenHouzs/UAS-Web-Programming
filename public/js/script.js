@@ -1,3 +1,12 @@
+$(document).ready(() => {
+    $("body").click((e) => {
+        if (!$(e.target).hasClass('filter-dropdown')){
+            if (document.querySelector('.dropdown-filter').style.display === 'block'){
+                document.querySelector('.dropdown-filter').style.display = 'none';     
+            }       
+        }
+    });    
+});
 const addAuthor = () => {
 
     const input = document.createElement('input');
@@ -6,6 +15,16 @@ const addAuthor = () => {
     document.querySelector(".author-box").append(input);
 
 };
+
+
+const filterDropdown = () => {
+    const dropdown = document.querySelector('.dropdown-filter');
+    if (dropdown.style.display === 'none'){
+        document.querySelector('.dropdown-filter').style.display = 'block';
+    } else {
+        document.querySelector('.dropdown-filter').style.display = 'none';
+    }
+}
 
 function clickNavbar() {
     let navContainer = document.getElementById("navbar");

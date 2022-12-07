@@ -60,6 +60,20 @@ class UserController extends Controller
                     ->join('books', 'book_loans.id_buku', '=', 'books.id')
                     ->get();
 
+        $loans = DB::select("
+                    SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id id_buku,
+                    book_loans.tanggal_peminjaman tanggal_peminjaman, book_loans.tenggat_pengembalian tenggat_pengembalian,
+                    IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'           
+                    FROM book_loans
+                        JOIN books ON book_loans.id_buku = books.id
+                        JOIN users ON book_loans.id_user = users.id        
+                        WHERE book_loans.tanggal_peminjaman IS NOT NULL 
+                          AND book_loans.tanggal_pengembalian IS NULL
+                          AND book_loans.tenggat_pengembalian IS NOT NULL 
+                          AND users.nisn = ?
+                        ORDER BY book_loans.tanggal_peminjaman ASC;
+                ",[$nisn]);                     
+
 
         return view('view-student', ['student'=>$student[0], 'loans' => $loans]);
     }

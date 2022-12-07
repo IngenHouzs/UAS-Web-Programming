@@ -50,10 +50,46 @@
                             <td>{{$book->publisher->nama_penerbit}}</td>
                         </tr>
                         <tr>
+                            <td>Tahun Terbit</td>
+                            <td>:</td>
+                            <td>{{$book->tahun_terbit}}</td>
+                        </tr>  
+                        <tr>
+                            <td>Tempat Terbit</td>
+                            <td>:</td>
+                            <td>{{$book->tempat_terbit}}</td>
+                        </tr>                          
+                        <tr>
+                            <td>Halaman</td>
+                            <td>:</td>
+                            <td>{{$book->halaman}}</td>
+                        </tr>                   
+                        <tr>
+                            <td>DDC</td>
+                            <td>:</td>
+                            <td>{{$book->ddc}}</td>
+                        </tr>                      
+                        <tr>
+                            <td>ISBN</td>
+                            <td>:</td>
+                            <td>{{$book->isbn}}</td>
+                        </tr>                       
+                        <tr>
+                            <td>No Rak</td>
+                            <td>:</td>
+                            <td>{{$book->no_rak}}</td>
+                        </tr>                                        
+                        <tr>
                             <td>Stok</td>
                             <td>:</td>
                             <td>{{$book->stok}}</td>
                         </tr>
+                        <tr>
+                            <td>Keterangan</td>
+                            <td>:</td>
+                            <td>{{$book->keterangan}}</td>
+                        </tr>                          
+                       
                     </table>
                     <hr class="my-4 hr-book">
                     <table  id="book-status-table" class="table table-striped">
