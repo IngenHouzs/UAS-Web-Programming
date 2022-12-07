@@ -4,7 +4,11 @@
     <div id="catalogue-list-container" class="container py-3 my-5">
         <div class="row">
             <div class="col">
-                <h4><b>Daftar Pinjamanku</b></h4>
+                @if (count($loans) > 0)
+                    <h4><b>Daftar Pinjamanku</b></h4>                
+                @else 
+                    <h4><b>Belum ada pinjaman.</b></h4>                          
+                @endif 
             </div>
         </div>
         <div class="row">

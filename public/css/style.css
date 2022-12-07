@@ -393,6 +393,140 @@ p {
     width:80%;
     padding:0 2rem;
 }
+
+.daftar-siswa-header{
+    width:100%;
+}
+
+.search-siswa-input{
+    border-radius:3rem;
+    height:1.5rem;
+    box-shadow: 0 0 2px 0 black;
+    padding:0 1rem;
+}
+
+.search-siswa-submit{
+    border-radius: 50%;
+    height:1.5rem;
+    width:1.5rem;
+}
+
+.search-siswa-header{
+    align-items: center;
+}
+
+.profil-siswa-header{
+    height:3rem;
+    align-items: center;
+}
+
+.profil-siswa-header h1{
+    font-weight: bold;
+}
+
+.profil-desc h1{
+    font-weight: bold;
+    font-size:1.5rem;
+}
+
+.profil-descs{
+    gap:1rem;
+    overflow-y: scroll;
+    height:auto;
+    max-height:30rem;
+}
+
+.loan-desc h1{
+    font-size:1.2rem;
+}
+
+.add-book-form-wrapper{
+    width:50%;
+    min-width:18rem;
+    max-width:40rem;
+    height:3rem;
+    margin:0 auto;
+}
+
+.add-book-form-wrapper:first-child{
+    border-bottom:1px solid #cfcfcf;
+}
+
+.add-book-form-wrapper:nth-child(2){
+    height:auto;
+}
+
+.add-book-form-wrapper:nth-child(2) form{
+    width:100%;
+}
+
+.add-book-form-wrapper:nth-child(2) form input{
+    width:100%;
+    margin-bottom:.5rem;
+    padding:0 .5rem;
+}
+
+.add-book-form-wrapper:nth-child(2) form input{
+    border:1px solid black;
+    border-radius:4px;
+}
+
+.add-book-form-wrapper h1:first-child{
+    font-weight:  bold;
+    font-size:1.5rem;
+}
+
+.author-input{
+    margin-bottom:0;
+}
+
+.required{
+    color:red;
+}
+
+.daftar-siswa-header{
+    display: flex;
+    align-items: center;
+    height:3rem;
+    width:50%;
+    min-width:18rem;
+    max-width:40rem;
+    margin:0 auto;
+}
+
+.daftar-desc{
+    width:50%;
+    min-width:18rem;
+    max-width:40rem;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.daftar-desc form{
+    display: flex;
+    flex-direction: column;
+}
+
+.daftar-desc form input{
+    border:1px solid black;
+    border-radius:5px;
+}
+
+.daftar-desc form button[type=submit]{
+    margin:.5rem 0;
+    max-width:7rem;
+    font-weight: bold;
+}
+
+.daftar-siswa-header h1{
+    font-weight: bold;
+}
+
+.change-pw-button{
+    width:10rem !important;
+}
+
 /* .form-search {
     padding: 10px;
     border-radius: 50px;
@@ -593,9 +727,18 @@ p {
     }
 }
 
+@media screen and (max-width:600px){
+    .search-siswa-header{
+        flex-direction: column !important;
+        align-items: flex-start;   
+        gap:.5rem;     
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .loan-inner-card {
         flex-direction: column !important;
+        align-items: flex-start;
     }
 
     .loan-inner-card div {
@@ -605,6 +748,10 @@ p {
 
 @media screen and (max-width: 400px) {
     .loan-date {
+        flex-direction: column !important;
+    }
+
+    .action-button-loanlist{
         flex-direction: column !important;
     }
 }
@@ -624,3 +771,5 @@ p {
         height: 7.3rem;
     }
 }
+
+

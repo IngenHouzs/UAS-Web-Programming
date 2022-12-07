@@ -1,10 +1,6 @@
 @extends('layouts.footer-only')
 
 @section('login') 
-<<<<<<< HEAD
-
-=======
->>>>>>> 83377d9d96fb05f6314b4d2e9f6221982534ad1f
     <section class="vh-100">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -38,8 +34,6 @@
             </div>
         </div>
     </section>
-<<<<<<< HEAD
+
 @endsection
-=======
-@endsection
->>>>>>> 83377d9d96fb05f6314b4d2e9f6221982534ad1f
+

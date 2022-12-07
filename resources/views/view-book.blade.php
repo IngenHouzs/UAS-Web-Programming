@@ -100,7 +100,7 @@
                 @else 
                     <form action="/deleteBook/{{$book->id}}" method="POST">
                         @csrf
-                        <button type="submit">Hapus Buku</button>                           
+                        <button class="bg-danger text-white px-3 rounded" type="submit">Hapus Buku</button>                           
                     </form>
                 @endif 
             @endauth

@@ -56,6 +56,7 @@ class UserController extends Controller
         $student = User::where('nisn', $nisn)->get();
 
         $loans = BookLoan::where('book_loans.id_user', '=', $nisn)
+                    ->where('book_loans.tanggal_pengembalian', NULL)
                     ->join('books', 'book_loans.id_buku', '=', 'books.id')
                     ->get();
 

@@ -6,16 +6,25 @@
         <p>{{session('STUDENT_CREATED')}}</p>
     @endif
 
-    <h1>Tambah Siswa</h1>
+    <div class="container my-4 flex flex-column">
+        <div class="px-3 bg-success flex flex-row align-items-center daftar-siswa-header shadow">
+            <h1 class="h4 text-white">Daftarkan Siswa</h1>
+        </div>
+        <div class="bg-white daftar-desc px-3 py-2 shadow">
+            <form action="/tambahsiswa" method="POST">
+                @csrf
+                <p>NISN</p>
+                <input type="text" name="nisn" required></input>
+                <p>Nama Siswa</p>
+                <input type="text" name="name" required></input>
 
-
-    <form action="/tambahsiswa" method="POST">
-        @csrf
-
-        <input type="text" name="nisn" placeholder="NISN"></input>
-        <input type="text" name="name" placeholder="Nama Siswa"></input>
-        <button type="submit">Tambahkan</button>
+                <button class="rounded bg-success text-white px-2" type="submit">Tambahkan</button>
+                
+            </form>
         
-    </form>
+        </div>
+    </div>
+
+
 
 @endsection

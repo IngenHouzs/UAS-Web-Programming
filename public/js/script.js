@@ -1,9 +1,10 @@
 const addAuthor = () => {
-    document.querySelector(".author-box").innerHTML += `
-            <input type="text" name="penulis[]" required>Penulis</input>
-            `;
 
-    console.log("awok");
+    const input = document.createElement('input');
+    input.setAttribute('name', 'penulis[]');
+    input.setAttribute('type', 'text');
+    document.querySelector(".author-box").append(input);
+
 };
 
 function clickNavbar() {
