@@ -67,7 +67,7 @@
             @auth 
                 @if(auth()->user()->role === 2)
                     <li class="nav-item">
-                        <a href="{{route('forgetPasswordView')}}" class="navbar-link nav-link">Lupa Kata Sandi</a>     
+                        <a href="{{route('forgetPasswordView')}}" class="navbar-link nav-link">Ganti Kata Sandi</a>     
                     </li>                      
                 @endif 
             @endauth 

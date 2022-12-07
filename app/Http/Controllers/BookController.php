@@ -170,7 +170,21 @@ class BookController extends Controller
 
     }
 
-    public function showPendingRequests(){
+    public function showPendingRequests(Request $request){
+
+        if ($request->nama){
+
+            $requests = DB::select("
+            SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id FROM book_loans
+                JOIN books ON book_loans.id_buku = books.id
+                JOIN users ON book_loans.id_user = users.id        
+                WHERE book_loans.tanggal_peminjaman IS NULL
+                  AND book_loans.tenggat_pengembalian IS NULL 
+                  AND users.name LIKE ?;
+        ", ['%'.$request->nama.'%']);         
+            return view('pending', ['requests' => $requests, 'search' => TRUE]);            
+        }
+
         $requests = DB::select("
             SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id FROM book_loans
                 JOIN books ON book_loans.id_buku = books.id
@@ -179,7 +193,7 @@ class BookController extends Controller
                   AND book_loans.tenggat_pengembalian IS NULL
         "); 
         
-        return view('pending', ['requests' => $requests]);
+        return view('pending', ['requests' => $requests, 'search' => FALSE]);
     }
 
     public function acceptLoan($id_peminjaman, $user_id, $book_id, Request $request){
