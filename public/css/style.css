@@ -333,20 +333,49 @@ p {
     margin-bottom:.5rem;
 }
 
-.pending-wrapper div:first-child, .pending-wrapper div:nth-child(2){
-    background-color: red;
+.pending-wrapper div:first-child{
+    background-color: #998c6a;
+}
+
+.pending-search-siswa{
+    position:relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width:100%;
+} 
+
+.pending-search-siswa *{
+    z-index:2;
+}
+
+.pending-search-siswa form{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width:30rem;
 }
 
 .pending-search-siswa form input{
     border-radius:5rem;
     height:2rem;
     border:2px solid black;
+    width:80%;
 }
 
 .pending-search-siswa form button{
     border-radius: 50%;
     height:2rem;
     width:2rem;
+}
+
+.half-color-parts{
+    background-color: red;
+    width:100%;
+    height:50%;
+    position:absolute;
+    z-index:1;
 }
 
 /* .form-search {

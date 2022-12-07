@@ -14,9 +14,7 @@
                 <input type="text" placeholder="Masukkan Nama Siswa" name="nama"></input>
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>  
-    
         </div>
-
     </div>
 
     <div class="daftar-pinjaman-body w-full h-auto bg-light bg-gradient">

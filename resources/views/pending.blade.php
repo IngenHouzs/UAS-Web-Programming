@@ -9,9 +9,10 @@
 
     <div class="container my-4 px-3 pt-2 pb-3 flex flex-column pending-wrapper">
         <div class="daftar-pinjaman-header w-full">
-
+            <h1>Daftar Permintaan Pending</h1>
         </div>        
-        <div class="flex flex-row justify-content-center pending-search-siswa">
+        <div class="flex flex-row justify-content-center pending-search-siswa bg-white">
+            <div class="half-color-parts"></div>
             <form action="/pending" method="GET">
                 <input type="text" placeholder="Masukkan Nama Siswa" name="nama"></input>
                 <button type="submit"><i class="fa fa-search"></i></button>
