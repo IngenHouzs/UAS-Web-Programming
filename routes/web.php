@@ -35,9 +35,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('landing');    
     Route::get('/pinjamanku', [BookLoanController::class, 'viewMyLoans'])->name('pinjamanku');
 
+    Route::get('/forgetpassword', [UserController::class, 'forgetPasswordView'])->name('forgetPasswordView');
+    Route::post('/forgetpassword', [UserController::class, 'forgetPassword'])->name('forgetPassword');    
+
     Route::post('/collection/{book_id}/{user_id}/request-loan', [BookController::class, 'requestLoan'])->name('requestLoan');
     Route::post('/deleteLoanRequest/{id_peminjaman}', [BookLoanController::class, 'deleteLoanRequest'])->name('deleteLoanRequest');
 
+    
     // Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [UserController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [UserController::class, 'destroy'])->name('profile.destroy');

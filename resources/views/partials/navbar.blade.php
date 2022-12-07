@@ -64,6 +64,14 @@
         </div>
 
         <div class="navbar-nav" id="navbar-user-status">
+            @auth 
+                @if(auth()->user()->role === 2)
+                    <li class="nav-item">
+                        <a href="{{route('forgetPasswordView')}}" class="navbar-link nav-link">Lupa Kata Sandi</a>     
+                    </li>                      
+                @endif 
+            @endauth 
+
         @if (Route::has('login'))
                 @auth
                     <form class="nav-item nav-link" method="POST" action="{{ route('logout') }}">

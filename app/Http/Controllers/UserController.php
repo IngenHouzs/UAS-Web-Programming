@@ -148,4 +148,30 @@ class UserController extends Controller
         return view('test-auth-page');
     }
 
+    public function forgetPasswordView(){
+        return view('forget-password');
+    }
+
+    public function forgetPassword(Request $request){
+        
+        if ($request->password === $request->confirm_password){
+            if (strlen($request->password) < 8){
+                return redirect()->back()->with('INVALID_LENGTH', "Password harus lebih panjang atau sama dengan 8 karakter!");
+            }
+            
+            if (Auth::check()){
+                $student = User::where('id', Auth::user()->id)->update(
+                    ['password' => bcrypt($request->password)]
+                );
+
+                return redirect('/')->with('ACTION_SUCCESS', "Pengubahan kata sandi berhasil");
+
+            }
+
+        }
+
+        return redirect()->back()->with("FAIL_CONFIRM", "Password yang dimasukkan tidak sama!");
+
+    }
+
 }

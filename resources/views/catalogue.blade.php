@@ -27,14 +27,34 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="search-dropdown-box"> --}}
-                {{-- <div class="search-dropdown-content">
+
+            {{-- <div class="search-dropdown-box">
+                <div class="search-dropdown-content">
                     Hasil Pencarian 1
                 </div>                                                 
                 <div class="search-dropdown-content">
                     Hasil Pencarian 1
-                </div>                                                             --}}
-            {{-- </div>   --}}
+                </div>                                                            
+                <div class="search-dropdown-content">
+                    Hasil Pencarian 1
+                </div>                                                 
+                <div class="search-dropdown-content">
+                    Hasil Pencarian 1
+                </div>   
+                <div class="search-dropdown-content">
+                    Hasil Pencarian 1
+                </div>                                                 
+                <div class="search-dropdown-content">
+                    Hasil Pencarian 1
+                </div>   
+                <div class="search-dropdown-content">
+                    Hasil Pencarian 1
+                </div>                                                 
+                <div class="search-dropdown-content">
+                    Hasil Pencarian 1
+                </div>                                                                   
+            </div>   --}}
+
         </div>
     </form>    
     

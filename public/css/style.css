@@ -271,6 +271,50 @@ p {
     width: 50px;
 }
 
+
+
+.daftar-pinjaman-header{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height:5.25rem;
+}
+
+.daftar-pinjaman-header form:first-child{
+    width:75%;
+    max-width:30rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.daftar-pinjaman-search{
+    width:100%;
+}
+
+.daftar-pinjaman-header form *{
+    z-index:3;
+}
+
+.daftar-pinjaman-header form input{
+    border:1px solid black;
+    border-radius:5rem;
+    height:2rem;
+    width:100%;
+    padding:0 1rem;
+}
+
+.daftar-pinjaman-header form button:nth-child(2){
+    border-radius:50%;
+    height:2rem;
+    width:2rem;
+}
+
+.daftar-pinjaman-body{
+    padding-top:2rem;
+}
+
+
 /* .form-search {
     padding: 10px;
     border-radius: 50px;
@@ -474,5 +518,23 @@ p {
 @media screen and (min-width: 992px) {
     #navbarsExample04 {
         margin-left: 25%;
+    }
+}
+
+
+@media screen and (max-width:300px){
+
+    .daftar-pinjaman-header{
+        height:5rem;
+    }
+
+    .daftar-pinjaman-header h1:first-child{
+        font-size:2rem;
+    }
+}
+
+@media screen and (max-width:258px){
+    .daftar-pinjaman-header{
+        height:7.3rem;
     }
 }
