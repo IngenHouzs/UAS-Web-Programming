@@ -14,6 +14,12 @@
                 </div>
             @endif
 
+            @if(session('EDIT_SUCCESS'))
+                <div class="alert alert-success" role="alert">            
+                    {{session('EDIT_SUCCESS')}}
+                </div>                
+            @endif            
+
             @if(session('LOAN_SUCCESS'))
                 <div class="alert alert-success" role="alert">
                     {{session('LOAN_SUCCESS')}}
@@ -134,10 +140,13 @@
                         @endif
                     </form>   
                 @else 
-                    <form action="/deleteBook/{{$book->id}}" method="POST">
-                        @csrf
-                        <button class="bg-danger text-white px-3 rounded" type="submit">Hapus Buku</button>                           
-                    </form>
+                    <div class="flex flex-row">
+                        <form action="/deleteBook/{{$book->id}}" method="POST">
+                            @csrf
+                            <button class="bg-danger text-white px-3 rounded" type="submit">Hapus Buku</button>                           
+                        </form>
+                        <a href="/editbuku/{{$book->id}}"><button class="bg-primary text-white px-2 rounded mx-3">Edit Buku</button></a>
+                    </div>
                 @endif 
             @endauth
             @guest

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Database\QueryException;
 use Carbon\Carbon;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -246,22 +247,27 @@ class BookController extends Controller
         if ($request->nama){
 
             $requests = DB::select("
-            SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id FROM book_loans
-                JOIN books ON book_loans.id_buku = books.id
-                JOIN users ON book_loans.id_user = users.id        
-                WHERE book_loans.tanggal_peminjaman IS NULL
-                  AND book_loans.tenggat_pengembalian IS NULL 
+            SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id,
+            (SELECT COUNT(*) FROM book_loans AS bl WHERE bl.id_user = users.id AND NOW() >= bl.tenggat_pengembalian) AS 'has_late'            
+           FROM book_loans
+               JOIN books ON book_loans.id_buku = books.id
+               JOIN users ON book_loans.id_user = users.id        
+               WHERE book_loans.tanggal_peminjaman IS NULL
+                 AND book_loans.tenggat_pengembalian IS NULL    
                   AND users.name LIKE ?;
         ", ['%'.$request->nama.'%']);         
             return view('pending', ['requests' => $requests, 'search' => TRUE]);            
         }
 
         $requests = DB::select("
-            SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id FROM book_loans
-                JOIN books ON book_loans.id_buku = books.id
-                JOIN users ON book_loans.id_user = users.id        
-                WHERE book_loans.tanggal_peminjaman IS NULL
-                  AND book_loans.tenggat_pengembalian IS NULL
+        SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id,
+        (SELECT COUNT(*) FROM book_loans AS bl WHERE bl.id_user = users.id AND NOW() >= bl.tenggat_pengembalian) AS 'has_late'            
+       FROM book_loans
+           JOIN books ON book_loans.id_buku = books.id
+           JOIN users ON book_loans.id_user = users.id        
+           WHERE book_loans.tanggal_peminjaman IS NULL
+             AND book_loans.tenggat_pengembalian IS NULL
+             
         "); 
         
         return view('pending', ['requests' => $requests, 'search' => FALSE]);
@@ -343,6 +349,24 @@ class BookController extends Controller
 
         $penerbitInput = $request->penerbit;
         $penulisInput = $request->penulis;
+
+
+
+        if (is_integer($request->tahun_terbit)){
+            return redirect()->back()->with('YEAR_INVALID', 'Tahun terbit tidak valid.');
+        } else {
+            if ($request->tahun_terbit > Carbon::now()->year || $request->tahun_terbit <= 0){
+                return redirect()->back()->with('YEAR_INVALID', 'Tahun terbit tidak valid.');                
+            } 
+        }
+
+        if (is_integer($request->halaman)){
+            return redirect()->back()->with('PAGE_INVALID', 'Format halaman tidak valid.');  
+        } else {
+            if ($request->halaman <= 0){
+                return redirect()->back()->with('PAGE_INVALID', 'Format halaman tidak valid.');                
+            }            
+        }
    
 
         $penerbit; // assign ke object nanti
@@ -387,16 +411,28 @@ class BookController extends Controller
         
         $temp_id = strval($book->id);
 
+
+
         $book->id_penerbit = $penerbit;
         $book->judul = $request->judul;
         $book->tahun_terbit = $request->tahun_terbit;
         $book->tempat_terbit = $request->tempat_terbit;
-        $book->halaman = $request->halaman;
+        try{
+            $book->halaman = $request->halaman;
+        }catch(Exception $e){
+            return redirect()->back()->with('PAGE_INVALID', 'Format halaman tidak valid.');
+        }
         $book->ddc = $request->ddc;
         $book->isbn = $request->isbn;
         $book->no_rak = $request->no_rak;
+
+        try{
+            $book->save();
+        }catch(QueryException $e){
+            return redirect()->back()->with('PAGE_INVALID', 'Format halaman tidak valid.');
+        }        
         
-        $book->save();
+
 
         // Masukkan seluruh author ke dalam relasi book_author
 
@@ -421,6 +457,30 @@ class BookController extends Controller
             return redirect('/collection');
         }
         
+    }
+
+
+    public function editBookView($id_buku){
+        $book = Book::where('id', $id_buku)->get();
+        $loans = BookLoan::where('id_buku', $id_buku)
+                    ->where('tanggal_pengembalian', NULL)
+                    ->get();
+
+
+
+        return view('edit-book', ['book' => $book[0], 'loans' => $loans]);
+    }
+
+
+    public function editBook($id_buku,Request $request){
+        Book::where('id', $id_buku)->update(
+            ['no_rak' => $request->no_rak,
+            'keterangan' => $request->keterangan,
+            'stok' => $request->stok
+            ]
+        );
+
+        return redirect('/collection/'.$id_buku)->with('EDIT_SUCCESS', 'Perubahan pada buku berhasil disimpan');
     }
 
 }

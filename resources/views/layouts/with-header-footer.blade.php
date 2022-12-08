@@ -45,6 +45,7 @@
                 @yield('view-student')
                 @yield('add-student')
                 @yield('forget-password')
+                @yield('edit-book')
             </div>            
             <!-- Page Contents-->
             
