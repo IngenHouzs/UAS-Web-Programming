@@ -42,7 +42,7 @@
             @foreach($loans as $loan)
                 <div class="col-md-6 my-2">
                     <div class="card h-100">
-                        <div class="card-body d-flex flex-column" style="@if($loan->late)  background-color:#ffd2cf;border:1px solid red;@endif">
+                        <div class="card-body d-flex flex-column" style="@if($loan->late) background-color:#ffd2cf;border:1px solid red; @endif">
                             <h5 id="book-title" class="card-title">{{$loan->judul}}</h5>
                             @if($loan->tanggal_peminjaman && $loan->tenggat_pengembalian) 
                                 @if($loan->late)
@@ -58,15 +58,13 @@
                                 </button>
                             @else
                                 <small class="mb-2">Requested</small>
-                                <div class="d-flex">
-
+                                    <div class="d-flex">
                                         <a href="/collection/{{$loan->id_buku}}"><button class="btn btn-warning mr-2">Lihat detail buku</button></a>
-               
-                                    <form action="/deleteLoanRequest/{{$loan->id_peminjaman}}" method="POST" class="mt-auto">
-                                        @csrf
-                                        <button class="btn btn-danger ">Batalkan Permintaan</button>
-                                    </form>
-                                </div>
+                                        <form action="/deleteLoanRequest/{{$loan->id_peminjaman}}" method="POST" class="mt-auto">
+                                            @csrf
+                                            <button class="btn btn-danger ">Batalkan Permintaan</button>
+                                        </form>
+                                    </div>
                             @endif
                         </div>
                     </div>

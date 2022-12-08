@@ -165,7 +165,7 @@ class BookLoanController extends Controller
                 book_loans.id_peminjaman id_peminjaman,
                 book_loans.tanggal_peminjaman tanggal_peminjaman,
                 book_loans.tenggat_pengembalian tenggat_pengembalian,
-                IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'                     
+                IF ((NOW() >= book_loans.tenggat_pengembalian), TRUE, FALSE) AS 'late'                     
                 FROM book_loans
                 JOIN books ON book_loans.id_buku = books.id
                 WHERE book_loans.id_user = ?
