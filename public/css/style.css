@@ -547,9 +547,46 @@ p {
     width: 100%;
 }
 
+
+
 .my-loan-header{
     justify-content: space-between;
     align-items: center;
+}
+
+#add-loan input{
+    border:1px solid black;
+    border-radius: .5rem;
+    width:90%;
+    padding:0 .5rem;
+}
+
+#add-loan button[type=button]{
+    height:2rem;
+    width:2rem;
+    border-radius: 50%;
+    border:1px solid black;
+}
+
+.add-loan-div{
+    width:50%;
+    max-width:40rem;
+    min-width:20rem;
+}
+
+.find-student-notif, .find-book-notif{
+    overflow-y: auto;
+    height:auto;
+    max-height:10rem;
+}
+
+.dropdown-ls-box{
+    border-bottom: 1px solid grey;
+    padding:.2rem;
+}
+
+.dropdown-ls-box:hover{
+    background-color:#e3e3e3;
 }
 
 

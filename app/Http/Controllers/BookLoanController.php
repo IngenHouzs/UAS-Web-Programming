@@ -42,9 +42,7 @@ class BookLoanController extends Controller
                 ->with('SUCCESS', 'Penambahan pinjaman berhasil!');
         }
 
-
-
-        return redirect('/loans')
+        return redirect('/loans/create')
         ->with('FAIL', 'Data terkait tidak ditemukan');
         
     }

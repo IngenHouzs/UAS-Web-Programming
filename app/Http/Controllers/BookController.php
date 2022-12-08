@@ -247,13 +247,13 @@ class BookController extends Controller
         if ($request->nama){
 
             $requests = DB::select("
-            SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id,
-            (SELECT COUNT(*) FROM book_loans AS bl WHERE bl.id_user = users.id AND NOW() >= bl.tenggat_pengembalian) AS 'has_late'            
-           FROM book_loans
-               JOIN books ON book_loans.id_buku = books.id
-               JOIN users ON book_loans.id_user = users.id        
-               WHERE book_loans.tanggal_peminjaman IS NULL
-                 AND book_loans.tenggat_pengembalian IS NULL    
+        SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id,
+        (SELECT COUNT(*) FROM book_loans AS bl WHERE bl.id_user = users.id AND NOW() >= bl.tenggat_pengembalian AND bl.tanggal_pengembalian IS NULL) AS 'has_late'            
+       FROM book_loans
+           JOIN books ON book_loans.id_buku = books.id
+           JOIN users ON book_loans.id_user = users.id        
+           WHERE book_loans.tanggal_peminjaman IS NULL
+             AND book_loans.tenggat_pengembalian IS NULL      
                   AND users.name LIKE ?;
         ", ['%'.$request->nama.'%']);         
             return view('pending', ['requests' => $requests, 'search' => TRUE]);            
@@ -261,7 +261,7 @@ class BookController extends Controller
 
         $requests = DB::select("
         SELECT book_loans.id_peminjaman id_peminjaman, users.id nis, users.name nama, books.judul judul, books.id book_id,
-        (SELECT COUNT(*) FROM book_loans AS bl WHERE bl.id_user = users.id AND NOW() >= bl.tenggat_pengembalian) AS 'has_late'            
+        (SELECT COUNT(*) FROM book_loans AS bl WHERE bl.id_user = users.id AND NOW() >= bl.tenggat_pengembalian AND bl.tanggal_pengembalian IS NULL) AS 'has_late'            
        FROM book_loans
            JOIN books ON book_loans.id_buku = books.id
            JOIN users ON book_loans.id_user = users.id        
