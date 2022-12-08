@@ -56,8 +56,6 @@ class RegisteredUserController extends Controller
                 ->withErrors($validate);
         }
 
-
-
         $user = new User();   
         $user->id = "";
         $user->name = $request->name;

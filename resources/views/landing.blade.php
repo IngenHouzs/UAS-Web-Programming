@@ -2,6 +2,18 @@
 
 @section('landing-page')
     <div>
+
+        @auth
+            @if(auth()->user()->role === 2 && $late)
+                <div class="container py-3 my-4 bg-danger shadow late-warning" style="position: absolute;margin:0 auto;left:0;right:0;z-index:3">
+                    <p class="text-white">Anda memiliki buku yang sudah habis durasi peminjamannya. Segera kembalikan buku, atau tambah durasi peminjaman.</p>
+                    <a href="/pinjamanku?filter=late"><button class="bg-white rounded px-2" style="color:red;font-weight:bold;max-width:40rem;">Periksa Daftar Pinjaman</button></a>
+                    <button onclick="closeWarning()" class="bg-white" style="color:red;position:absolute;right:.5rem;top:.5rem;border-radius:50%;font-weight:bold;height:1rem;width:1rem;text-align:center;font-size:.7rem;">X</button>
+                </div>          
+            @endif
+        @endauth
+
+
         <div class="w3-content w3-display-container">
             <img class="mySlides" src="/asset/test1.jpg" style="width:100%">
             <img class="mySlides" src="/asset/test2.jpg" style="width:100%">

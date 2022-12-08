@@ -86,10 +86,77 @@ class BookLoanController extends Controller
     }
 
 
-    public function viewMyLoans(){
+    public function viewMyLoans(Request $request){
         
         if (!Auth::check()){
             return view('login');
+        }
+
+        $filter = $request->get('filter');
+
+        $findLate = DB::select(
+            "SELECT COUNT(*) AS 'count' FROM book_loans
+            WHERE book_loans.id_user = ?
+            AND tanggal_pengembalian IS NULL  
+            AND NOW() >= book_loans.tenggat_pengembalian
+            "
+        ,[Auth::user()->id]);
+
+        if ($filter){
+            if ($filter === 'late'){
+                $loans = DB::select(
+                    "SELECT book_loans.id_buku id_buku, 
+                        books.judul judul,
+                        book_loans.id_peminjaman id_peminjaman,
+                        book_loans.tanggal_peminjaman tanggal_peminjaman,
+                        book_loans.tenggat_pengembalian tenggat_pengembalian,
+                        IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'                     
+                        FROM book_loans
+                        JOIN books ON book_loans.id_buku = books.id
+                        WHERE book_loans.id_user = ?
+                        AND book_loans.tanggal_pengembalian IS NULL
+                        AND NOW() >= book_loans.tenggat_pengembalian
+                    "
+                ,[Auth::user()->id]);
+        
+                return view('my-loan', ['loans' => $loans, 'hasLate' => $findLate[0]->count, 'search' => TRUE]);                
+
+            } else if ($filter === 'requested'){
+                $loans = DB::select(
+                    "SELECT book_loans.id_buku id_buku, 
+                        books.judul judul,
+                        book_loans.id_peminjaman id_peminjaman,
+                        book_loans.tanggal_peminjaman tanggal_peminjaman,
+                        book_loans.tenggat_pengembalian tenggat_pengembalian,
+                        IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'                     
+                        FROM book_loans
+                        JOIN books ON book_loans.id_buku = books.id
+                        WHERE book_loans.id_user = ?
+                        AND book_loans.tanggal_peminjaman IS NULL 
+                        AND book_loans.tenggat_pengembalian IS NULL 
+                    "
+                ,[Auth::user()->id]);
+        
+                return view('my-loan', ['loans' => $loans, 'hasLate' => $findLate[0]->count, 'search' => TRUE]);                  
+
+            } else if ($filter === 'ongoing'){
+                $loans = DB::select(
+                    "SELECT book_loans.id_buku id_buku, 
+                        books.judul judul,
+                        book_loans.id_peminjaman id_peminjaman,
+                        book_loans.tanggal_peminjaman tanggal_peminjaman,
+                        book_loans.tenggat_pengembalian tenggat_pengembalian,
+                        IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'                     
+                        FROM book_loans
+                        JOIN books ON book_loans.id_buku = books.id
+                        WHERE book_loans.id_user = ?
+                        AND book_loans.tanggal_pengembalian IS NULL
+                        AND NOW() < book_loans.tenggat_pengembalian
+                    "
+                ,[Auth::user()->id]);
+        
+                return view('my-loan', ['loans' => $loans, 'hasLate' => $findLate[0]->count, 'search' => TRUE]);  
+            }
         }
     
         $loans = DB::select(
@@ -97,15 +164,17 @@ class BookLoanController extends Controller
                 books.judul judul,
                 book_loans.id_peminjaman id_peminjaman,
                 book_loans.tanggal_peminjaman tanggal_peminjaman,
-                book_loans.tenggat_pengembalian tenggat_pengembalian
+                book_loans.tenggat_pengembalian tenggat_pengembalian,
+                IF ((NOW() < book_loans.tenggat_pengembalian), FALSE, TRUE) AS 'late'                     
                 FROM book_loans
                 JOIN books ON book_loans.id_buku = books.id
                 WHERE book_loans.id_user = ?
-                AND book_loans.tanggal_pengembalian IS NULL
+                AND book_loans.tanggal_pengembalian IS NULL 
+                ORDER BY book_loans.tanggal_peminjaman DESC
             "
         ,[Auth::user()->id]);
 
-        return view('my-loan', ['loans' => $loans]);
+        return view('my-loan', ['loans' => $loans, 'hasLate' => $findLate[0]->count, 'search' => FALSE]);
     }
 
     public function deleteLoanRequest($id_peminjaman){

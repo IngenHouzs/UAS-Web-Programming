@@ -51,8 +51,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {        
-        return "haha";        
+    {              
         $rules = [
             'name' => ['required','unique:users,name'], 
             'nisn' => ['required','unique:users,nisn'], 

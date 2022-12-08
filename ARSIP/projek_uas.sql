@@ -3,9 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 11:54 AM
+-- Generation Time: Dec 08, 2022 at 05:12 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -107,6 +108,24 @@ CREATE TABLE `book_loans` (
   `tenggat_pengembalian` timestamp NULL DEFAULT NULL,
   `tanggal_pengembalian` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `book_loans`
+--
+
+INSERT INTO `book_loans` (`id_peminjaman`, `id_buku`, `id_user`, `tanggal_peminjaman`, `tenggat_pengembalian`, `tanggal_pengembalian`) VALUES
+('l638f33259a0d58.04475915', '11111', '0072642983', '2022-12-06 12:19:13', '2022-12-13 12:19:13', '2022-12-06 16:53:58'),
+('l638f72343778c4.59028144', '11114', '0079153287', '2022-12-06 16:50:24', '2022-12-13 16:50:24', '2022-12-06 16:53:57'),
+('l638f72df2574c6.95373711', '11114', '0079153287', '2022-12-06 16:50:55', '2022-12-16 16:50:55', '2022-12-06 16:53:56'),
+('l638f73ef6ca688.38978813', '11114', '0079153287', '2022-12-06 16:55:22', '2022-12-13 16:55:22', '2022-12-06 17:11:42'),
+('l638f74030c08b6.68560611', '11114', '0079153287', '2022-12-06 16:56:27', '2022-12-16 16:56:27', '2022-12-06 17:11:43'),
+('l638f7440e74749.21361224', '11114', '0079153287', '2022-12-06 17:01:09', '2022-12-13 17:01:09', '2022-12-06 17:11:45'),
+('l6390340c52edc0.80170486', '11111', '0078296512', '2022-12-07 06:35:00', '2022-12-14 06:35:00', '2022-12-07 07:23:25'),
+('l63903fa545af09.20566795', '11114', '0078296512', '2022-12-07 07:24:28', '2022-12-14 07:24:28', '2022-12-07 08:05:50'),
+('l6390498340c101.11527693', '11112', '0078296512', '2022-12-07 08:06:37', '2022-12-17 08:06:37', '2022-12-07 18:50:26'),
+('l6390620ba08f21.57424609', '11111', '0078296512', '2022-12-07 09:52:30', '2022-12-14 09:52:30', '2022-12-07 09:52:34'),
+('l6390841996e271.78923919', '11111', '0078296512', '2022-12-07 12:16:32', '2021-12-14 12:16:32', NULL),
+('l63908fc3304d14.36289618', '11111', '0075015582', '2022-12-07 13:23:33', '2022-12-14 13:23:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -223,10 +242,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `nisn`, `role`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-('0072642983', 'Carlos Warren', '0072642983', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
-('0075015582', 'Muhammad Axelxylander Brandon Renaldo', '0075015582', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
+('0072642983', 'Carlos Warren', '0072642983', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '6QgpTOjSTyV5J41mAsuaXewDzSHmnTO2THTWSNqFT7a1RdH0vFsfK8sW7238', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
+('0075015582', 'Muhammad Axelxylander Brandon Renaldo', '0075015582', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', 'oD3gtaUG12LYm4aUoWA1DojKUL8M3VJSX2XnMST8XwwtmFWEzAF3zzCrMdhb', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0075052629', 'BERTRAND ALEXIS XIE', '0075052629', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
-('0078296512', 'Wincent Gouwinsky', '0078296512', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
+('0078296512', 'Wincent Gouwinsky', '0078296512', 2, '\n$2a$12$kww8WmrME6.PxzluGrEhtOfAkt1b.0lq8byYcMQOo1HUh8PzXWE2m ', 'DBRwUbJWiIRidFwsqQeQXIoPIkQtuLbqYUQ5He6d3zGbpyiHCq8DVBEN6M1A', '2022-12-05 10:52:12', '2022-12-07 06:17:32'),
 ('0079153287', 'MICHAEL MARVEL TOENROE', '0079153287', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0081092663', 'PHILBERT ANATHAPINDIKA', '0081092663', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0081117958', 'FIONA CHEN', '0081117958', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
@@ -242,7 +261,7 @@ INSERT INTO `users` (`id`, `name`, `nisn`, `role`, `password`, `remember_token`,
 ('0083628090', 'YOUMIE GOLEYU', '0083628090', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0083767868', 'Vilia Jocelyn Wijaya', '0083767868', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0084714201', 'YEMIMA ABIELLA MATULANDI', '0084714201', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
-('0084808050', 'TANTRATIUS RAVATO', '0084808050', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
+('0084808050', 'TANTRATIUS RAVATO', '0084808050', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', 'cHKwlFlPnvHPm8TZRuEi0VKytAsrgRBF6mNtElEDnFOFzT3c9ieVTtk36xTY', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0084982250', 'aline radita pramesthi', '0084982250', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0085207978', 'CLARK GARRY TAMBA', '0085207978', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0085306227', 'Elcardio Reef', '0085306227', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),

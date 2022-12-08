@@ -76,7 +76,7 @@
                 <p>
                   © 2022
                   <a class="text-white" target="_blank" href="/">
-                    Tunas Mulia Montessari School</a
+                    Tunas Mulia Montessori School</a
                   >
                   All Rights Reserved.
                 </p>

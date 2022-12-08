@@ -20,18 +20,63 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 class UserController extends Controller
 {
     public function index(){
-        // AuthenticatedSessionController::checkEmailVerification();
-        return view('landing');
+        // AuthenticatedSessionController::checkEmailVerification();        
+        $hasLate = FALSE;
+        if (Auth::check()){
+            if (Auth::user()->role === 2){
+                $findLate = DB::select(
+                    "SELECT COUNT(*) AS 'count' FROM book_loans
+                    WHERE book_loans.id_user = ?
+                    AND tanggal_pengembalian IS NULL  
+                    AND NOW() >= book_loans.tenggat_pengembalian
+                    "
+                ,[Auth::user()->id]);               
+                if ($findLate[0]->count){
+                    $hasLate = TRUE;
+                }
+            }
+        }        
+        return view('landing', ['late' => $hasLate]);  
     }
 
     public function home(){
         // AuthenticatedSessionController::checkEmailVerification();        
-        return view('landing'); // TEMP        
+        $hasLate = FALSE;
+        if (Auth::check()){
+            if (Auth::user()->role === 2){
+                $findLate = DB::select(
+                    "SELECT COUNT(*) AS 'count' FROM book_loans
+                    WHERE book_loans.id_user = ?
+                    AND tanggal_pengembalian IS NULL  
+                    AND NOW() >= book_loans.tenggat_pengembalian
+                    "
+                ,[Auth::user()->id]);               
+                if ($findLate[0]->count){
+                    $hasLate = TRUE;
+                }
+            }
+        }        
+        return view('landing', ['late' => $hasLate]);     
     }
 
     public function about(){
         // AuthenticatedSessionController::checkEmailVerification();        
-        return view('panduan'); // TEMP             
+        $hasLate = FALSE;
+        if (Auth::check()){
+            if (Auth::user()->role === 2){
+                $findLate = DB::select(
+                    "SELECT COUNT(*) AS 'count' FROM book_loans
+                    WHERE book_loans.id_user = ?
+                    AND tanggal_pengembalian IS NULL  
+                    AND NOW() >= book_loans.tenggat_pengembalian
+                    "
+                ,[Auth::user()->id]);               
+                if ($findLate[0]->count){
+                    $hasLate = TRUE;
+                }
+            }
+        }           
+        return view('panduan',  ['late' => $hasLate]); // TEMP             
     }
     
     public function services(){

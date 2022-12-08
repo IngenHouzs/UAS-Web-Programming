@@ -35,9 +35,6 @@
             </form>       
         </div>
    
-
-
-        
         @if(count($loans) > 0)
 
             @foreach($loans as $loan)

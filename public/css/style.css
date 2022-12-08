@@ -547,6 +547,12 @@ p {
     width: 100%;
 }
 
+.my-loan-header{
+    justify-content: space-between;
+    align-items: center;
+}
+
+
 @media screen and (max-width: 480px) {
     .auth-card {
         max-width: none;
@@ -643,7 +649,17 @@ p {
         align-items: flex-start;
         gap: 0.5rem;
     }
+
+    .my-loan-header{
+        flex-direction: column !important;
+    }
+
+    .my-loan-header div a button {
+        margin-bottom:.2rem;
+    }
 }
+
+
 
 @media screen and (max-width: 1000px) {
     .loan-inner-card {

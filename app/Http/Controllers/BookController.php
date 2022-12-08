@@ -218,6 +218,7 @@ class BookController extends Controller
                 WHERE book_loans.tanggal_peminjaman IS NOT NULL 
                   AND book_loans.tanggal_pengembalian IS NULL
                   AND book_loans.tenggat_pengembalian IS NOT NULL        
+                  AND users.name LIKE ?
             ", ['%'.$name.'%']);             
             
             return view('loanlist', ["loans" => $loan, 'search' => TRUE]);
@@ -339,8 +340,6 @@ class BookController extends Controller
     }
 
     public function addBook(Request $request){
-
-
 
         $penerbitInput = $request->penerbit;
         $penulisInput = $request->penulis;

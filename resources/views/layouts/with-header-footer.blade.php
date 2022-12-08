@@ -30,7 +30,7 @@
             @include('partials.navbar')
     
             <!-- Page Contents-->
-            <div class="content px-2">
+            <div class="content px-2" style="position:relative">
                 @yield('landing-page')
                 @yield('panduan')
                 @yield('catalogue')           
