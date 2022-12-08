@@ -38,6 +38,16 @@ const closeWarning = () =>{
 
 clickNavbar();
 
+
+
+const addAuthor = () => {
+    const input = document.createElement("input");
+    input.setAttribute("name", "penulis[]");
+    input.setAttribute("type", "text");
+    document.querySelector(".author-box").append(input);
+};
+
+
 const filterDropdown = () => {
     const dropdown = document.querySelector(".dropdown-filter");
     if (dropdown.style.display === "none") {
@@ -82,13 +92,5 @@ function removeActive() {
 }
 removeActive();
 
-
-
-const addAuthor = () => {
-    const input = document.createElement("input");
-    input.setAttribute("name", "penulis[]");
-    input.setAttribute("type", "text");
-    document.querySelector(".author-box").append(input);
-};
 
 

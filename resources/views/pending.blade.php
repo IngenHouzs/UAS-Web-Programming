@@ -4,7 +4,9 @@
 
 
     @if(session('REQUEST_ACCEPTED'))
-        <h1>{{session('REQUEST_ACCEPTED')}}</h1>
+        <div class="container alert alert-success" role="alert">
+            {{session('REQUEST_ACCEPTED')}}
+        </div>    
     @endif
 
     <div class="container my-4 px-3 pt-2 pb-3 flex flex-column pending-wrapper">

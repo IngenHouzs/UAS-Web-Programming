@@ -75,7 +75,7 @@
                             <h5 id="book-title" class="card-title">{{$book->judul}}</h5>
                             <h6  id="book-details" class="card-subtitle my-2 text-muted">
                                 @foreach($book->author as $author)
-                                    <span id="book-author">{{$author->nama_penulis}}</span>
+                                    <span id="book-author">{{$author->nama_penulis}},</span>
                                 @endforeach
                                 <span>|</span>
                                 <span id="book-publisher">{{$book->publisher->nama_penerbit}}</span>

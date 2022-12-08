@@ -418,7 +418,7 @@ class BookController extends Controller
 
         $insert = DB::insert($query, $authorList);
         if ($insert){
-            return "BERHASIL";
+            return redirect('/collection');
         }
         
     }

@@ -40,7 +40,7 @@
                             <td>:</td>
                             <td>
                             @foreach($book->author as $author)
-                                {{$author->nama_penulis}}
+                                {{$author->nama_penulis}},
                             @endforeach 
                             </td>
                         </tr>
