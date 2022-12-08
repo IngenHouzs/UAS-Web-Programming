@@ -22,7 +22,7 @@
 
             @if (count($requests) > 0)
                 @foreach($requests as $request)
-                    <div class="bg-white shadow flex flex-column pending-card">
+                    <div class="bg-white shadow flex flex-column pending-card mb-3">
                         <h1 class="h3">{{$request->nama}}</h1>
                         <p class="text-muted">{{$request->nis}}</p>
                         <a href="/collection/{{$request->book_id}}" class="text-primary h5">{{$request->judul}}</a>                               
@@ -38,7 +38,6 @@
                             </form>                        
                         </div>
 
-            
                     </div>
             @endforeach            
             @else 
