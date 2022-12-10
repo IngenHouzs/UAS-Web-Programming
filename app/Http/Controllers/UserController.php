@@ -63,7 +63,7 @@ class UserController extends Controller
         // AuthenticatedSessionController::checkEmailVerification();        
         $hasLate = FALSE;
         if (Auth::check()){
-            if (Auth::user()->role === 2){
+            if (Auth::user()->role == 2){
                 $findLate = DB::select(
                     "SELECT COUNT(*) AS 'count' FROM book_loans
                     WHERE book_loans.id_user = ?

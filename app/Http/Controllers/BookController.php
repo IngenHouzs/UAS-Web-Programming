@@ -329,7 +329,7 @@ class BookController extends Controller
 
     public function deleteBook($id_buku){
         if (Auth::check()){
-            if (Auth::user()->role === 1){
+            if (Auth::user()->role == 1){
                 Book::where('id', $id_buku)->delete();
                 return redirect('/collection')
                     ->with('DELETE_SUCCESS', 'Berhasil menghapus buku');
