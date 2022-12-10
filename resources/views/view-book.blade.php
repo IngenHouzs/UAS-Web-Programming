@@ -130,7 +130,7 @@
         <div class="row mb-5">
             <div class="col">
             @auth
-                @if(auth()->user()->role === 2)
+                @if(auth()->user()->role == 2)
                     <form action="{{route('requestLoan', [$book->id, auth()->user()->id])}}" method="POST">
                         @csrf
                         @if(count($loans) >= $defaultStock)

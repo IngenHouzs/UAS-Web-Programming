@@ -18,7 +18,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()){
-            if (auth()->user()->role === 1){
+            if (auth()->user()->role == 1){
                 // If Admin, let it access the requested route.
                 return $next($request);                
             }

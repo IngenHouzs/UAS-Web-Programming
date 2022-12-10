@@ -95,7 +95,7 @@
 
 
     @auth 
-        @if(auth()->user()->role === 1)
+        @if(auth()->user()->role == 1)
             <div class="container py-3 my-5">
                 <a href="/collection/addBook"><button class="text-white bg-success rounded px-3">Tambah Buku</button></a>
             </div>

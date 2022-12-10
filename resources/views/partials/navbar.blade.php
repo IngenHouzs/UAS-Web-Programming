@@ -21,7 +21,7 @@
 
 
             @auth            
-            @if(auth()->user()->role === 1)            
+            @if(auth()->user()->role == 1)            
                 <li class="nav-item">
                     <a href="{{route('showAllLoans')}}" class="navbar-link nav-link">Data Pinjaman</a>     
                 </li>    
@@ -34,7 +34,7 @@
                 <li class="nav-item">
                     <a href="{{route('viewAllStudent')}}" class="navbar-link nav-link">Data Pelajar</a>     
                 </li>                                                       
-            @elseif(auth()->user()->role === 2)
+            @elseif(auth()->user()->role == 2)
                 <li class="nav-item">
                     <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
                 </li>
@@ -65,7 +65,7 @@
 
         <div class="navbar-nav" id="navbar-user-status">
             @auth 
-                @if(auth()->user()->role === 2)
+                @if(auth()->user()->role == 2)
                     <li class="nav-item">
                         <a href="{{route('forgetPasswordView')}}" class="navbar-link nav-link">Ganti Kata Sandi</a>     
                     </li>                      

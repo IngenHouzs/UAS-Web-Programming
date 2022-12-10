@@ -4,7 +4,7 @@
     <div>
 
         @auth
-            @if(auth()->user()->role === 2 && $late)
+            @if(auth()->user()->role == 2 && $late)
                 <div class="container py-3 my-4 bg-danger shadow late-warning" style="position: absolute;margin:0 auto;left:0;right:0;z-index:3">
                     <p class="text-white">Anda memiliki buku yang sudah habis durasi peminjamannya. Segera kembalikan buku, atau tambah durasi peminjaman.</p>
                     <a href="/pinjamanku?filter=late"><button class="bg-white rounded px-2" style="color:red;font-weight:bold;max-width:40rem;">Periksa Daftar Pinjaman</button></a>
