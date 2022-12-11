@@ -1,6 +1,6 @@
 <nav id="navbar" class="navbar navbar-expand-md px-3 fixed-top">
     <img class="img-navbar-footer" src="/asset/tunas-mulia-logo.png"/>
-    <a href="\" id="navbar-school-name">
+    <a href="" id="navbar-school-name">
         Tunas Mulia Montessori School <br>
         Online Library
     </a>
