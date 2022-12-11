@@ -28,8 +28,37 @@ class BookLoanController extends Controller
             $valid = TRUE;
         }
    
-
         if ($valid){
+              // Check if book ran out of stock
+
+            $loaned = DB::select("
+                SELECT COUNT(*) 'jumlah' FROM book_loans
+                WHERE id_buku = ?
+                AND tenggat_pengembalian IS NOT NULL
+                AND tanggal_pengembalian IS NULL
+            ", [$findBook[0]->id]);
+
+            if ($findBook[0]->stok - $loaned[0]->jumlah <= 0){
+                return redirect()->back()
+                    ->with('UNAVAILABLE', 'Buku dengan judul '.$findBook[0]->judul.' sedang tidak tersedia.');
+            }            
+
+            // Check if user have already loaned more than restriction number (5)
+
+        
+            $loan = DB::select(
+                "SELECT COUNT(*) 'jumlah' FROM book_loans
+                    WHERE id_user = ?
+                    AND tanggal_pengembalian IS NULL
+                "
+            ,[$findUser[0]->id]);            
+
+            if ($loan[0]->jumlah >= 5){
+                return redirect()->back()
+                    ->with('SELF_QUOTA_FULL', 'Batas peminjaman '.$findUser[0]->name.' sudah habis');
+            }            
+
+
             $newLoan = new BookLoan;
             $newLoan->id_peminjaman = '';
             $newLoan->id_buku = $findBook[0]->id;

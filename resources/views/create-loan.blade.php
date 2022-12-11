@@ -3,6 +3,19 @@
 
 @section('create-loan')
 
+@if(session('UNAVAILABLE'))
+
+        <div class="container mt-3 alert alert-danger" role="alert">
+            {{session('UNAVAILABLE')}}
+        </div>
+        @endif
+
+        @if(session('SELF_QUOTA_FULL'))
+        <div class="container mt-3 alert alert-danger" role="alert">
+            {{session('SELF_QUOTA_FULL')}}
+        </div>
+        @endif    
+
         <div class="container my-4 flex flex-column add-loan-div">
             <div class="w-100 px-3 bg-primary flex flex-row align-items-center profil-siswa-header shadow">
                 <h1 class="h4 text-white">Buat Pinjaman Baru</h1>

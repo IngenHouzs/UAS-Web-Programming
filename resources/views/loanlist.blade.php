@@ -3,9 +3,6 @@
 
 @section('loanlist')
 
-
-
-
 <div class="container my-4 px-3 pt-2 pb-3 flex flex-column">
     <div class="daftar-pinjaman-header w-full bg-warning bg-gradient">
         <h1 class="text-center">Daftar Pinjaman</h1> 
