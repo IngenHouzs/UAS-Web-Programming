@@ -34,8 +34,7 @@
                         <div class="dropdown-ls-student flex flex-column h-auto w-4"> <!-- Ini template buat daftar pelajar kl ketemu -->
                         </div>
                     </div>
-            
-
+        
                     <p style="font-weight:bold;">Cari Judul Buku</p>
                     <input type="text" id="ls-findbook" name="book" value="" required>
                     <button type="button" onclick="ls_findBook()"><i class="fa fa-search"></i></button><br/>        

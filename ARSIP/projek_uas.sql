@@ -3,10 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2022 at 05:12 AM
+-- Generation Time: Dec 11, 2022 at 07:50 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
-
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,7 +40,8 @@ INSERT INTO `authors` (`id_penulis`, `nama_penulis`) VALUES
 ('a638dc11298ed98.96501074', 'Antony Permana'),
 ('a638dc12b2c82a9.17802590', 'Andrian Pran, S.T'),
 ('a638dc1377e5d69.48916143', 'Antonio Indiva'),
-('a638dc141cb7a84.74775613', 'Sinyoman SH');
+('a638dc141cb7a84.74775613', 'Sinyoman SH'),
+('a6392eff05a0f58.14701062', 'Dennis Gunawan');
 
 -- --------------------------------------------------------
 
@@ -68,8 +68,8 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `id_penerbit`, `judul`, `tahun_terbit`, `tempat_terbit`, `halaman`, `ddc`, `isbn`, `no_rak`, `stok`, `keterangan`) VALUES
-('11111', 'b638dbb179c2025.49799588', 'Panduan Pemrograman Java SE', 2010, 'Malang', 210, '005.9989786', '979554324455', '005.7654 (Lantai 2)', 10, ''),
-('11112', 'b638dbb179c2025.49799588', 'Panduan Membuat Animasi dengan Adobe Flash CS9', 2010, 'Malang', 340, '005.4534555', '979656565654', '005.67677 (Lantai 2)', 10, ''),
+('11111', 'b638dbb179c2025.49799588', 'Panduan Pemrograman Java SE', 2010, 'Malang', 210, '005.9989786', '979554324455', '005.7654 (Lantai 2)', 10, NULL),
+('11112', 'b638dbb179c2025.49799588', 'Panduan Membuat Animasi dengan Adobe Flash CS9', 2010, 'Malang', 340, '005.4534555', '979656565654', '005.67677 (Lantai 2)', 4, NULL),
 ('11113', 'b638dbb179c2025.49799588', 'Simulasi Teori Graph dengan Embarcadero RAD Studio XE 2012', 2010, 'Malang', 340, '005.89897666', '97987876676', '005.6756565 (Lantai 2)', 10, ''),
 ('11114', 'b638dbdd10d8016.70435012', 'Manajemen Hukum Perdata', 2010, 'Jakarta', 450, '115.45353', '979765556556', '115.6556 (Lantai 3)', 20, '');
 
@@ -124,8 +124,25 @@ INSERT INTO `book_loans` (`id_peminjaman`, `id_buku`, `id_user`, `tanggal_peminj
 ('l63903fa545af09.20566795', '11114', '0078296512', '2022-12-07 07:24:28', '2022-12-14 07:24:28', '2022-12-07 08:05:50'),
 ('l6390498340c101.11527693', '11112', '0078296512', '2022-12-07 08:06:37', '2022-12-17 08:06:37', '2022-12-07 18:50:26'),
 ('l6390620ba08f21.57424609', '11111', '0078296512', '2022-12-07 09:52:30', '2022-12-14 09:52:30', '2022-12-07 09:52:34'),
-('l6390841996e271.78923919', '11111', '0078296512', '2022-12-07 12:16:32', '2021-12-14 12:16:32', NULL),
-('l63908fc3304d14.36289618', '11111', '0075015582', '2022-12-07 13:23:33', '2022-12-14 13:23:33', NULL);
+('l6390841996e271.78923919', '11111', '0078296512', '2022-12-07 12:16:32', '2021-12-17 12:16:32', '2022-12-08 13:16:26'),
+('l63908fc3304d14.36289618', '11111', '0075015582', '2022-12-07 13:23:33', '2022-12-23 13:23:33', NULL),
+('l639189e716cec7.85887890', '11113', '0075015582', '2022-12-08 14:01:02', '2022-12-15 14:01:02', NULL),
+('l63918cd2f19460.35999255', '11111', '0078296512', '2022-12-08 07:05:54', '2021-12-18 07:05:54', '2022-12-08 13:59:18'),
+('l6391ee2e0de0a9.10329172', '11111', '0078296512', '2022-12-08 14:08:31', '2022-12-31 14:08:31', '2022-12-08 14:39:36'),
+('l6391f2acd7e688.72674244', '11114', '0078296512', '2022-12-08 14:20:33', '2021-12-15 14:20:33', '2022-12-08 14:39:38'),
+('l6391f6a8658f17.33262379', '11114', '0078296512', '2022-12-08 14:37:33', '2022-12-15 14:37:33', '2022-12-08 14:39:34'),
+('l6391f6c7d6fdc7.34729628', '11114', '0078296512', '2022-12-08 14:38:02', '2022-12-15 14:38:02', '2022-12-08 18:26:56'),
+('l6391f6daaec790.21174629', '11114', '0078296512', '2022-12-08 14:38:21', '2021-12-15 14:38:21', '2022-12-08 18:26:37'),
+('l63922ec476c189.16173732', '11113', '0081292792', '2022-12-08 18:37:39', '2021-01-15 18:37:39', '2022-12-08 18:38:41'),
+('l63922edf958551.84942855', '11112', '0081292792', '2022-12-08 18:37:38', '2022-12-15 18:37:38', NULL),
+('l63922f233b10f6.48903462', '11113', '0081292792', NULL, NULL, NULL),
+('l63923adad90c52.14390514', '11112', '0086083073', '2022-12-08 19:28:26', '2021-12-15 19:28:26', NULL),
+('l6392cccfb7bb06.62774833', '11111', '0072642983', '2022-12-09 05:51:28', '2021-12-16 05:51:28', '2022-12-09 08:16:58'),
+('l6392d3eaf2d898.04025741', '11112', '0072642983', '2022-12-09 08:19:10', '2021-12-16 08:19:10', NULL),
+('l6392eecd997652.69357438', '11111', '0072642983', '2022-12-09 08:16:13', '2022-12-16 08:16:13', NULL),
+('l639622abe94b23.04869147', '11114', '0075015582', '2022-12-11 18:34:19', '2022-12-18 18:34:19', NULL),
+('l639622c86816c7.80068301', '11113', '0075015582', '2022-12-11 18:34:48', '2022-12-18 18:34:48', NULL),
+('l639622e6143842.28341664', '11112', '0075015582', '2022-12-11 18:35:18', '2022-12-18 18:35:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -218,7 +235,8 @@ CREATE TABLE `publishers` (
 
 INSERT INTO `publishers` (`id_penerbit`, `nama_penerbit`) VALUES
 ('b638dbb179c2025.49799588', 'Penerbit UMD'),
-('b638dbdd10d8016.70435012', 'Mentari Publishing');
+('b638dbdd10d8016.70435012', 'Mentari Publishing'),
+('b6392eff058f1a5.53913828', 'Mentari');
 
 -- --------------------------------------------------------
 
@@ -242,14 +260,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `nisn`, `role`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-('0072642983', 'Carlos Warren', '0072642983', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '6QgpTOjSTyV5J41mAsuaXewDzSHmnTO2THTWSNqFT7a1RdH0vFsfK8sW7238', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
-('0075015582', 'Muhammad Axelxylander Brandon Renaldo', '0075015582', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', 'oD3gtaUG12LYm4aUoWA1DojKUL8M3VJSX2XnMST8XwwtmFWEzAF3zzCrMdhb', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
+('0072642983', 'Carlos Warren', '0072642983', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', 'HO2ycBkXzzmPcy5g0J7iLZMpidFyvjrvuwUGpwztd3rJg1S9cMxsmEXmu4Sq', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
+('0075015582', 'Muhammad Axelxylander Brandon Renaldo', '0075015582', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', 'KQOM5VB29JgKFwq3MDSFPduM804xZqHXPSCs7bLdlrFe4DtQM2ctoMfoQEuY', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0075052629', 'BERTRAND ALEXIS XIE', '0075052629', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
-('0078296512', 'Wincent Gouwinsky', '0078296512', 2, '\n$2a$12$kww8WmrME6.PxzluGrEhtOfAkt1b.0lq8byYcMQOo1HUh8PzXWE2m ', 'DBRwUbJWiIRidFwsqQeQXIoPIkQtuLbqYUQ5He6d3zGbpyiHCq8DVBEN6M1A', '2022-12-05 10:52:12', '2022-12-07 06:17:32'),
+('0078296512', 'Wincent Gouwinsky', '0078296512', 2, '$2a$12$W/9BzOx1T7Kdug.1MeBa9edvSG0gt4uQ.gGKmncQrT2hlVQC74bWG', 'XRq96mop3gUy3D5NGBvUZFQvkTcTaSDcHCc0gZxU6WDrg4kRNcqpNBKYpALN', '2022-12-05 10:52:12', '2022-12-07 06:17:32'),
 ('0079153287', 'MICHAEL MARVEL TOENROE', '0079153287', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0081092663', 'PHILBERT ANATHAPINDIKA', '0081092663', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0081117958', 'FIONA CHEN', '0081117958', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
-('0081292792', 'Livia Jocelyn Wijaya', '0081292792', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
+('0081292792', 'Livia Jocelyn Wijaya', '0081292792', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', 'MvBwHfGZZPuxSIHF7EgVlF3GlWXKsVVSrxeHkJCcZfD6fdJbS43v9ulN12IZ', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0081483690', 'JASSEL LOUIS HARJANTO', '0081483690', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0081540469', 'Breavenlee De Benassi', '0081540469', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
 ('0081697992', 'MOURIE GOLEYU', '0081697992', 2, '$2a$12$R/NLqnspquu/syBJc7Kkj.LyIsTMaqIAEtgOFsuwXXawKso4rCV8u', '-', '2022-12-05 10:52:12', '2022-12-05 10:52:12'),
