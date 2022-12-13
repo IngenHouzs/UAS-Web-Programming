@@ -15,7 +15,7 @@
             <div class="col-xl-5 col-md-5">
               <div class="row">
                 <div class="col">
-                  <h5 id="footer-alamat">Alamat</h5>
+                  <h5 id="footer-alamat">Address</h5>
                 </div>
               </div>
               <div class="row">
