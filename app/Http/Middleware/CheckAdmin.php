@@ -22,9 +22,10 @@ class CheckAdmin
                 // If Admin, let it access the requested route.
                 return $next($request);                
             }
-            return redirect()->back();
+            return abort(404);
         }
 
+        return abort(404);
 
     }
 
