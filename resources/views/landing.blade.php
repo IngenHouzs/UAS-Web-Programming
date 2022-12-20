@@ -31,11 +31,11 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="row">
-                        <h3>Tunas Mulia Montessari School Online Library</h3>
+                        <h3>Tunas Mulia Montessori School Online Library</h3>
                     </div>
                     <div class="row">
                         <p>
-                            Tunas Mulia School adalah sekolah yang berada di gading serpong dengan sistem pendidikan nasional plus and a place to encourage student's future.
+                        Tunas Mulia Montessori School is a school located in Gading Serpong with a national plus education system and a place to encourage student's future.
                         </p>
                     </div>
                 </div>

@@ -10,55 +10,55 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarsExample04">
         <div id="navbar-menu" class="navbar-nav">
             {{--<li class="nav-item">
-                <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
+                <a href="{{route('home')}}" class="navbar-link nav-link-rounded rounded">Home</a>
             </li>
             <li class="nav-item">
-                <a href="{{route('about')}}" class="navbar-link nav-link">About</a>
+                <a href="{{route('about')}}" class="navbar-link nav-link rounded">About</a>
             </li>
             <li class="nav-item">
-                <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
+                <a href="{{route('collection')}}" class="navbar-link nav-link rounded">Collection</a>     
             </li>--}}
 
 
             @auth            
             @if(auth()->user()->role == 1)            
                 <li class="nav-item">
-                    <a href="{{route('showAllLoans')}}" class="navbar-link nav-link">Data Pinjaman</a>     
+                    <a href="{{route('showAllLoans')}}" class="navbar-link nav-link rounded">Data Pinjaman</a>     
                 </li>    
                 <li class="nav-item">
-                    <a href="{{route('showPendingRequests')}}" class="navbar-link nav-link">Pending</a>     
+                    <a href="{{route('showPendingRequests')}}" class="navbar-link nav-link rounded">Pending</a>     
                 </li>                    
                 <li class="nav-item">
-                    <a href="{{route('collection')}}" class="navbar-link nav-link">Monitor Katalog</a>     
+                    <a href="{{route('collection')}}" class="navbar-link nav-link rounded">Monitor Katalog</a>     
                 </li>  
                 <li class="nav-item">
-                    <a href="{{route('viewAllStudent')}}" class="navbar-link nav-link">Data Pelajar</a>     
+                    <a href="{{route('viewAllStudent')}}" class="navbar-link nav-link rounded">Data Pelajar</a>     
                 </li>                                                       
             @elseif(auth()->user()->role == 2)
                 <li class="nav-item">
-                    <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
+                    <a href="{{route('home')}}" class="navbar-link nav-link rounded">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('about')}}" class="navbar-link nav-link">Panduan</a>
+                    <a href="{{route('about')}}" class="navbar-link nav-link rounded">Guide</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
+                    <a href="{{route('collection')}}" class="navbar-link nav-link rounded">Collection</a>     
                 </li>          
                 <li class="nav-item">
-                    <a href="{{route('pinjamanku')}}" class="navbar-link nav-link">Pinjamanku</a>     
+                    <a href="{{route('pinjamanku')}}" class="navbar-link nav-link rounded">My Book</a>     
                 </li>                    
             @endif
             @endauth
 
             @guest 
                 <li class="nav-item">
-                    <a href="{{route('home')}}" class="navbar-link nav-link">Home</a>
+                    <a href="{{route('home')}}" class="navbar-link nav-link rounded">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('about')}}" class="navbar-link nav-link">Panduan</a>
+                    <a href="{{route('about')}}" class="navbar-link nav-link rounded">Guide</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('collection')}}" class="navbar-link nav-link">Collection</a>     
+                    <a href="{{route('collection')}}" class="navbar-link nav-link rounded">Collection</a>     
                 </li>               
             @endguest 
         </div>
@@ -67,7 +67,7 @@
             @auth 
                 @if(auth()->user()->role == 2)
                     <li class="nav-item">
-                        <a href="{{route('forgetPasswordView')}}" class="navbar-link nav-link">Ganti Kata Sandi</a>     
+                        <a href="{{route('forgetPasswordView')}}" class="navbar-link nav-link rounded">Ganti Kata Sandi</a>     
                     </li>                      
                 @endif 
             @endauth 
@@ -84,7 +84,7 @@
                         </form>
 
                     @else
-                        <a href="{{ route('login') }}" class="log-in-out nav-item nav-link" >Log in</a>
+                        <a href="{{ route('login') }}" class="log-in-out nav-item nav-link rounded" >Log in</a>
                     @endauth
             @endif
         </div>
