@@ -100,6 +100,10 @@ class UserController extends Controller
     public function viewStudent($nisn){
         $student = User::where('nisn', $nisn)->get();
 
+        if (count($student) <= 0){
+            return redirect('/datasiswa');
+        }
+
         $loans = BookLoan::where('book_loans.id_user', '=', $nisn)
                     ->where('book_loans.tanggal_pengembalian', NULL)
                     ->join('books', 'book_loans.id_buku', '=', 'books.id')
