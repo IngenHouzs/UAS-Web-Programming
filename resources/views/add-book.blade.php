@@ -31,7 +31,7 @@
                 <br>
 
                 <p>Tahun Terbit<span class="required">*</span></p>   
-                <input type="text" name="tahun_terbit" style="@if(session('YEAR_INVALID')) border:1px solid red;@endif" required></input>
+                <input type="number" name="tahun_terbit" style="@if(session('YEAR_INVALID')) border:1px solid red;@endif" required></input>
                 @if(session('YEAR_INVALID')) <p style="font-size:.7rem;color:red;">{{session('YEAR_INVALID')}}</p> @endif
                 <br>
 
@@ -40,7 +40,7 @@
                 <br>
 
                 <p>Halaman<span class="required">*</span></p> 
-                <input type="text" name="halaman" style="@if(session('PAGE_INVALID')) border:1px solid red;@endif" required></input>        
+                <input type="number" name="halaman" style="@if(session('PAGE_INVALID')) border:1px solid red;@endif" required></input>        
                 @if(session('PAGE_INVALID')) <p style="font-size:.7rem;color:red;">{{session('PAGE_INVALID')}}</p> @endif
                 <br>
 
