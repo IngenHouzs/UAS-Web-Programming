@@ -200,7 +200,7 @@ class UserController extends Controller
 
     public function findStudentLS(Request $request){
         $req = $request->query('name');
-        $findUser = DB::select('SELECT id, name FROM users WHERE name LIKE ?', ['%'.$req.'%']);
+        $findUser = DB::select('SELECT id, name FROM users WHERE (name LIKE ? OR nisn = ?) AND users.role = 2', ['%'.$req.'%', $req]);
         return $findUser;
     }
 
