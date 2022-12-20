@@ -3,7 +3,15 @@
 @section('add-student')
 
     @if(session('STUDENT_CREATED'))
-        <p>{{session('STUDENT_CREATED')}}</p>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success" role="alert">                  
+                    <p>{{session('STUDENT_CREATED')}}</p>           
+                </div>     
+            </div>
+        </div>
+    </div>    
     @endif
 
     <div class="container my-4 flex flex-column">
