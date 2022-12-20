@@ -58,6 +58,10 @@ class BookController extends Controller
         // Detail Buku
         $document = Book::find($id);
 
+        if (!$document){
+            return redirect('/collection');
+        }
+
         $findCount = DB::select("
             SELECT COUNT(*) 'terpinjam' FROM book_loans
             WHERE id_buku = ?
